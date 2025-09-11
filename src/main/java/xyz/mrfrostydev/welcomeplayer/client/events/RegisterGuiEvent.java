@@ -1,0 +1,23 @@
+package xyz.mrfrostydev.welcomeplayer.client.events;
+
+import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.client.gui.overlay.ShowHostMessageOverlay;
+
+@EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID, value = Dist.CLIENT)
+public class RegisterGuiEvent {
+
+    @SubscribeEvent
+    private static void onRegisterMenu(final RegisterMenuScreensEvent event) {
+    }
+
+    @SubscribeEvent
+    public static void onRegisterGui(final RegisterGuiLayersEvent event){
+        event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "show_host_message_overlay"), new ShowHostMessageOverlay());
+    }
+}

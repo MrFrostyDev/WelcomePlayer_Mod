@@ -17,6 +17,10 @@ public class TagRegistry {
     // |-------------------------------------Item Tags--------------------------------------|
     // |------------------------------------------------------------------------------------|
 
+    public static final TagKey<Item> BATTERY = TagKey.create(
+            Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "battery")
+    );
 
     // |------------------------------------------------------------------------------------|
     // |------------------------------------Entity Tags-------------------------------------|
