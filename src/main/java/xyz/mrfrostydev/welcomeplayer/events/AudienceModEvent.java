@@ -26,7 +26,7 @@ public class AudienceModEvent extends Event {
 
     public int getGlobalFavour(){
         if(level instanceof ServerLevel){
-            return AudienceUtil.getGlobalFavour((ServerLevel)level);
+            return AudienceUtil.getInterest((ServerLevel)level);
         }
         else return 0;
     }

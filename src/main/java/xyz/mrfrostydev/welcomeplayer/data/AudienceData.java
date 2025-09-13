@@ -8,11 +8,8 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,17 +20,12 @@ public class AudienceData extends SavedData {
     public static final Codec<AudienceData> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
                     Codec.INT.fieldOf("health").forGetter(AudienceData::getHealth),
-                    Codec.INT.fieldOf("power").forGetter(AudienceData::getPower),
-                    Codec.INT.fieldOf("maxPower").forGetter(AudienceData::getPower),
-                    Codec.INT.fieldOf("globalFavour").forGetter(AudienceData::getGlobalFavour),
-                    Codec.INT.fieldOf("favourPool").forGetter(AudienceData::getGlobalFavour),
+                    Codec.INT.fieldOf("interest").forGetter(AudienceData::getInterest),
                     Codec.INT.fieldOf("changeCooldown").forGetter(AudienceData::getChangeCooldown),
                     Codec.BOOL.fieldOf("isPhaseShifting").forGetter(AudienceData::isPhaseShifting),
                     AudiencePhase.CODEC.fieldOf("phase").forGetter(AudienceData::getPhase),
                     AudienceMood.CODEC.fieldOf("mood").forGetter(AudienceData::getMood),
-                    AudienceEventManager.CODEC.fieldOf("eventManager").forGetter(AudienceData::getEventManager),
-                    ResourceLocation.CODEC.listOf().fieldOf("likedItems").forGetter(AudienceData::getLikedItems),
-                    ResourceLocation.CODEC.listOf().fieldOf("dislikedItems").forGetter(AudienceData::getDislikedItems)
+                    AudienceEventManager.CODEC.fieldOf("eventManager").forGetter(AudienceData::getEventManager)
             ).apply(instance, AudienceData::new));
 
     private AudienceDataSmall dataSmall;
@@ -49,13 +41,11 @@ public class AudienceData extends SavedData {
         this.dataLarge = dataLarge;
     }
 
-    private AudienceData(int health, int power, int maxPower,
-                         int globalFavour, int favourPool,
+    private AudienceData(int health, int interest,
                          int changeCooldown, boolean isPhaseShifting, AudiencePhase phase,
-                         AudienceMood mood, AudienceEventManager eventManager,
-                         List<ResourceLocation> likedItems, List<ResourceLocation> dislikedItems) {
-        this.dataSmall = new AudienceDataSmall(health, power, maxPower, globalFavour, favourPool, changeCooldown, isPhaseShifting);
-        this.dataLarge = new AudienceDataLarge(eventManager, phase, mood, likedItems, dislikedItems);
+                         AudienceMood mood, AudienceEventManager eventManager) {
+        this.dataSmall = new AudienceDataSmall(health, interest, changeCooldown, isPhaseShifting);
+        this.dataLarge = new AudienceDataLarge(eventManager, phase, mood);
     }
 
     public static AudienceData create(){
@@ -100,69 +90,19 @@ public class AudienceData extends SavedData {
     // |-------------------------------------------------------|
     // |---------------- General Data Handling ----------------|
     // |-------------------------------------------------------|
-
-    public void addPower(int add) {
-        this.setPower(dataSmall.power + add);
-    }
-
-    public void setPower(int power) {
-        dataSmall.power = Math.clamp(power, 0, dataSmall.maxPower);
-        this.setDirty(true);
-    }
-
-    public int getPower() {
-        return dataSmall.power;
-    }
-
-    public void addMaxPower(int add) {
-        setMaxPower(this.dataSmall.maxPower + add);
-    }
-
-    public void setMaxPower(int maxPower) {
-        this.dataSmall.maxPower = Math.max(maxPower, MIN_MAX_POWER);
-        this.setDirty(true);
-    }
-
-    public int getMaxPower() {
-        return dataSmall.maxPower;
-    }
-
     public void setGlobalFavour(int value) {
-        this.dataSmall.globalFavour = value;
+        this.dataSmall.interest = value;
         this.setDirty(true);
     }
 
     public void addGlobalFavour(int add){
-        this.setGlobalFavour(this.dataSmall.globalFavour + add);
+        this.setGlobalFavour(this.dataSmall.interest + add);
     }
 
-    public int getGlobalFavour() {
-        return dataSmall.globalFavour;
+    public int getInterest() {
+        return dataSmall.interest;
     }
-
-    public int getFavourPool(){
-        return dataSmall.favourPool;
-    }
-
-    /**
-     * Remove favour from the favour pool. Add favour to pool if value is negative.
-     * Returns the removed or added value that was applied with respect to an upper and lower bound.
-     */
-    public int removeFavourPool(int remove){
-        int lastPool = dataSmall.favourPool;
-        int total = dataSmall.favourPool - remove;
-        int clamped = Math.clamp(total, 0, MAX_FAVOUR_POOL);
-        setFavorPool(clamped);
-        return clamped == total ? remove : lastPool - clamped;
-    }
-
-    /**
-     * Set new a favour amount in the favour pool.
-     */
-    public void setFavorPool(int value){
-        dataSmall.favourPool = value;
-    }
-
+    
     public void setMood(AudienceMood mood) {
         this.dataLarge.mood = mood;
         this.setDirty(true);
@@ -173,12 +113,12 @@ public class AudienceData extends SavedData {
     }
 
     public AudiencePhase getPhase() {
-        int favour = getGlobalFavour();
-        if (favour > 400) return AudiencePhase.ADORED;
-        if (favour > 100) return AudiencePhase.LIKED;
-        if (favour > -100) return AudiencePhase.NEUTRAL;
-        if (favour > -400) return AudiencePhase.DISLIKED;
-        return AudiencePhase.HATED;
+        int interest = getInterest();
+        if (interest > 400) return AudiencePhase.THRILLED;
+        if (interest > 100) return AudiencePhase.INTERESTED;
+        if (interest > -100) return AudiencePhase.NEUTRAL;
+        if (interest > -400) return AudiencePhase.BORED;
+        return AudiencePhase.FURIOUS;
     }
 
     public AudienceEventManager getEventManager() {
@@ -218,69 +158,9 @@ public class AudienceData extends SavedData {
         }
     }
 
-    // |-----------------------------------------------------|
-    // |----------------- Cravings Handling -----------------|
-    // |-----------------------------------------------------|
-
-    public boolean likes(ItemStack stack) {
-        ResourceLocation resourceLocation = stack.getItemHolder()
-                .unwrapKey()
-                .orElseThrow()
-                .location();
-        return dataLarge.likedItems.contains(resourceLocation);
-    }
-
-    public boolean dislikes(ItemStack stack) {
-        ResourceLocation resourceLocation = stack.getItemHolder()
-                .unwrapKey()
-                .orElseThrow()
-                .location();
-        return dataLarge.dislikedItems.contains(resourceLocation);
-    }
-
-    public void addLikeItem(Item item) {
-        dataLarge.likedItems.add(item.getDefaultInstance().getItemHolder().unwrapKey()
-                .orElseThrow()
-                .location());
-        this.setDirty(true);
-    }
-
-    public void addDislikeItem(Item item) {
-        dataLarge.dislikedItems.add(item.getDefaultInstance().getItemHolder().unwrapKey()
-                .orElseThrow()
-                .location());
-        this.setDirty(true);
-    }
-
-    public boolean clearLikesAndDislikes(){
-        if (dataLarge.likedItems.isEmpty() && dataLarge.dislikedItems.isEmpty()) return false;
-        dataLarge.likedItems.clear();
-        dataLarge.dislikedItems.clear();
-        this.setDirty(true);
-        return true;
-    }
-
-    public List<ResourceLocation> getLikedItems() {
-        return dataLarge.likedItems;
-    }
-
-    public List<ResourceLocation> getDislikedItems() {
-        return dataLarge.dislikedItems;
-    }
-
     // |----------------------------------------------|
     // |-------------- Network Handling --------------|
     // |----------------------------------------------|
-
-    public void syncLite(int health, int power, int maxPower, int globalFavour, int favourPool, int changeCooldown, boolean isPhaseShifting){
-        this.dataSmall.health = health;
-        this.dataSmall.power = power;
-        this.dataSmall.maxPower = maxPower;
-        this.dataSmall.globalFavour = globalFavour;
-        this.dataSmall.favourPool = favourPool;
-        this.dataSmall.changeCooldown = changeCooldown;
-        this.dataSmall.isPhaseShifting = isPhaseShifting;
-    }
 
     // |----------------------------------------------|
     // |---------------- NBT Handling ----------------|
@@ -289,10 +169,7 @@ public class AudienceData extends SavedData {
     @Override
     public CompoundTag save(CompoundTag tag, HolderLookup.Provider provider) {
         tag.putInt("health", this.dataSmall.health);
-        tag.putInt("power", this.dataSmall.power);
-        tag.putInt("maxPower", this.dataSmall.maxPower);
-        tag.putInt("globalFavour", this.dataSmall.globalFavour);
-        tag.putInt("favourPool", this.dataSmall.favourPool);
+        tag.putInt("interest", this.dataSmall.interest);
         tag.putInt("changeCooldown", this.dataSmall.changeCooldown);
         tag.putBoolean("isPhaseShifting", this.dataSmall.isPhaseShifting);
 
@@ -300,28 +177,12 @@ public class AudienceData extends SavedData {
         tag.putString("mood", this.dataLarge.mood.mood());
 
         tag.put("eventManager", AudienceEventManager.CODEC.encodeStart(NbtOps.INSTANCE, getEventManager()).getOrThrow());
-
-        ListTag likedListTag = new ListTag();
-        for(ResourceLocation r : this.dataLarge.likedItems){
-            likedListTag.add(StringTag.valueOf(r.toString()));
-        }
-
-        ListTag dislikedListTag = new ListTag();
-        for(ResourceLocation r : this.dataLarge.dislikedItems){
-            dislikedListTag.add(StringTag.valueOf(r.toString()));
-        }
-
-        tag.put("likedItems", likedListTag);
-        tag.put("dislikedItems", dislikedListTag);
         return tag;
     }
 
     public static AudienceData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
         int health = tag.getInt("health");
-        int power = tag.getInt("power");
-        int maxPower = tag.getInt("maxPower");
-        int favour = tag.getInt("globalFavour");
-        int favourPool = tag.getInt("favourPool");
+        int interest = tag.getInt("interest");
         int changeCooldown = tag.getInt("changeCooldown");
         boolean isPhaseShifting = tag.getBoolean("isPhaseShifting");
 
@@ -330,31 +191,14 @@ public class AudienceData extends SavedData {
 
         AudienceEventManager eventManager = AudienceEventManager.CODEC.parse(NbtOps.INSTANCE, tag.get("eventManager")).getOrThrow();
 
-        ListTag likedListTag = tag.getList("likedItems", Tag.TAG_STRING);
-        ListTag dislikedListTag = tag.getList("dislikedItems", Tag.TAG_STRING);
-
-        List<ResourceLocation> likedItems = new ArrayList<>();
-        for(Tag t : likedListTag){
-            likedItems.add(ResourceLocation.parse(t.getAsString()));
-        }
-        List<ResourceLocation> dislikedItems = new ArrayList<>();
-        for(Tag t : dislikedListTag){
-            dislikedItems.add(ResourceLocation.parse(t.getAsString()));
-        }
-
         AudienceData data = new AudienceData(
                 health,
-                power,
-                maxPower,
-                favour,
-                favourPool,
+                interest,
                 changeCooldown,
                 isPhaseShifting,
                 AudiencePhase.create(phase),
                 AudienceMood.create(mood),
-                eventManager,
-                likedItems,
-                dislikedItems
+                eventManager
         );
 
         return data;
@@ -366,10 +210,7 @@ public class AudienceData extends SavedData {
 
     public static class AudienceDataSmall {
         private int health;
-        private int power;
-        private int maxPower;
-        private int favourPool;
-        private int globalFavour;
+        private int interest;
         private int changeCooldown;
         private boolean isPhaseShifting;
 
@@ -379,20 +220,14 @@ public class AudienceData extends SavedData {
                 int t1 = ByteBufCodecs.INT.decode(buffer);
                 int t2 = ByteBufCodecs.INT.decode(buffer);
                 int t3 = ByteBufCodecs.INT.decode(buffer);
-                int t4 = ByteBufCodecs.INT.decode(buffer);
-                int t5 = ByteBufCodecs.INT.decode(buffer);
-                int t6 = ByteBufCodecs.INT.decode(buffer);
-                boolean t7 = ByteBufCodecs.BOOL.decode(buffer);
-                return new AudienceDataSmall(t1, t2, t3, t4, t5, t6, t7);
+                boolean t4 = ByteBufCodecs.BOOL.decode(buffer);
+                return new AudienceDataSmall(t1, t2, t3, t4);
             }
 
             @Override
             public void encode(RegistryFriendlyByteBuf buffer, AudienceDataSmall value) {
                 ByteBufCodecs.INT.encode(buffer, value.health);
-                ByteBufCodecs.INT.encode(buffer, value.power);
-                ByteBufCodecs.INT.encode(buffer, value.maxPower);
-                ByteBufCodecs.INT.encode(buffer, value.favourPool);
-                ByteBufCodecs.INT.encode(buffer, value.globalFavour);
+                ByteBufCodecs.INT.encode(buffer, value.interest);
                 ByteBufCodecs.INT.encode(buffer, value.changeCooldown);
                 ByteBufCodecs.BOOL.encode(buffer, value.isPhaseShifting);
             }
@@ -400,18 +235,13 @@ public class AudienceData extends SavedData {
 
         private AudienceDataSmall(){
             health = 5000;
-            maxPower = 100;
-            favourPool = MAX_FAVOUR_POOL;
-            globalFavour = 0;
+            interest = 0;
             isPhaseShifting = false;
         }
 
-        public AudienceDataSmall(int health, int power, int maxPower, int globalFavour, int favourPool, int changeCooldown, boolean isPhaseShifting){
+        public AudienceDataSmall(int health, int interest, int changeCooldown, boolean isPhaseShifting){
             this.health = health;
-            this.power = power;
-            this.maxPower = maxPower;
-            this.globalFavour = globalFavour;
-            this.favourPool = favourPool;
+            this.interest = interest;
             this.changeCooldown = changeCooldown;
             this.isPhaseShifting = isPhaseShifting;
         }
@@ -430,9 +260,7 @@ public class AudienceData extends SavedData {
                 AudienceEventManager t1 = AudienceEventManager.STREAM_CODEC.decode(buffer);
                 AudiencePhase t2 = AudiencePhase.STREAM_CODEC.decode(buffer);
                 AudienceMood t3 = AudienceMood.STREAM_CODEC.decode(buffer);
-                List<ResourceLocation> t4 = ResourceLocation.STREAM_CODEC.apply(ByteBufCodecs.list(256)).decode(buffer);
-                List<ResourceLocation> t5 = ResourceLocation.STREAM_CODEC.apply(ByteBufCodecs.list(256)).decode(buffer);
-                return new AudienceDataLarge(t1, t2, t3, t4, t5);
+                return new AudienceDataLarge(t1, t2, t3);
             }
 
             @Override
@@ -440,8 +268,6 @@ public class AudienceData extends SavedData {
                 AudienceEventManager.STREAM_CODEC.encode(buffer, value.eventManager);
                 AudiencePhase.STREAM_CODEC.encode(buffer, value.phase);
                 AudienceMood.STREAM_CODEC.encode(buffer, value.mood);
-                ResourceLocation.STREAM_CODEC.apply(ByteBufCodecs.list(256)).encode(buffer, value.likedItems);
-                ResourceLocation.STREAM_CODEC.apply(ByteBufCodecs.list(256)).encode(buffer, value.dislikedItems);
             }
         };
 
@@ -449,16 +275,12 @@ public class AudienceData extends SavedData {
             eventManager = new AudienceEventManager(new HashMap<>());
             mood = AudienceMood.NEUTRAL;
             phase = AudiencePhase.NEUTRAL;
-            likedItems = new ArrayList<>();
-            dislikedItems = new ArrayList<>();
         }
 
-        public AudienceDataLarge(AudienceEventManager eventManager, AudiencePhase phase, AudienceMood mood, List<ResourceLocation> likedItems, List<ResourceLocation> dislikedItems){
+        public AudienceDataLarge(AudienceEventManager eventManager, AudiencePhase phase, AudienceMood mood){
             this.eventManager = eventManager;
             this.phase = phase;
             this.mood = mood;
-            this.likedItems = likedItems;
-            this.dislikedItems = dislikedItems;
         }
     }
 }

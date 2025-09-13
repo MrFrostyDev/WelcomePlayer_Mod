@@ -8,11 +8,11 @@ import net.minecraft.network.codec.StreamCodec;
 import java.util.Objects;
 
 public class AudiencePhase {
-    public static final AudiencePhase HATED = AudiencePhase.create("hated");
-    public static final AudiencePhase DISLIKED = AudiencePhase.create("disliked");
+    public static final AudiencePhase FURIOUS = AudiencePhase.create("furious");
+    public static final AudiencePhase BORED = AudiencePhase.create("bored");
     public static final AudiencePhase NEUTRAL = AudiencePhase.create("neutral");
-    public static final AudiencePhase LIKED = AudiencePhase.create("liked");
-    public static final AudiencePhase ADORED = AudiencePhase.create("adored");
+    public static final AudiencePhase INTERESTED = AudiencePhase.create("interested");
+    public static final AudiencePhase THRILLED = AudiencePhase.create("thrilled");
 
     public static final Codec<AudiencePhase> CODEC = Codec.STRING.xmap(
             AudiencePhase::create,

@@ -11,7 +11,6 @@ public class AudienceMood {
     public static final AudienceMood NEUTRAL = AudienceMood.create("neutral");
     public static final AudienceMood HAPPY = AudienceMood.create("happy");
     public static final AudienceMood SAD = AudienceMood.create("sad");
-    public static final AudienceMood BORED = AudienceMood.create("bored");
     public static final AudienceMood ANGRY = AudienceMood.create("angry");
     public static final AudienceMood CRUEL = AudienceMood.create("cruel");
 

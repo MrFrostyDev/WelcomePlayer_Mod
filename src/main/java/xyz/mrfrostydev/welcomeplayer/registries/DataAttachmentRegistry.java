@@ -12,5 +12,4 @@ public class DataAttachmentRegistry {
     public static void register(IEventBus eventBus) {
         ATTACHMENT_TYPES.register(eventBus);
     }
-
 }

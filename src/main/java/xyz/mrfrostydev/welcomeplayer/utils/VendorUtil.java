@@ -5,7 +5,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
 import xyz.mrfrostydev.welcomeplayer.data.VendorItem;
-import xyz.mrfrostydev.welcomeplayer.data.VendorShop;
+import xyz.mrfrostydev.welcomeplayer.data.VendorShopData;
 import xyz.mrfrostydev.welcomeplayer.registries.ItemRegistry;
 
 import java.util.List;
@@ -13,34 +13,34 @@ import java.util.List;
 public class VendorUtil {
 
     /* Server Specific Handling */
-    public static VendorShop computeMerchantShop(ServerLevel svlevel){
-        SavedData savedData = svlevel.getServer().overworld().getDataStorage().computeIfAbsent(VendorShop.factory(), "vendor_data");
-        if(savedData instanceof VendorShop VendorShopData){
+    public static VendorShopData computeVendorData(ServerLevel svlevel){
+        SavedData savedData = svlevel.getServer().overworld().getDataStorage().computeIfAbsent(VendorShopData.factory(), "vendor_data");
+        if(savedData instanceof VendorShopData VendorShopData){
             return VendorShopData;
         }
         throw new ClassCastException("Saved data computed was not an instance of VendorShop");
     }
 
-    public static VendorShop getMerchantShop(ServerLevel svlevel){
-        SavedData savedData = svlevel.getServer().overworld().getDataStorage().get(VendorShop.factory(), "vendor_data");
-        if(savedData instanceof VendorShop VendorShopData){
+    public static VendorShopData getVendorData(ServerLevel svlevel){
+        SavedData savedData = svlevel.getServer().overworld().getDataStorage().get(VendorShopData.factory(), "vendor_data");
+        if(savedData instanceof VendorShopData VendorShopData){
             return VendorShopData;
         }
         throw new ClassCastException("Saved data get was not an instance of VendorShop");
     }
 
     public static List<VendorItem> getMerchantShopItems(ServerLevel svlevel){
-        VendorShop data = getMerchantShop(svlevel);
+        VendorShopData data = getVendorData(svlevel);
         return data.getStockList();
     }
 
     public static int getRefreshTime(ServerLevel svlevel){
-        VendorShop data = getMerchantShop(svlevel);
+        VendorShopData data = getVendorData(svlevel);
         return data.getRestockTime();
     }
 
     public static void doTick(ServerLevel svlevel){
-        VendorShop data = getMerchantShop(svlevel);
+        VendorShopData data = getVendorData(svlevel);
         data.restockTick(svlevel);
     }
 

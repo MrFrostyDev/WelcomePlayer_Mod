@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 public record AudienceEvent(String ID, AudiencePhase phase, AudienceMood mood, List<Component> dialog) {
-    public static final AudienceEvent NOTHING = new AudienceEvent(AudienceEvents.EMPTY.id(), AudiencePhase.NEUTRAL, AudienceMood.NEUTRAL, List.of(Component.literal("changed into neutral")));
+    public static final AudienceEvent NOTHING = new AudienceEvent("nothing", AudiencePhase.NEUTRAL, AudienceMood.NEUTRAL, List.of(Component.literal("changed into neutral")));
 
     public static final Codec<AudienceEvent> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
@@ -35,9 +35,7 @@ public record AudienceEvent(String ID, AudiencePhase phase, AudienceMood mood, L
         return this.equals(compare);
     }
 
-    public boolean is(AudienceEvents.AudienceEventType compare){
-        return compare.is(this);
-    }
+    public boolean is(AudienceEvents.AudienceEventType compare){return compare.is(this);}
 
     @Override
     public boolean equals(Object obj) {
@@ -46,6 +44,6 @@ public record AudienceEvent(String ID, AudiencePhase phase, AudienceMood mood, L
     }
 
     public Component getName(){
-        return Component.translatable("event.boundbyflesh." + ID);
+        return Component.translatable("event.welcomeplayer." + ID);
     }
 }

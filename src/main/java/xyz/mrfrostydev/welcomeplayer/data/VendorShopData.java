@@ -12,7 +12,7 @@ import xyz.mrfrostydev.welcomeplayer.registries.DatapackRegistry;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class VendorShop extends SavedData {
+public class VendorShopData extends SavedData {
     public static final int COMMON_MIN_FAVOUR = 0;
     public static final int UNCOMMON_MIN_FAVOUR = 100;
     public static final int RARE_MIN_FAVOUR = 500;
@@ -28,16 +28,16 @@ public class VendorShop extends SavedData {
         }
     };
 
-    private VendorShop(int restockTime){
+    private VendorShopData(int restockTime){
         this.stockTreeSet = new TreeSet<>(FLESH_MERCHANT_COMPARATOR);
         this.restockTime = restockTime;
     }
 
-    public static VendorShop create(){
-        return new VendorShop(0);
+    public static VendorShopData create(){
+        return new VendorShopData(0);
     }
 
-    public VendorShop(List<VendorItem> list, int restockTime){
+    public VendorShopData(List<VendorItem> list, int restockTime){
         this.stockTreeSet = new TreeSet<VendorItem>(FLESH_MERCHANT_COMPARATOR);
         stockTreeSet.addAll(list);
         this.restockTime = restockTime;
@@ -103,13 +103,13 @@ public class VendorShop extends SavedData {
         return tag;
     }
 
-    public static VendorShop load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
+    public static VendorShopData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
        DataResult<List<VendorItem>> stockList = VendorItem.CODEC.listOf().parse(NbtOps.INSTANCE, tag);
        int restockTime = tag.getInt("restockTime");
-       return new VendorShop(stockList.getOrThrow(), restockTime);
+       return new VendorShopData(stockList.getOrThrow(), restockTime);
     }
 
-    public static Factory<VendorShop> factory(){
-        return new Factory<>(VendorShop::create, VendorShop::load);
+    public static Factory<VendorShopData> factory(){
+        return new Factory<>(VendorShopData::create, VendorShopData::load);
     }
 }
