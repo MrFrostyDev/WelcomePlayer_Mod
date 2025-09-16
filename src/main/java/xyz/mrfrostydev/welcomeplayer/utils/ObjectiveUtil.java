@@ -1,12 +1,24 @@
 package xyz.mrfrostydev.welcomeplayer.utils;
 
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.saveddata.SavedData;
-import xyz.mrfrostydev.welcomeplayer.data.ObjectiveManagerData;
-import xyz.mrfrostydev.welcomeplayer.data.PlayerObjective;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.network.PacketDistributor;
+import xyz.mrfrostydev.welcomeplayer.data.*;
+import xyz.mrfrostydev.welcomeplayer.events.AudienceEventEndEvent;
+import xyz.mrfrostydev.welcomeplayer.events.AudienceEventStartedEvent;
+import xyz.mrfrostydev.welcomeplayer.events.ObjectiveEndEvent;
+import xyz.mrfrostydev.welcomeplayer.events.ObjectiveStartedEvent;
+import xyz.mrfrostydev.welcomeplayer.network.ServerShowHostMessagePacket;
 import xyz.mrfrostydev.welcomeplayer.registries.DatapackRegistry;
 
+import java.util.List;
+import java.util.Random;
+
 public class ObjectiveUtil {
+    public static Random RANDOM = new Random();
 
     /**
      * Create and return the {@link ObjectiveManagerData} if it does not exist within DataStorage.
@@ -27,12 +39,43 @@ public class ObjectiveUtil {
         throw new ClassCastException("Saved data get was not an instance of ObjectiveManagerData");
     }
 
-    public static PlayerObjective setGoingObjective(ServerLevel svlevel){
+    public static void pickObjective(ServerLevel svlevel){
         ObjectiveManagerData data = getObjectiveManager(svlevel);
-        svlevel.registryAccess().registryOrThrow(DatapackRegistry.PLAYER_OBJECTIVES).
+        AudienceData audData = AudienceUtil.getAudienceData(svlevel);
+        data.setProgress(0);
 
-        return data.getGoingObjective();
+        NeoForge.EVENT_BUS.post(new ObjectiveEndEvent(svlevel, audData, data.getGoingObjective()));
+
+        AudiencePhase phase = AudienceUtil.getPhase(svlevel);
+        List<PlayerObjective> objList = svlevel
+                .registryAccess()
+                .registryOrThrow(DatapackRegistry.PLAYER_OBJECTIVES)
+                .stream()
+                .filter(o -> o.phase().is(phase))
+                .toList();
+        PlayerObjective obj = objList.get(RANDOM.nextInt(objList.size()));
+
+        sendEventDialog(obj);
+        data.setGoingObjective(obj);
+        data.setDirty();
+
+        NeoForge.EVENT_BUS.post(new ObjectiveStartedEvent(svlevel, audData, obj));
     }
+
+    public static void setGoingEvent(ServerLevel svlevel, PlayerObjective obj){
+        ObjectiveManagerData data = getObjectiveManager(svlevel);
+        AudienceData audData = AudienceUtil.getAudienceData(svlevel);
+        data.setProgress(0);
+
+        NeoForge.EVENT_BUS.post(new ObjectiveEndEvent(svlevel, audData, data.getGoingObjective()));
+
+        sendEventDialog(obj);
+        data.setGoingObjective(obj);
+        data.setDirty();
+
+        NeoForge.EVENT_BUS.post(new ObjectiveStartedEvent(svlevel, audData, obj));
+    }
+
 
     public static PlayerObjective getGoingObjective(ServerLevel svlevel){
         ObjectiveManagerData data = getObjectiveManager(svlevel);
@@ -47,5 +90,22 @@ public class ObjectiveUtil {
     public static void addProgress(ServerLevel svlevel, int add){
         ObjectiveManagerData data = getObjectiveManager(svlevel);
         data.addProgress(add);
+    }
+
+    public static void setProgress(ServerLevel svlevel, int value){
+        ObjectiveManagerData data = getObjectiveManager(svlevel);
+        data.setProgress(value);
+    }
+
+
+    public static void sendEventDialog(PlayerObjective obj){
+        List<Component> eventDialog = obj.dialog();
+        for(Component comp : eventDialog){
+            PacketDistributor.sendToAllPlayers(ServerShowHostMessagePacket.create(comp));
+        }
+    }
+
+    public static List<Holder.Reference<PlayerObjective>> getAllObjectivesAsReference(ServerLevel svlevel){
+        return svlevel.registryAccess().registryOrThrow(DatapackRegistry.PLAYER_OBJECTIVES).holders().toList();
     }
 }

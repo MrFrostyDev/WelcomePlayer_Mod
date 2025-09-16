@@ -8,8 +8,6 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
-import xyz.mrfrostydev.boundbyflesh.WelcomeplayerMain;
-import xyz.mrfrostydev.boundbyflesh.utils.FleshMerchantUtil;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.utils.VendorUtil;
 

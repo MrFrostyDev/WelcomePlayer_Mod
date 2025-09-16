@@ -26,8 +26,8 @@ public class AudienceEvents {
 
     // Expired Goods
     public static final ResourceKey<AudienceEvent> LIKED_SAD_BROKEN_FEED = registerEntry("liked_sad_expired_goods", createDialog(
-            "dialog.boundbyflesh.fleshlords_mock.0",
-            "dialog.boundbyflesh.fleshlords_mock.1"
+            "dialog.welcomeplayer.fleshlords_mock.0",
+            "dialog.welcomeplayer.fleshlords_mock.1"
     ));
 
     public static List<Component> createDialog(String... comp){

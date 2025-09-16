@@ -28,9 +28,9 @@ public record ServerVendorMenuPacket(List<VendorItem> data) implements CustomPac
     public static void handle(ServerVendorMenuPacket packet, IPayloadContext context){
         context.enqueueWork(() -> {
             AbstractContainerMenu containermenu = context.player().containerMenu;
-            if (containermenu instanceof FleshMerchantMenu menu) {
+/*            if (containermenu instanceof FleshMerchantMenu menu) {
                 menu.setShopItems(packet.data);
-            }
+            }*/
 
         }).exceptionally(e -> {
             // Handle exception

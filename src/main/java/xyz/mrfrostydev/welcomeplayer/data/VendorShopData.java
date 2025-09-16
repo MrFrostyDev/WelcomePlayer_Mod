@@ -13,6 +13,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class VendorShopData extends SavedData {
+    public static final int MAX_COMMON = 6;
+    public static final int MAX_UNCOMMON = 4;
+    public static final int MAX_RARE = 2;
+
     public static final int COMMON_MIN_FAVOUR = 0;
     public static final int UNCOMMON_MIN_FAVOUR = 100;
     public static final int RARE_MIN_FAVOUR = 500;
@@ -65,16 +69,16 @@ public class VendorShopData extends SavedData {
 
     public void randomizeSelection(Level level){
         List<VendorItem> allMerchantItems = level.registryAccess().registryOrThrow(DatapackRegistry.VENDOR_ITEMS).stream().collect(Collectors.toList());
-        List<VendorItem> commonItems = new ArrayList<>(FleshMerchantBlockEntity.MAX_COMMON);
-        List<VendorItem> uncommonItems = new ArrayList<>(FleshMerchantBlockEntity.MAX_UNCOMMON);
-        List<VendorItem> rareItems = new ArrayList<>(FleshMerchantBlockEntity.MAX_RARE);
+        List<VendorItem> commonItems = new ArrayList<>();
+        List<VendorItem> uncommonItems = new ArrayList<>(MAX_UNCOMMON);
+        List<VendorItem> rareItems = new ArrayList<>(MAX_RARE);
 
         Collections.shuffle(allMerchantItems);
 
         for(VendorItem item : allMerchantItems){
-            boolean commonFull = commonItems.size() >= FleshMerchantBlockEntity.MAX_COMMON;
-            boolean uncommonFull = uncommonItems.size() >= FleshMerchantBlockEntity.MAX_UNCOMMON;
-            boolean rareFull = rareItems.size() >= FleshMerchantBlockEntity.MAX_RARE;
+            boolean commonFull = commonItems.size() >= MAX_COMMON;
+            boolean uncommonFull = uncommonItems.size() >= MAX_UNCOMMON;
+            boolean rareFull = rareItems.size() >= MAX_RARE;
 
             if(item.minFavour() >= COMMON_MIN_FAVOUR && !commonFull){
                 commonItems.add(item);

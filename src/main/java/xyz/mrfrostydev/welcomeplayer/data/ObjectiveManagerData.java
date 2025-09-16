@@ -21,13 +21,13 @@ public class ObjectiveManagerData extends SavedData {
 
     public static ObjectiveManagerData create(){
         ObjectiveManagerData data = new ObjectiveManagerData();
-        data.setDirty(true);
+        data.setDirty();
         return data;
     }
 
     public void setGoingObjective(PlayerObjective goingObjective) {
         this.goingObjective = goingObjective;
-        this.setDirty(true);
+        this.setDirty();
     }
 
     public void addProgress(int add) {
@@ -36,7 +36,7 @@ public class ObjectiveManagerData extends SavedData {
 
     public void setProgress(int progress) {
         this.progress = progress;
-        this.setDirty(true);
+        this.setDirty();
     }
 
     public PlayerObjective getGoingObjective() {

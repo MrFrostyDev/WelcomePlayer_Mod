@@ -24,10 +24,10 @@ public class AudiencePhase {
             AudiencePhase::new
     );
 
-    private final String phase;
+    private final String id;
 
     private AudiencePhase(String phase){
-        this.phase = phase;
+        this.id = phase;
     }
 
     public static AudiencePhase create(String v){
@@ -35,7 +35,11 @@ public class AudiencePhase {
     }
 
     public String phase() {
-        return phase;
+        return id;
+    }
+
+    public boolean is(AudiencePhase phase) {
+        return phase.equals(this);
     }
 
     public static int size() {
@@ -44,12 +48,12 @@ public class AudiencePhase {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(phase);
+        return Objects.hashCode(id);
     }
 
     @Override
     public boolean equals(Object obj) {
         return obj instanceof AudiencePhase p
-                && Objects.equals(p.phase(), this.phase);
+                && Objects.equals(p.phase(), this.id);
     }
 }

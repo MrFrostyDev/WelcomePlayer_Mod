@@ -1,9 +1,7 @@
 package xyz.mrfrostydev.welcomeplayer.utils;
 
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.neoforged.neoforge.network.PacketDistributor;
 import xyz.mrfrostydev.welcomeplayer.data.AudienceData;
@@ -12,11 +10,9 @@ import xyz.mrfrostydev.welcomeplayer.data.AudienceMood;
 import xyz.mrfrostydev.welcomeplayer.data.AudiencePhase;
 import xyz.mrfrostydev.welcomeplayer.network.SyncAudienceDataLargePacket;
 import xyz.mrfrostydev.welcomeplayer.network.SyncAudienceDataSmallPacket;
-import xyz.mrfrostydev.welcomeplayer.registries.DataAttachmentRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.DatapackRegistry;
 
 import java.util.*;
-import java.util.stream.Stream;
 
 public class AudienceUtil {
     private static Random RANDOM = new Random();
@@ -87,7 +83,7 @@ public class AudienceUtil {
     }
 
     public static AudienceData getAudienceData(ServerLevel svlevel){
-        SavedData savedData = svlevel.getServer().overworld().getDataStorage().get(AudienceData.factory(), "flesh_lords_data");
+        SavedData savedData = svlevel.getServer().overworld().getDataStorage().get(AudienceData.factory(), "audience_data");
         if(savedData instanceof AudienceData AudienceData){
             return AudienceData;
         }
@@ -97,6 +93,11 @@ public class AudienceUtil {
     public static void startChangeCooldown(ServerLevel svlevel){
         AudienceData data = getAudienceData(svlevel);
         data.startChangeCooldown();
+    }
+
+    public static boolean isActive(ServerLevel svlevel){
+        AudienceData data = getAudienceData(svlevel);
+        return data.isActive();
     }
 
     public static boolean isChangeCooldown(ServerLevel svlevel){
@@ -146,13 +147,17 @@ public class AudienceUtil {
 
     public static int getInterest(ServerLevel svlevel){
         AudienceData data = getAudienceData(svlevel);
-        return data.isAlive() ? data.getInterest() : 0;
+        return data.getInterest();
     }
 
     public static void setInterest(ServerLevel svlevel, int set){
         AudienceData data = getAudienceData(svlevel);
-        data.setGlobalFavour(modifyWithMood(svlevel, set));
+        data.setInterest(modifyWithMood(svlevel, set));
+    }
 
+    public static void setInterestRaw(ServerLevel svlevel, int set){
+        AudienceData data = getAudienceData(svlevel);
+        data.setInterest(set);
     }
 
     /**
@@ -162,21 +167,19 @@ public class AudienceUtil {
      * <p>
      * PHASE, MOOD
      */
-    public static void addGlobalFavour(ServerLevel svlevel, int add){
+    public static void addInterest(ServerLevel svlevel, int add){
         AudienceData data = getAudienceData(svlevel);
-        if(data.isAlive()){
-            int addModified = add;
-            addModified = modifyWithThreshold(svlevel, addModified);
-            addModified = modifyWithMood(svlevel, addModified);
-            data.addGlobalFavour(addModified);
-        }
+        int addModified = add;
+        addModified = modifyWithThreshold(svlevel, addModified);
+        addModified = modifyWithMood(svlevel, addModified);
+        data.addInterest(addModified);
+
     }
 
-    public static void addGlobalFavourRaw(ServerLevel svlevel, int add){
+    public static void addInterestRaw(ServerLevel svlevel, int add){
         AudienceData data = getAudienceData(svlevel);
-        if(data.isAlive()){
-            data.addGlobalFavour(add);
-        }
+        data.addInterest(add);
+
     }
 
     public static AudiencePhase getPhase(ServerLevel svlevel){

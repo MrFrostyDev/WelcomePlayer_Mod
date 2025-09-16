@@ -55,7 +55,7 @@ public class AudienceEventUtil {
         NeoForge.EVENT_BUS.post(new AudienceEventStartedEvent(svlevel, data, event));
     }
 
-    public static void pickEvent(ServerLevel svlevel, AudienceEvent event){
+    public static void setGoingEvent(ServerLevel svlevel, AudienceEvent event){
         AudienceData data = AudienceUtil.getAudienceData(svlevel);
         AudienceEventManager manager = data.getEventManager();
 
@@ -63,8 +63,15 @@ public class AudienceEventUtil {
 
         sendEventDialog(event);
         manager.setGoingEvent(event);
+        data.setDirty();
 
         NeoForge.EVENT_BUS.post(new AudienceEventStartedEvent(svlevel, data, event));
+    }
+
+    public static AudienceEvent getGoingEvent(ServerLevel svlevel){
+        AudienceData data = AudienceUtil.getAudienceData(svlevel);
+        AudienceEventManager manager = data.getEventManager();
+        return manager.getGoingEvent();
     }
 
     public static void sendEventDialog(AudienceEvent event){
@@ -74,9 +81,4 @@ public class AudienceEventUtil {
         }
     }
 
-    public static AudienceEvent getGoingEvent(ServerLevel svlevel){
-        AudienceData data = AudienceUtil.getAudienceData(svlevel);
-        AudienceEventManager manager = data.getEventManager();
-        return manager.getGoingEvent();
-    }
 }

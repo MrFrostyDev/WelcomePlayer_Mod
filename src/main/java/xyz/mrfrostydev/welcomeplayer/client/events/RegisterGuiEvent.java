@@ -7,7 +7,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
-import xyz.mrfrostydev.welcomeplayer.client.gui.overlay.ShowHostMessageOverlay;
+import xyz.mrfrostydev.welcomeplayer.client.gui.overlays.ShowHostMessageOverlay;
 
 @EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID, value = Dist.CLIENT)
 public class RegisterGuiEvent {

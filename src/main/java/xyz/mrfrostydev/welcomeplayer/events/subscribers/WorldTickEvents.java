@@ -1,7 +1,6 @@
 package xyz.mrfrostydev.welcomeplayer.events.subscribers;
 
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -10,10 +9,11 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.data.AudienceData;
 import xyz.mrfrostydev.welcomeplayer.data.AudienceEvent;
-import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.AudienceEvents;
+import xyz.mrfrostydev.welcomeplayer.data.PlayerObjective;
 import xyz.mrfrostydev.welcomeplayer.network.SyncAudienceDataSmallPacket;
 import xyz.mrfrostydev.welcomeplayer.utils.AudienceEventUtil;
 import xyz.mrfrostydev.welcomeplayer.utils.AudienceUtil;
+import xyz.mrfrostydev.welcomeplayer.utils.ObjectiveUtil;
 import xyz.mrfrostydev.welcomeplayer.utils.VendorUtil;
 
 import java.util.List;
@@ -34,9 +34,11 @@ public class WorldTickEvents {
         VendorUtil.doTick(svlevel);
         AudienceUtil.doTick(svlevel);
 
+        if(!(AudienceUtil.isActive(svlevel)))return;
+
         if(levelTickCount % FLESH_LORDS_TICK == 0){
             AudienceData data = AudienceUtil.getAudienceData(svlevel);
-            AudienceUtil.addGlobalFavourRaw(svlevel, -1 + increaseByPlayer);
+            AudienceUtil.addInterestRaw(svlevel, -1 + increaseByPlayer);
 
             PacketDistributor.sendToAllPlayers(SyncAudienceDataSmallPacket.create(data));
 
@@ -58,6 +60,13 @@ public class WorldTickEvents {
                 AudienceEventUtil.pickEvent(svlevel);
                 AudienceUtil.startChangeCooldown(svlevel);
                 AudienceUtil.syncToClients(svlevel);
+            }
+        }
+
+        // Try to pick a new objective if one isn't active.
+        if(levelTickCount % (1000) == 0){
+            if(ObjectiveUtil.getGoingObjective(svlevel).is(PlayerObjective.NOTHING)){
+                ObjectiveUtil.pickObjective(svlevel);
             }
         }
     }

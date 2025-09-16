@@ -14,12 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AudienceData extends SavedData {
-    public static final int MAX_FAVOUR_POOL = 1000;
-    public static final int MIN_MAX_POWER = 100;
     private static final int DEFAULT_CHANGE_COOLDOWN = 400; //(24000 / 2) * WorldTickEvents.DAYS_TILL_MOOD_CHANGE;
     public static final Codec<AudienceData> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
-                    Codec.INT.fieldOf("health").forGetter(AudienceData::getHealth),
+                    Codec.BOOL.fieldOf("active").forGetter(AudienceData::isActive),
                     Codec.INT.fieldOf("interest").forGetter(AudienceData::getInterest),
                     Codec.INT.fieldOf("changeCooldown").forGetter(AudienceData::getChangeCooldown),
                     Codec.BOOL.fieldOf("isPhaseShifting").forGetter(AudienceData::isPhaseShifting),
@@ -41,10 +39,10 @@ public class AudienceData extends SavedData {
         this.dataLarge = dataLarge;
     }
 
-    private AudienceData(int health, int interest,
-                         int changeCooldown, boolean isPhaseShifting, AudiencePhase phase,
+    private AudienceData(boolean isActive, int interest, int changeCooldown,
+                         boolean isPhaseShifting, AudiencePhase phase,
                          AudienceMood mood, AudienceEventManager eventManager) {
-        this.dataSmall = new AudienceDataSmall(health, interest, changeCooldown, isPhaseShifting);
+        this.dataSmall = new AudienceDataSmall(isActive, interest, changeCooldown, isPhaseShifting);
         this.dataLarge = new AudienceDataLarge(eventManager, phase, mood);
     }
 
@@ -52,23 +50,6 @@ public class AudienceData extends SavedData {
         AudienceData data = new AudienceData();
         data.setDirty(true);
         return data;
-    }
-
-    public boolean isAlive() {
-        return dataSmall.health > 0;
-    }
-
-    public int getHealth() {
-        return dataSmall.health;
-    }
-
-    public void addHealth(int add) {
-        this.setHealth(dataSmall.health + add);
-    }
-
-    public void setHealth(int value) {
-        this.dataSmall.health = value;
-        this.setDirty(true);
     }
 
     public AudienceDataSmall getDataSmall() {
@@ -90,13 +71,13 @@ public class AudienceData extends SavedData {
     // |-------------------------------------------------------|
     // |---------------- General Data Handling ----------------|
     // |-------------------------------------------------------|
-    public void setGlobalFavour(int value) {
+    public void setInterest(int value) {
         this.dataSmall.interest = value;
         this.setDirty(true);
     }
 
-    public void addGlobalFavour(int add){
-        this.setGlobalFavour(this.dataSmall.interest + add);
+    public void addInterest(int add){
+        this.setInterest(this.dataSmall.interest + add);
     }
 
     public int getInterest() {
@@ -134,6 +115,10 @@ public class AudienceData extends SavedData {
         this.setDirty(true);
     }
 
+    public boolean isActive(){
+        return dataSmall.isActive;
+    }
+
     public boolean isPhaseShifting() {
         return dataSmall.isPhaseShifting;
     }
@@ -168,7 +153,7 @@ public class AudienceData extends SavedData {
 
     @Override
     public CompoundTag save(CompoundTag tag, HolderLookup.Provider provider) {
-        tag.putInt("health", this.dataSmall.health);
+        tag.putBoolean("isActive", this.dataSmall.isActive);
         tag.putInt("interest", this.dataSmall.interest);
         tag.putInt("changeCooldown", this.dataSmall.changeCooldown);
         tag.putBoolean("isPhaseShifting", this.dataSmall.isPhaseShifting);
@@ -181,7 +166,7 @@ public class AudienceData extends SavedData {
     }
 
     public static AudienceData load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
-        int health = tag.getInt("health");
+        boolean isActive = tag.getBoolean("isActive");
         int interest = tag.getInt("interest");
         int changeCooldown = tag.getInt("changeCooldown");
         boolean isPhaseShifting = tag.getBoolean("isPhaseShifting");
@@ -192,7 +177,7 @@ public class AudienceData extends SavedData {
         AudienceEventManager eventManager = AudienceEventManager.CODEC.parse(NbtOps.INSTANCE, tag.get("eventManager")).getOrThrow();
 
         AudienceData data = new AudienceData(
-                health,
+                isActive,
                 interest,
                 changeCooldown,
                 isPhaseShifting,
@@ -209,7 +194,7 @@ public class AudienceData extends SavedData {
     }
 
     public static class AudienceDataSmall {
-        private int health;
+        private boolean isActive;
         private int interest;
         private int changeCooldown;
         private boolean isPhaseShifting;
@@ -217,7 +202,7 @@ public class AudienceData extends SavedData {
         public static final StreamCodec<RegistryFriendlyByteBuf, AudienceDataSmall> STREAM_CODEC = new StreamCodec<>() {
             @Override
             public AudienceDataSmall decode(RegistryFriendlyByteBuf buffer) {
-                int t1 = ByteBufCodecs.INT.decode(buffer);
+                boolean t1 = ByteBufCodecs.BOOL.decode(buffer);
                 int t2 = ByteBufCodecs.INT.decode(buffer);
                 int t3 = ByteBufCodecs.INT.decode(buffer);
                 boolean t4 = ByteBufCodecs.BOOL.decode(buffer);
@@ -226,7 +211,7 @@ public class AudienceData extends SavedData {
 
             @Override
             public void encode(RegistryFriendlyByteBuf buffer, AudienceDataSmall value) {
-                ByteBufCodecs.INT.encode(buffer, value.health);
+                ByteBufCodecs.BOOL.encode(buffer, value.isActive);
                 ByteBufCodecs.INT.encode(buffer, value.interest);
                 ByteBufCodecs.INT.encode(buffer, value.changeCooldown);
                 ByteBufCodecs.BOOL.encode(buffer, value.isPhaseShifting);
@@ -234,13 +219,14 @@ public class AudienceData extends SavedData {
         };
 
         private AudienceDataSmall(){
-            health = 5000;
+            isActive = false;
             interest = 0;
+            changeCooldown = 0;
             isPhaseShifting = false;
         }
 
-        public AudienceDataSmall(int health, int interest, int changeCooldown, boolean isPhaseShifting){
-            this.health = health;
+        public AudienceDataSmall(boolean isActive, int interest, int changeCooldown, boolean isPhaseShifting){
+            this.isActive = isActive;
             this.interest = interest;
             this.changeCooldown = changeCooldown;
             this.isPhaseShifting = isPhaseShifting;
