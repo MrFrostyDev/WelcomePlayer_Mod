@@ -21,7 +21,7 @@ public class VendorShopData extends SavedData {
     public static final int UNCOMMON_MIN_FAVOUR = 100;
     public static final int RARE_MIN_FAVOUR = 500;
 
-    public static final int DEFAULT_RESTOCK_TIME = 36000;
+    public static final int DEFAULT_RESTOCK_TIME = 2000;
 
     private TreeSet<VendorItem> stockTreeSet;
     private int restockTime;

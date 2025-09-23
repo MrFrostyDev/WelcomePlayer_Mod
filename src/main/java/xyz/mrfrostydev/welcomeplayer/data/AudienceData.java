@@ -115,6 +115,11 @@ public class AudienceData extends SavedData {
         this.setDirty(true);
     }
 
+    public void setActive(boolean bool){
+        dataSmall.isActive = bool;
+        this.setDirty(true);
+    }
+
     public boolean isActive(){
         return dataSmall.isActive;
     }

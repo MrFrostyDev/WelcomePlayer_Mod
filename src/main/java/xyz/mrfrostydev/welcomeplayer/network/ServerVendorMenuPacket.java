@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.client.gui.menus.blocks.VendorMenu;
 import xyz.mrfrostydev.welcomeplayer.data.VendorItem;
 
 import java.util.List;
@@ -28,9 +29,9 @@ public record ServerVendorMenuPacket(List<VendorItem> data) implements CustomPac
     public static void handle(ServerVendorMenuPacket packet, IPayloadContext context){
         context.enqueueWork(() -> {
             AbstractContainerMenu containermenu = context.player().containerMenu;
-/*            if (containermenu instanceof FleshMerchantMenu menu) {
+            if (containermenu instanceof VendorMenu menu) {
                 menu.setShopItems(packet.data);
-            }*/
+            }
 
         }).exceptionally(e -> {
             // Handle exception

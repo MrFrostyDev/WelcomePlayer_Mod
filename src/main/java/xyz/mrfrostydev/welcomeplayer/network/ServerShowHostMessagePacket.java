@@ -24,7 +24,7 @@ public record ServerShowHostMessagePacket(Component data) implements CustomPacke
 
     public static void handle(ServerShowHostMessagePacket packet, IPayloadContext context){
         context.enqueueWork(() -> {
-            ShowHostMessageOverlay.addFleshLordMessage(packet.data.getString());
+            ShowHostMessageOverlay.addHostMessage(packet.data.getString());
         }).exceptionally(e -> {
             // Handle exception
             context.disconnect(Component.literal("ServerShowHostMessagePacket could not send data: "));

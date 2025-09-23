@@ -1,0 +1,7 @@
+{
+	"parent": "minecraft:block/cube_column",
+	"textures": {
+		"end": "welcomeplayer:block/retrosteel_white_wall_vertical",
+		"side": "welcomeplayer:block/retrosteel_white_wall"
+	}
+}

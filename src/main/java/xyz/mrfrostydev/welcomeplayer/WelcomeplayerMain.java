@@ -5,12 +5,13 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import org.slf4j.Logger;
+import xyz.mrfrostydev.welcomeplayer.data.datagen.DataInitialize;
 import xyz.mrfrostydev.welcomeplayer.registries.*;
 
 @Mod(WelcomeplayerMain.MOD_ID)
 public class WelcomeplayerMain {
     public static final String MOD_ID = "welcomeplayer";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public WelcomeplayerMain(IEventBus modEventBus, ModContainer modContainer) {
 
@@ -22,6 +23,9 @@ public class WelcomeplayerMain {
         EntityRegistry.register(modEventBus);
         GlobalLootModifierRegistry.register(modEventBus);
         CreativeTabRegistry.register(modEventBus);
+        SoundEventRegistry.register(modEventBus);
+
+        modEventBus.addListener(DataInitialize::gatherData);
     }
 
 }

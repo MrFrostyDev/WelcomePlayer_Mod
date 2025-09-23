@@ -1,13 +1,12 @@
 package xyz.mrfrostydev.welcomeplayer.utils;
 
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.neoforged.neoforge.network.PacketDistributor;
-import xyz.mrfrostydev.welcomeplayer.data.AudienceData;
-import xyz.mrfrostydev.welcomeplayer.data.AudienceEvent;
-import xyz.mrfrostydev.welcomeplayer.data.AudienceMood;
-import xyz.mrfrostydev.welcomeplayer.data.AudiencePhase;
+import xyz.mrfrostydev.welcomeplayer.data.*;
+import xyz.mrfrostydev.welcomeplayer.network.ServerShowHostMessagePacket;
 import xyz.mrfrostydev.welcomeplayer.network.SyncAudienceDataLargePacket;
 import xyz.mrfrostydev.welcomeplayer.network.SyncAudienceDataSmallPacket;
 import xyz.mrfrostydev.welcomeplayer.registries.DatapackRegistry;
@@ -80,6 +79,17 @@ public class AudienceUtil {
 
         data.getEventManager().setEventMap(eventMap);
         data.setDirty();
+    }
+
+    public static void startGameShow(ServerLevel svlevel){
+        AudienceData data = getAudienceData(svlevel);
+        data.setActive(true);
+        ObjectiveUtil.pickObjective(svlevel);
+    }
+
+    public static void stopGameShow(ServerLevel svlevel){
+        AudienceData data = getAudienceData(svlevel);
+        data.setActive(false);
     }
 
     public static AudienceData getAudienceData(ServerLevel svlevel){
@@ -201,20 +211,24 @@ public class AudienceUtil {
         return data.getMood();
     }
 
-    public static void syncToClients(ServerLevel svlevel){
-        AudienceData data = AudienceUtil.getAudienceData(svlevel);
-        PacketDistributor.sendToAllPlayers(SyncAudienceDataSmallPacket.create(data));
-        PacketDistributor.sendToAllPlayers(SyncAudienceDataLargePacket.create(data));
+    public static void doTick(ServerLevel svlevel){
+        AudienceData data = getAudienceData(svlevel);
+        data.tickChangeCooldown();
+        data.tickCheckPhaseShift();
     }
 
     /* ======================== */
     /* Player Specific Handling */
     /* ======================== */
 
-    public static void doTick(ServerLevel svlevel){
-        AudienceData data = getAudienceData(svlevel);
-        data.tickChangeCooldown();
-        data.tickCheckPhaseShift();
+    public static void sendDialog(Component component){
+        PacketDistributor.sendToAllPlayers(ServerShowHostMessagePacket.create(component));
+    }
+
+    public static void syncToClients(ServerLevel svlevel){
+        AudienceData data = AudienceUtil.getAudienceData(svlevel);
+        PacketDistributor.sendToAllPlayers(SyncAudienceDataSmallPacket.create(data));
+        PacketDistributor.sendToAllPlayers(SyncAudienceDataLargePacket.create(data));
     }
 
     /* =============== */

@@ -1,6 +1,7 @@
 package xyz.mrfrostydev.welcomeplayer.utils;
 
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.saveddata.SavedData;
@@ -11,6 +12,9 @@ import xyz.mrfrostydev.welcomeplayer.registries.ItemRegistry;
 import java.util.List;
 
 public class VendorUtil {
+    public static final int SMALL_BATTERY_VALUE = 1;
+    public static final int BATTERY_VALUE = 4;
+    public static final int LARGE_BATTERY_VALUE = 24;
 
     /* Server Specific Handling */
     public static VendorShopData computeVendorData(ServerLevel svlevel){
@@ -29,7 +33,7 @@ public class VendorUtil {
         throw new ClassCastException("Saved data get was not an instance of VendorShop");
     }
 
-    public static List<VendorItem> getMerchantShopItems(ServerLevel svlevel){
+    public static List<VendorItem> getVendorShopItems(ServerLevel svlevel){
         VendorShopData data = getVendorData(svlevel);
         return data.getStockList();
     }
@@ -44,49 +48,54 @@ public class VendorUtil {
         data.restockTick(svlevel);
     }
 
-    public static boolean tryPurchase(Inventory inv, int cost){
+    public static int getBatteryBalance(Inventory inv){
         int fValue = 0;
-        int fCost = cost;
 
         for(ItemStack stack : inv.items){
             if(stack.is(ItemRegistry.SMALL_BATTERY)){
-                fValue += stack.getCount();
+                fValue += stack.getCount() * SMALL_BATTERY_VALUE;
             }
             if(stack.is(ItemRegistry.BATTERY)){
-                fValue += stack.getCount() * 4;
+                fValue += stack.getCount() * BATTERY_VALUE;
             }
             if(stack.is(ItemRegistry.LARGE_BATTERY)){
-                fValue += stack.getCount() * 24;
+                fValue += stack.getCount() * LARGE_BATTERY_VALUE;
             }
         }
 
-        if(fValue >= fCost){
-            for(ItemStack stack : inv.items){
-                if(fCost <= 0) break;
+        return fValue;
+    }
 
-                boolean useLargeBattery = !inv.hasAnyMatching(s -> s.is(ItemRegistry.SMALL_BATTERY))
-                        && !inv.hasAnyMatching(s -> s.is(ItemRegistry.BATTERY))
-                        && stack.is(ItemRegistry.LARGE_BATTERY);;
+    public static boolean tryPurchase(Inventory inv, int cost){
+        int fCost = cost;
+        int balance = getBatteryBalance(inv);
 
-                boolean useNormalBattery = !inv.hasAnyMatching(s -> s.is(ItemRegistry.LARGE_BATTERY))
-                        && stack.is(ItemRegistry.BATTERY);
+        if(balance >= fCost){
+            for(int i=0; i<3; i++){
+                int valMult = switch(i){
+                    case 0 -> SMALL_BATTERY_VALUE;
+                    case 1 -> BATTERY_VALUE;
+                    case 2 -> LARGE_BATTERY_VALUE;
+                    default -> 1;
+                };
 
-                int multBasedOnItem = 1;
-                if(useLargeBattery) multBasedOnItem = 4;
-                else if(useNormalBattery) multBasedOnItem = 24;
+                for(ItemStack stack : inv.items){
+                    if(i == 0 && !stack.is(ItemRegistry.SMALL_BATTERY)) continue;
+                    if(i == 1 && !stack.is(ItemRegistry.BATTERY)) continue;
+                    if(i == 2 && !stack.is(ItemRegistry.LARGE_BATTERY)) continue;
 
-                int r = fCost - stack.getCount() * multBasedOnItem;
-                if(r >= 0){
-                    fCost = r;
-                    stack.setCount(0);
+                    int r = fCost - stack.getCount() * valMult;
+                    if(r >= 0){
+                        fCost = r;
+                        stack.setCount(0);
+                        if(r == 0) return true;
+                    }
+                    else{
+                        stack.setCount(Mth.floor(Math.abs(r) / (float)valMult));
+                        return true;
+                    }
                 }
-                else{
-                    fCost = 0;
-                        stack.setCount(Math.abs(r));
-                }
-
             }
-            return true;
         }
         return false;
     }

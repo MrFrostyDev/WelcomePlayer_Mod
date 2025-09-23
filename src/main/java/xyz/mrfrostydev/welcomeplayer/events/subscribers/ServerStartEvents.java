@@ -8,8 +8,10 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.level.LevelEvent;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.data.AudienceData;
+import xyz.mrfrostydev.welcomeplayer.data.ObjectiveManagerData;
 import xyz.mrfrostydev.welcomeplayer.data.VendorShopData;
 import xyz.mrfrostydev.welcomeplayer.utils.AudienceUtil;
+import xyz.mrfrostydev.welcomeplayer.utils.ObjectiveUtil;
 import xyz.mrfrostydev.welcomeplayer.utils.VendorUtil;
 
 @EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
@@ -21,6 +23,9 @@ public class ServerStartEvents {
             DimensionDataStorage dataStorage = svlevel.getDataStorage();
             if(dataStorage.get(AudienceData.factory(), "audience_data") == null){
                 AudienceUtil.computeAudienceData(svlevel);
+            }
+            if(dataStorage.get(ObjectiveManagerData.factory(), "objective_manager_data") == null){
+                ObjectiveUtil.computeObjectiveManagerData(svlevel);
             }
             if(dataStorage.get(VendorShopData.factory(), "vendor_data") == null){
                 VendorUtil.computeVendorData(svlevel);

@@ -2,9 +2,11 @@ package xyz.mrfrostydev.welcomeplayer.data.datagen.providers;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.registries.TagRegistry;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -16,5 +18,25 @@ public class EntityTypeTagsProvider extends net.minecraft.data.tags.EntityTypeTa
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider lookupProvider) {
+        this.tag(TagRegistry.ANIMAL)
+                .add(
+                        EntityType.COW,
+                        EntityType.PIG,
+                        EntityType.SHEEP,
+                        EntityType.GOAT,
+                        EntityType.CHICKEN,
+                        EntityType.SQUID,
+                        EntityType.GLOW_SQUID,
+                        EntityType.WOLF,
+                        EntityType.CAMEL,
+                        EntityType.CAT,
+                        EntityType.PARROT,
+                        EntityType.PANDA,
+                        EntityType.DONKEY,
+                        EntityType.HORSE,
+                        EntityType.MOOSHROOM,
+                        EntityType.HOGLIN,
+                        EntityType.RAVAGER
+                );
     }
 }

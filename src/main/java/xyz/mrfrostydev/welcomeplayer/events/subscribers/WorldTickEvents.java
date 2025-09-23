@@ -33,6 +33,7 @@ public class WorldTickEvents {
 
         VendorUtil.doTick(svlevel);
         AudienceUtil.doTick(svlevel);
+        ObjectiveUtil.doTick(svlevel);
 
         if(!(AudienceUtil.isActive(svlevel)))return;
 

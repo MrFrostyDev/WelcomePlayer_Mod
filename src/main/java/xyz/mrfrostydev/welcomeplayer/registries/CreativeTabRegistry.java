@@ -18,6 +18,19 @@ public class CreativeTabRegistry {
             .title(Component.translatable("itemGroup." + WelcomeplayerMain.MOD_ID + ".tab"))
             .icon(() -> new ItemStack(Items.GLOWSTONE))
             .displayItems((params, output) -> {
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_WALL.get());
+                output.accept(ItemRegistry.RETROSTEEL_BROWN_WALL.get());
+                output.accept(ItemRegistry.RETROSTEEL_BLEND_WALL.get());
+
+                output.accept(ItemRegistry.BOUNCE_PAD.get());
+
+                output.accept(ItemRegistry.SMALL_BATTERY.get());
+                output.accept(ItemRegistry.BATTERY.get());
+                output.accept(ItemRegistry.LARGE_BATTERY.get());
+
+                output.accept(ItemRegistry.SHOW_ACTIVATOR.get());
+                output.accept(ItemRegistry.VENDOR_TOP.get());
+                output.accept(ItemRegistry.VENDOR_BOTTOM.get());
 
             })
             .build()

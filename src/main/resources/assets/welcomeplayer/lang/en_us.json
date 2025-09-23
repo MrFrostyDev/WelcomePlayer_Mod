@@ -1,5 +1,27 @@
 {
-  "itemGroup.welcomeplayer": "Example Mod Tab",
-  "block.welcomeplayer.example_block": "Example Block",
-  "item.welcomeplayer.example_item": "Example Item"
+  "itemGroup.welcomeplayer": "Welcome Player!",
+  "itemGroup.welcomeplayer.tab": "Welcome Player!",
+
+  "item.welcomeplayer.bounce_pad": "Bounce Pad",
+  "item.welcomeplayer.small_battery": "Small Battery",
+  "item.welcomeplayer.battery": "Battery",
+  "item.welcomeplayer.large_battery": "Large Battery",
+
+  "block.welcomeplayer.vendor.balance": "Battery Balance: ",
+
+  "block.welcomeplayer.retrosteel_blend_wall": "Retrosteel Blend Wall",
+  "block.welcomeplayer.retrosteel_white_wall": "Retrosteel White Wall",
+  "block.welcomeplayer.retrosteel_brown_wall": "Retrosteel Brown Wall",
+
+  "commands.welcomeplayer.objective.get": "[Welcomeplayer] The objective is %s, with progression at %s.",
+  "commands.welcomeplayer.objective.set": "[Welcomeplayer] The objective is now %s.",
+  "commands.welcomeplayer.interest.get": "[Welcomeplayer] The audience interest is: %s",
+  "commands.welcomeplayer.interest.set": "[Welcomeplayer] %s is now the audience interest",
+  "commands.welcomeplayer.interest.add": "[Welcomeplayer] %s was added to the audience interest, it is now %s",
+  "commands.welcomeplayer.mood.get": "[Welcomeplayer] The mood is: %s",
+  "commands.welcomeplayer.mood.set": "[Welcomeplayer] The mood is now %s",
+  "commands.welcomeplayer.event.get": "[Welcomeplayer] The current event is: %s",
+  "commands.welcomeplayer.event.set": "[Welcomeplayer] The current event is now: %s",
+
+  "dialog.welcomeplayer.fail.0": "You have failed, miserably..."
 }

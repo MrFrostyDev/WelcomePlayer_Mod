@@ -10,52 +10,32 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Player;
 import org.joml.Quaternionf;
-import xyz.mrfrostydev.welcomeplayer.utils.StringRevealer;
+import xyz.mrfrostydev.welcomeplayer.utils.TextReader;
 
 import java.util.ArrayDeque;
-import java.util.Random;
 
 public class ShowHostMessageOverlay implements LayeredDraw.Layer {
-    private static final Random RANDOM = new Random();
     private static final int TIME_PER_CHAR = 9;
-    private static final int TIME_BUFFER = 300; // Extra time for reading
     private final int MAX_LINE_WIDTH = 120;
 
     private static ArrayDeque<String> dialogDeque = new ArrayDeque<>();
-    private String currentText = ""; // Current active text being used
-    private String displayText = ""; // Dialog that is displayed (slowly iterating till it matches currentText)
-    private StringRevealer stringReveal = new StringRevealer();
-    private int messageTime = 0;
+    private TextReader textReader = new TextReader(TIME_PER_CHAR);
 
     private Minecraft minecraft;
     private Font font;
-    private int color;
 
     public ShowHostMessageOverlay() {
         this.minecraft = Minecraft.getInstance();
         this.font = Minecraft.getInstance().font;
-        this.color = randomColour();
     }
 
     @Override
     public void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
-        // if dialog queue is not empty and there isn't dialog currently in use
-        if (!dialogDeque.isEmpty() && currentText.isEmpty()){
-            currentText = dialogDeque.pop();
-            int len = currentText.length();
-            stringReveal.setString(currentText);
-            messageTime = len * TIME_PER_CHAR + TIME_BUFFER;
+        if(!dialogDeque.isEmpty()){
+            textReader.addText(dialogDeque.pop());
         }
-        // if dialog is finished, reset
-        if (messageTime <= 0){
-            displayText = "";
-            currentText = "";
-        }
-        if (messageTime > 0){
-            messageTime--;
-            if (messageTime % TIME_PER_CHAR == 0) {
-                displayText = stringReveal.reveal();
-            }
+        textReader.tick();
+        if (textReader.getMessageTime() > 0){
             this.renderAnimatedText(guiGraphics);
         }
     }
@@ -78,7 +58,7 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
         float scaledWidth = (halfWidth * scaleX) - halfWidth;
         float scaledHeight = (halfHeight * scaleY) - halfHeight;
 
-        float rotDegrees = (float)(20 * Math.cos((double) tick / 9));
+        float rotDegrees = (float)(15 * Math.cos((double) tick / 9));
 
         poseStack.pushPose();
         poseStack.scale(scaleX, scaleY, 1.0F);
@@ -90,12 +70,11 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
 
         poseStack.rotateAround(new Quaternionf().fromAxisAngleDeg(0, 0, -1, rotDegrees), posX, posY, 0);
 
-        if(messageTime % 15 == 0) color = randomColour();
         int yOffset = 0;
-        for(FormattedCharSequence displayTextSeparated : font.split(Component.translatable(displayText), MAX_LINE_WIDTH)){
+        for(FormattedCharSequence displayTextSeparated : font.split(Component.translatable(textReader.getDisplayText()), MAX_LINE_WIDTH)){
             guiGraphics.drawCenteredString(font, displayTextSeparated,
                     posX, posY + yOffset,
-                    color);
+                    0xfa692a);
 
             yOffset += font.lineHeight;
         }
@@ -103,11 +82,7 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
         poseStack.popPose();
     }
 
-    public int randomColour(){
-        return RANDOM.nextInt(0xffffff + 1);
-    }
-
-    public static void addFleshLordMessage(String string) {
-        dialogDeque.add(string);
+    public static void addHostMessage(String text) {
+        dialogDeque.add(text);
     }
 }

@@ -26,4 +26,9 @@ public class TagRegistry {
     // |------------------------------------Entity Tags-------------------------------------|
     // |------------------------------------------------------------------------------------|
 
+    public static final TagKey<EntityType<?>> ANIMAL = TagKey.create(
+            Registries.ENTITY_TYPE,
+            ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "animal")
+    );
+
 }

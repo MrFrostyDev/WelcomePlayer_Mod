@@ -44,5 +44,11 @@ public class PayloadRegistry {
                 SyncAudienceDataLargePacket.STREAM_CODEC,
                 SyncAudienceDataLargePacket::handle
         );
+
+        registrar.playToClient(
+                SyncObjectiveDataPacket.TYPE,
+                SyncObjectiveDataPacket.STREAM_CODEC,
+                SyncObjectiveDataPacket::handle
+        );
     }
 }

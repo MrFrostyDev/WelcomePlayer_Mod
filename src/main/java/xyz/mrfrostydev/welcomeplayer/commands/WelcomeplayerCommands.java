@@ -108,7 +108,7 @@ public class WelcomeplayerCommands {
         PlayerObjective event = PlayerObjective.NOTHING;
 
         if(isGet){
-            source.sendSuccess(() -> Component.translatable("commands.welcomeplayer.objective.get", AudienceEventUtil.getGoingEvent(svlevel).getName()), true);
+            source.sendSuccess(() -> Component.translatable("commands.welcomeplayer.objective.get", ObjectiveUtil.getGoingObjective(svlevel).id(), ObjectiveUtil.getProgress(svlevel)), true);
         }
         else{
             List<Holder.Reference<PlayerObjective>> allEvents = ObjectiveUtil.getAllObjectivesAsReference(svlevel);

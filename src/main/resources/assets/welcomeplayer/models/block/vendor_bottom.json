@@ -1,0 +1,12 @@
+{
+	"parent": "minecraft:block/cube",
+	"textures": {
+		"down": "welcomeplayer:block/vendor_vertical",
+		"east": "welcomeplayer:block/vendor_bottom_side",
+		"north": "welcomeplayer:block/vendor_back",
+		"particle": "welcomeplayer:block/vendor_back",
+		"south": "welcomeplayer:block/vendor_bottom_face",
+		"up": "welcomeplayer:block/vendor_vertical",
+		"west": "welcomeplayer:block/vendor_bottom_side"
+	}
+}

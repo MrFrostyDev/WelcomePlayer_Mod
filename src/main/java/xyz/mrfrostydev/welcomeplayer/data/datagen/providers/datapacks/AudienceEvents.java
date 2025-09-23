@@ -22,12 +22,12 @@ public class AudienceEvents {
     private static final List<EventInfo> EVENTS = new ArrayList<>();
 
     public static final AudienceEventType EMPTY = new AudienceEventType("empty");
-    public static final AudienceEventType EXPIRED_GOODS = new AudienceEventType("expired_goods");
+    public static final AudienceEventType COMMERCIAL_BREAK = new AudienceEventType("commercial_break");
 
-    // Expired Goods
-    public static final ResourceKey<AudienceEvent> LIKED_SAD_BROKEN_FEED = registerEntry("liked_sad_expired_goods", createDialog(
-            "dialog.welcomeplayer.fleshlords_mock.0",
-            "dialog.welcomeplayer.fleshlords_mock.1"
+    // Commercial Break
+    public static final ResourceKey<AudienceEvent> NEUTRAL_NEUTRAL_COMMERCIAL_BREAK = registerEntry("neutral_neutral_commercial_break", createDialog(
+            "dialog.welcomeplayer.commercial_break.0",
+            "dialog.welcomeplayer.commercial_break.1"
     ));
 
     public static List<Component> createDialog(String... comp){
