@@ -86,11 +86,12 @@ public class BouncePadEntity extends Entity implements GeoEntity {
         }
 
         if(delay <= 0){
-            AABB area = new AABB(this.position(), this.position()).inflate(0.5).setMaxY(this.position().y + 0.7);
+            AABB area = new AABB(this.position(), this.position()).inflate(0.5);
             List<Entity> entities = this.level().getEntities((Entity)null, area, canBouncePredicate);
             for(Entity e : entities){
                 this.bounce(e);
             }
+            delay = 3;
         }
         else delay--;
 

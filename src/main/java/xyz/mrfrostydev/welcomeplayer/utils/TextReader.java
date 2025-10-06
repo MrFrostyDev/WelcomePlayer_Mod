@@ -58,6 +58,9 @@ public class TextReader {
         return displayText;
     }
 
+    public ArrayDeque<String> getDialogQueue() {
+        return dialogDeque;
+    }
 
     public int getMessageTime() {
         return messageTime;

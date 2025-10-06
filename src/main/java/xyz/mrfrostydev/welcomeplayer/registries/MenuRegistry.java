@@ -6,6 +6,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.client.gui.menus.blocks.MaterialTransitMenu;
 import xyz.mrfrostydev.welcomeplayer.client.gui.menus.blocks.VendorMenu;
 
 import java.util.function.Supplier;
@@ -22,5 +23,8 @@ public class MenuRegistry {
             "vendor_menu",
             () -> IMenuTypeExtension.create(VendorMenu::new)
     );
-
+    public static final Supplier<MenuType<MaterialTransitMenu>> MATERIAL_TRANSIT_MENU = MENUS.register(
+            "material_transit",
+            () -> IMenuTypeExtension.create(MaterialTransitMenu::new)
+    );
 }

@@ -7,26 +7,46 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Quaternionf;
+import software.bernie.geckolib.util.RenderUtil;
+import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.network.StartShowIntroductionPacket;
+import xyz.mrfrostydev.welcomeplayer.utils.AnimatedImage;
 import xyz.mrfrostydev.welcomeplayer.utils.TextReader;
 
 import java.util.ArrayDeque;
 
 public class ShowHostMessageOverlay implements LayeredDraw.Layer {
-    private static final int TIME_PER_CHAR = 9;
-    private final int MAX_LINE_WIDTH = 120;
+    private static final ResourceLocation ANNOUNCER_RESOURCE = ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "textures/gui/overlays/announcer_talk.png");
 
-    private static ArrayDeque<String> dialogDeque = new ArrayDeque<>();
+    private static final int ANNOUNCER_WIDTH = 100;
+    private static final int ANNOUNCER_HEIGHT = 272;
+
+    private static final int TIME_PER_CHAR = 9;
+
+    private final int MAX_LINE_WIDTH = 120;
+    private final AnimatedImage announcerImage;
+
+    private static ArrayDeque<String> dialogDeque;
+    private static boolean isIntro;
+
     private TextReader textReader = new TextReader(TIME_PER_CHAR);
 
     private Minecraft minecraft;
     private Font font;
 
     public ShowHostMessageOverlay() {
+        dialogDeque = new ArrayDeque<>();
+        isIntro = false;
+
         this.minecraft = Minecraft.getInstance();
         this.font = Minecraft.getInstance().font;
+        this.announcerImage = new AnimatedImage(ANNOUNCER_RESOURCE, 10,
+                100, 272, 4);
     }
 
     @Override
@@ -34,9 +54,25 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
         if(!dialogDeque.isEmpty()){
             textReader.addText(dialogDeque.pop());
         }
+        // Handle introduction dialog
+        if(isIntro && textReader.getDialogQueue().isEmpty()){
+            isIntro = false;
+            PacketDistributor.sendToServer(new StartShowIntroductionPacket());
+        }
+
+        announcerImage.render(guiGraphics, (int)RenderUtil.getCurrentTick(), 1.0F);
         textReader.tick();
         if (textReader.getMessageTime() > 0){
+            int posX = (guiGraphics.guiWidth() - ANNOUNCER_WIDTH) / 2;
+            int posY = (int)(guiGraphics.guiHeight() * 0.1);
+            announcerImage.setPosition(posX, posY);
+            announcerImage.playLoop();
+            announcerImage.setVisible(true);
             this.renderAnimatedText(guiGraphics);
+        }
+        else{
+            announcerImage.setVisible(false);
+            announcerImage.stop();
         }
     }
 
@@ -58,15 +94,18 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
         float scaledWidth = (halfWidth * scaleX) - halfWidth;
         float scaledHeight = (halfHeight * scaleY) - halfHeight;
 
-        float rotDegrees = (float)(15 * Math.cos((double) tick / 9));
+        float rotDegrees = (float)(5 * Math.cos((double) tick / 9));
+
+        float scaledOffsetX = -scaledWidth / scaleX;
+        float scaledOffsetY = -scaledHeight / scaleY;
 
         poseStack.pushPose();
         poseStack.scale(scaleX, scaleY, 1.0F);
 
-        poseStack.translate(-scaledWidth / scaleX, -scaledHeight / scaleY, 0);
+        poseStack.translate(scaledOffsetX, scaledOffsetY, 0);
 
-        int posX = (guiGraphics.guiWidth() / 2);
-        int posY = ((guiGraphics.guiHeight() / 2) + 5) - (guiGraphics.guiHeight() / 7) ;
+        int posX = guiGraphics.guiWidth() / 2;
+        int posY = (int)(guiGraphics.guiHeight() / 2.2 - ((double)guiGraphics.guiHeight() * guiGraphics.guiHeight() / 280 * 0.1 * 0.25) * 0.9);
 
         poseStack.rotateAround(new Quaternionf().fromAxisAngleDeg(0, 0, -1, rotDegrees), posX, posY, 0);
 
@@ -78,11 +117,22 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
 
             yOffset += font.lineHeight;
         }
-
         poseStack.popPose();
     }
 
     public static void addHostMessage(String text) {
         dialogDeque.add(text);
+    }
+
+    public static void triggerIntroMessage() {
+        if(!isIntro){
+            isIntro = true;
+            dialogDeque.add("dialog.welcomeplayer.intro.0");
+            dialogDeque.add("dialog.welcomeplayer.intro.1");
+            dialogDeque.add("dialog.welcomeplayer.intro.2");
+            dialogDeque.add("dialog.welcomeplayer.intro.3");
+            dialogDeque.add("dialog.welcomeplayer.intro.4");
+            dialogDeque.add("dialog.welcomeplayer.intro.5");
+        }
     }
 }

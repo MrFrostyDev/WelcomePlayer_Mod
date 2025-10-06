@@ -23,4 +23,11 @@ public class SoundEventRegistry {
                     "bounce_pad_jump"
             ))
     );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> BUZZ_SAW = SOUND_EVENTS.register(
+            "buzz_saw",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "buzz_saw"
+            ))
+    );
 }

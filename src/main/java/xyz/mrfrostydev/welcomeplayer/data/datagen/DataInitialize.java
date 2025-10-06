@@ -29,7 +29,8 @@ public class DataInitialize {
         generator.addProvider(event.includeServer(), new EntityTypeTagsProvider(output, lookupProvider, existingFileHelper));
         generator.addProvider(event.includeServer(), new ItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter()));
         generator.addProvider(event.includeServer(), new GlobalLootModifierProvider(output, lookupProvider));
-        generator.addProvider(event.includeServer(), new ItemModelProvider(output, existingFileHelper));
+        generator.addProvider(event.includeClient(), new ItemModelProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new SoundDefinitionsProvider(output, existingFileHelper));
+        generator.addProvider(event.includeServer(), new DamageTypeTagsProvider(output, datapackProvider.getRegistryProvider(), existingFileHelper));
     }
 }

@@ -97,6 +97,14 @@ public class VendorBlock extends HorizontalDirectionalBlock implements EntityBlo
         return RenderShape.MODEL;
     }
 
+    @Override
+    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
+        return CODEC;
+    }
+
+    // |------------------------------------------------------------|
+    // |------------------------Block Entity------------------------|
+    // |------------------------------------------------------------|
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -107,10 +115,5 @@ public class VendorBlock extends HorizontalDirectionalBlock implements EntityBlo
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
         return type == BlockRegistry.VENDOR_ENTITY.get() ? (BlockEntityTicker<T>) VendorBlockEntity::tick : null;
-    }
-
-    @Override
-    protected MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
     }
 }

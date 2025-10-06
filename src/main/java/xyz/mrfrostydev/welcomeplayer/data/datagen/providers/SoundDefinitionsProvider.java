@@ -33,5 +33,20 @@ public class SoundDefinitionsProvider extends net.neoforged.neoforge.common.data
                 .subtitle("sound.welcomeplayer.bounce_pad_jump")
                 .replace(false)
         );
+
+        add(SoundEventRegistry.BUZZ_SAW, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "buzz_saw"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:buzz_saw")
+                )
+                .subtitle("sound.welcomeplayer.buzz_saw")
+                .replace(false)
+        );
     }
 }

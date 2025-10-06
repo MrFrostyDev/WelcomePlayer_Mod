@@ -101,10 +101,10 @@ public class ObjectiveManagerData extends SavedData {
 
         if(time > 0){
             time--;
-            setDirty();
             if(time <= 0){
                 ObjectiveUtil.failObjective(svlevel);
             }
+            setDirty();
         }
     }
 

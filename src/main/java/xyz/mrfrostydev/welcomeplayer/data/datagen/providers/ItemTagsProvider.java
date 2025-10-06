@@ -13,7 +13,7 @@ public class ItemTagsProvider extends net.minecraft.data.tags.ItemTagsProvider {
     @SuppressWarnings("unchecked")
     @Override
     protected void addTags(HolderLookup.Provider lookupProvider) {
-        }
+    }
 
 }
 

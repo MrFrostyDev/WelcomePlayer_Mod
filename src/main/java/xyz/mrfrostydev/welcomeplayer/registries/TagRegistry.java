@@ -31,4 +31,14 @@ public class TagRegistry {
             ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "animal")
     );
 
+    public static final TagKey<EntityType<?>> UNDEAD = TagKey.create(
+            Registries.ENTITY_TYPE,
+            ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "undead")
+    );
+
+    public static final TagKey<EntityType<?>> HOST_ROBOT = TagKey.create(
+            Registries.ENTITY_TYPE,
+            ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "host_robot")
+    );
+
 }

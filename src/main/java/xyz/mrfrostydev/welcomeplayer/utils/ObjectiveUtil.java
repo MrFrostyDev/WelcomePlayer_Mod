@@ -4,23 +4,32 @@ import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
+import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.data.*;
+import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.PlayerObjectives;
 import xyz.mrfrostydev.welcomeplayer.events.ObjectiveEndEvent;
 import xyz.mrfrostydev.welcomeplayer.events.ObjectiveStartedEvent;
 import xyz.mrfrostydev.welcomeplayer.network.ServerShowHostMessagePacket;
-import xyz.mrfrostydev.welcomeplayer.network.SyncAudienceDataLargePacket;
-import xyz.mrfrostydev.welcomeplayer.network.SyncAudienceDataSmallPacket;
 import xyz.mrfrostydev.welcomeplayer.network.SyncObjectiveDataPacket;
 import xyz.mrfrostydev.welcomeplayer.registries.DatapackRegistry;
+import xyz.mrfrostydev.welcomeplayer.registries.ItemRegistry;
 
 import java.util.List;
 import java.util.Random;
 
 public class ObjectiveUtil {
     public static Random RANDOM = new Random();
+    public static int OBJECTIVE_TIME_LIMIT = 72000;
 
     /**
      * Create and return the {@link ObjectiveManagerData} if it does not exist within DataStorage.
@@ -42,14 +51,6 @@ public class ObjectiveUtil {
     }
 
     public static void pickObjective(ServerLevel svlevel){
-        int pc = svlevel.getPlayers(s -> !s.isSpectator()).size();
-        ObjectiveManagerData data = getObjectiveManager(svlevel);
-        AudienceData audData = AudienceUtil.getAudienceData(svlevel);
-        data.setProgress(0);
-        data.setTime(2000);
-
-        NeoForge.EVENT_BUS.post(new ObjectiveEndEvent(svlevel, audData, data.getGoingObjective()));
-
         AudiencePhase phase = AudienceUtil.getPhase(svlevel);
         List<PlayerObjective> objList = svlevel
                 .registryAccess()
@@ -60,30 +61,22 @@ public class ObjectiveUtil {
         if(objList.size() <= 0){
             throw new RuntimeException("While picking an objective, no options were available. Datapack may not have enough enabled objectives for this phase.");
         }
-        PlayerObjective obj = objList.get(RANDOM.nextInt(objList.size()));
-
-        data.setMaxProgress(obj.playerScaling() ? obj.maxValue() * pc : obj.maxValue());
-
-        sendEventDialog(obj);
-        data.setGoingObjective(obj);
-        data.setDirty();
-
-        NeoForge.EVENT_BUS.post(new ObjectiveStartedEvent(svlevel, audData, obj));
+        int rand = RANDOM.nextInt(objList.size());
+        WelcomeplayerMain.LOGGER.debug("[Welcomeplayer] Random Index for Objectives: " + rand);
+        PlayerObjective obj = objList.get(rand);
+        setGoingObjective(svlevel, obj);
     }
 
-    public static void failObjective(ServerLevel svlevel){
-        AudienceUtil.addInterestRaw(svlevel, -50);
-        AudienceUtil.sendDialog(Component.translatable("dialog.welcomeplayer.fail.0"));
-
-        pickObjective(svlevel);
-    }
-
-    public static void setGoingEvent(ServerLevel svlevel, PlayerObjective obj){
+    public static void setGoingObjective(ServerLevel svlevel, PlayerObjective obj){
         ObjectiveManagerData data = getObjectiveManager(svlevel);
         AudienceData audData = AudienceUtil.getAudienceData(svlevel);
         data.setProgress(0);
+        data.setTime(OBJECTIVE_TIME_LIMIT);
 
         NeoForge.EVENT_BUS.post(new ObjectiveEndEvent(svlevel, audData, data.getGoingObjective()));
+
+        int pc = svlevel.getPlayers(s -> !s.isSpectator()).size();
+        data.setMaxProgress(obj.playerScaling() ? obj.maxValue() * pc : obj.maxValue());
 
         sendEventDialog(obj);
         data.setGoingObjective(obj);
@@ -94,6 +87,51 @@ public class ObjectiveUtil {
         syncToClients(svlevel);
     }
 
+    public static void failObjective(ServerLevel svlevel){
+        AudienceUtil.addInterestRaw(svlevel, -50);
+        AudienceUtil.sendDialog(Component.translatable("dialog.welcomeplayer.objective.fail.0"));
+
+        pickObjective(svlevel);
+    }
+
+    public static void completeObjective(ServerLevel svlevel){
+        AudiencePhase phase = AudienceUtil.getPhase(svlevel);
+        AudienceUtil.addInterestRaw(svlevel, 100);
+        AudienceUtil.sendDialog(Component.translatable("dialog.welcomeplayer.objective.success.0"));
+
+        List<AudienceReward> rewardList = svlevel
+                .registryAccess()
+                .registryOrThrow(DatapackRegistry.AUDIENCE_REWARDS)
+                .stream()
+                .filter(r -> r.phase().is(phase))
+                .toList();
+        if(rewardList.size() <= 0){
+            throw new RuntimeException("While picking a reward, no options were available. Datapack may not have enough enabled rewards for this phase.");
+        }
+        int rand = RANDOM.nextInt(rewardList.size());
+
+        List<ServerPlayer> players = svlevel.getPlayers(p -> !p.isSpectator());
+        for(ServerPlayer player : players){
+            Vec3 pos = player.getForward().normalize().scale(1.5);
+            svlevel.addFreshEntity(new ItemEntity(svlevel,
+                    player.getX() + pos.x,
+                    player.getEyeHeight() + pos.y,
+                    player.getZ() + pos.z,
+                    rewardList.get(rand).stack()
+            ));
+        }
+        pickObjective(svlevel);
+    }
+
+    public static PlayerObjective getGoingObjective(Level level){
+        if(level instanceof ServerLevel){
+            ObjectiveManagerData data = getObjectiveManager((ServerLevel) level);
+            return data.getGoingObjective();
+        }
+        else{
+            return ClientObjectiveData.get().getGoingObjective();
+        }
+    }
 
     public static PlayerObjective getGoingObjective(ServerLevel svlevel){
         ObjectiveManagerData data = getObjectiveManager(svlevel);
@@ -119,7 +157,7 @@ public class ObjectiveUtil {
         ObjectiveManagerData data = getObjectiveManager(svlevel);
         data.addProgress(add);
         if(data.getProgress() >= data.getMaxProgress()){
-            pickObjective(svlevel);
+            completeObjective(svlevel);
         }
         syncToClients(svlevel);
     }
@@ -144,5 +182,12 @@ public class ObjectiveUtil {
 
     public static List<Holder.Reference<PlayerObjective>> getAllObjectivesAsReference(ServerLevel svlevel){
         return svlevel.registryAccess().registryOrThrow(DatapackRegistry.PLAYER_OBJECTIVES).holders().toList();
+    }
+
+    public static boolean compareStackWithObjective(Level level, PlayerObjective curObj, ItemStack stack){
+        if(curObj.is(level, PlayerObjectives.COAL_MINER) && (stack.is(Items.COAL) || stack.is(Items.CHARCOAL))) return true;
+        if(curObj.is(level, PlayerObjectives.SHORT_FUSE) && stack.is(ItemRegistry.BATTERY)) return true;
+        if(curObj.is(level, PlayerObjectives.WONDER_EGGS) && stack.is(Items.GOLDEN_APPLE)) return true;
+        return false;
     }
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "welcomeplayer:block/beacon"
+    },
+    "facing=east": {
+      "model": "welcomeplayer:block/beacon",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "welcomeplayer:block/beacon",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "welcomeplayer:block/beacon",
+      "y": 270
+    }
+  }
+}

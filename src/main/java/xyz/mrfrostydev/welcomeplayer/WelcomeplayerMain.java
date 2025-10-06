@@ -23,7 +23,10 @@ public class WelcomeplayerMain {
         EntityRegistry.register(modEventBus);
         GlobalLootModifierRegistry.register(modEventBus);
         CreativeTabRegistry.register(modEventBus);
+        MemoryModuleRegistry.register(modEventBus);
+        SensorRegistry.register(modEventBus);
         SoundEventRegistry.register(modEventBus);
+        ParticleRegistry.register(modEventBus);
 
         modEventBus.addListener(DataInitialize::gatherData);
     }

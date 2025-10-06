@@ -8,6 +8,9 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.entities.items.BouncePadEntity;
+import xyz.mrfrostydev.welcomeplayer.entities.projectiles.LaserBlastProjectile;
+import xyz.mrfrostydev.welcomeplayer.entities.mobs.eradicator.EradicatorEntity;
+import xyz.mrfrostydev.welcomeplayer.entities.mobs.handibot.HandibotEntity;
 
 public class EntityRegistry {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, WelcomeplayerMain.MOD_ID);
@@ -20,6 +23,31 @@ public class EntityRegistry {
     // |----------------------------------------------------------------------------------|
     // |-------------------------------------Entities-------------------------------------|
     // |----------------------------------------------------------------------------------|
+
+    // |----------------------------------------------------------------------------------|
+    // |-------------------------------------Entities-------------------------------------|
+    // |----------------------------------------------------------------------------------|
+    public static final DeferredHolder<EntityType<?>, EntityType<HandibotEntity>> HANDIBOT = ENTITIES.register(
+            "handibot",
+            () -> EntityType.Builder.<HandibotEntity>of(HandibotEntity::new, MobCategory.MONSTER)
+                    .sized(0.9F, 2.0F)
+                    .eyeHeight(1.7F)
+                    .clientTrackingRange(8)
+                    .build("handibot")
+    );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<EradicatorEntity>> ERADICATOR = ENTITIES.register(
+            "eradicator",
+            () -> EntityType.Builder.<EradicatorEntity>of(EradicatorEntity::new, MobCategory.MONSTER)
+                    .sized(2.6F, 3.2F)
+                    .eyeHeight(2.6F)
+                    .clientTrackingRange(8)
+                    .build("eradicator")
+    );
+
+    // |----------------------------------------------------------------------------------|
+    // |--------------------------------------Items---------------------------------------|
+    // |----------------------------------------------------------------------------------|
     public static final DeferredHolder<EntityType<?>, EntityType<BouncePadEntity>> BOUNCE_PAD = ENTITIES.register(
             "bounce_pad",
             () -> EntityType.Builder.<BouncePadEntity>of(BouncePadEntity::new, MobCategory.MISC)
@@ -29,8 +57,13 @@ public class EntityRegistry {
                     .build("bounce_pad")
     );
 
-
-    // |----------------------------------------------------------------------------------|
-    // |--------------------------------------Items---------------------------------------|
-    // |----------------------------------------------------------------------------------|
+    public static final DeferredHolder<EntityType<?>, EntityType<LaserBlastProjectile>> LASER_BLAST_PROJECTILE = ENTITIES.register(
+            "laser_blast_projectile",
+            () -> EntityType.Builder.<LaserBlastProjectile>of(LaserBlastProjectile::new, MobCategory.MISC)
+                    .sized(0.4F, 0.4F)
+                    .eyeHeight(0.1F)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build("laser_blast_projectile")
+            );
 }

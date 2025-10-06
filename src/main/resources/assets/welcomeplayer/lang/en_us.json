@@ -7,11 +7,17 @@
   "item.welcomeplayer.battery": "Battery",
   "item.welcomeplayer.large_battery": "Large Battery",
 
+  "block.welcomeplayer.vendor": "Vendor",
   "block.welcomeplayer.vendor.balance": "Battery Balance: ",
+  "block.welcomeplayer.material_transit": "Material Transit Unit",
 
   "block.welcomeplayer.retrosteel_blend_wall": "Retrosteel Blend Wall",
   "block.welcomeplayer.retrosteel_white_wall": "Retrosteel White Wall",
   "block.welcomeplayer.retrosteel_brown_wall": "Retrosteel Brown Wall",
+
+  "message.welcomeplayer.beacon.need_battery": "A battery is required to activate.",
+  "message.welcomeplayer.beacon.no_event": "This beacon has no purpose right now.",
+  "message.welcomeplayer.beacon.already_active": "This beacon is already active.",
 
   "commands.welcomeplayer.objective.get": "[Welcomeplayer] The objective is %s, with progression at %s.",
   "commands.welcomeplayer.objective.set": "[Welcomeplayer] The objective is now %s.",
@@ -23,5 +29,14 @@
   "commands.welcomeplayer.event.get": "[Welcomeplayer] The current event is: %s",
   "commands.welcomeplayer.event.set": "[Welcomeplayer] The current event is now: %s",
 
-  "dialog.welcomeplayer.fail.0": "You have failed, miserably..."
+  "dialog.welcomeplayer.objective.fail.0": "You have failed, miserably...",
+  "dialog.welcomeplayer.objective.success.0": "Good job completing you objective.",
+
+  "dialog.welcomeplayer.objective.dog_person.0": "Let's try something a little simpler.",
+  "dialog.welcomeplayer.objective.dog_person.1": "We're thinking that the players are a little lonely.",
+  "dialog.welcomeplayer.objective.dog_person.2": "Why not tame man's best friend?",
+  "dialog.welcomeplayer.objective.dog_person.3": "Find yourself a wolf to tame, they would be so cute for the younger audience!",
+
+  "death.welcomeplayer.damage.laser": "%1$s was vaporised by extreme sci-fi energy",
+  "death.welcomeplayer.damage.saw": "%1$s was torn apart by violent saw blades"
 }

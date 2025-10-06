@@ -118,9 +118,9 @@ public class WelcomeplayerCommands {
                 }
             }
 
-            ObjectiveUtil.setGoingEvent(svlevel, event);
+            ObjectiveUtil.setGoingObjective(svlevel, event);
             AudienceUtil.syncToClients(svlevel);
-            source.sendSuccess(() -> Component.translatable("commands.welcomeplayer.objective.set", AudienceEventUtil.getGoingEvent(svlevel).getName()), true);
+            source.sendSuccess(() -> Component.translatable("commands.welcomeplayer.objective.set", ObjectiveUtil.getGoingObjective(svlevel).id()), true);
         }
 
         return 0;

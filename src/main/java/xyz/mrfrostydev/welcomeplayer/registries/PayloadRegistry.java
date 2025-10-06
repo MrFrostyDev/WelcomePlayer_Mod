@@ -50,5 +50,11 @@ public class PayloadRegistry {
                 SyncObjectiveDataPacket.STREAM_CODEC,
                 SyncObjectiveDataPacket::handle
         );
+
+        registrar.playBidirectional(
+                StartShowIntroductionPacket.TYPE,
+                StartShowIntroductionPacket.STREAM_CODEC,
+                StartShowIntroductionPacket::handle
+        );
     }
 }

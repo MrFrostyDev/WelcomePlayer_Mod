@@ -23,11 +23,25 @@ public class AudienceEvents {
 
     public static final AudienceEventType EMPTY = new AudienceEventType("empty");
     public static final AudienceEventType COMMERCIAL_BREAK = new AudienceEventType("commercial_break");
+    public static final AudienceEventType ROBOT_PATROL = new AudienceEventType("robot_patrol");
+    public static final AudienceEventType BIG_BOSS = new AudienceEventType("big_boss");
 
     // Commercial Break
     public static final ResourceKey<AudienceEvent> NEUTRAL_NEUTRAL_COMMERCIAL_BREAK = registerEntry("neutral_neutral_commercial_break", createDialog(
-            "dialog.welcomeplayer.commercial_break.0",
-            "dialog.welcomeplayer.commercial_break.1"
+            "dialog.welcomeplayer.event.commercial_break.0",
+            "dialog.welcomeplayer.event.commercial_break.1"
+    ));
+
+    // Robot Patrol
+    public static final ResourceKey<AudienceEvent> NEUTRAL_NEUTRAL_ROBOT_PATROL = registerEntry("neutral_neutral_robot_patrol", createDialog(
+            "dialog.welcomeplayer.event.commercial_break.0",
+            "dialog.welcomeplayer.event.commercial_break.1"
+    ));
+
+    // Big Boss
+    public static final ResourceKey<AudienceEvent> THRILLED_CRUEL_BIG_BOSS = registerEntry("thrilled_cruel_big_boss", createDialog(
+            "dialog.welcomeplayer.event.commercial_break.0",
+            "dialog.welcomeplayer.event.commercial_break.1"
     ));
 
     public static List<Component> createDialog(String... comp){

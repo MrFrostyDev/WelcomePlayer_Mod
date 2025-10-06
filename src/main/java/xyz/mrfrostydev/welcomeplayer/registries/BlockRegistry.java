@@ -13,8 +13,12 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.blocks.BeaconBlock;
+import xyz.mrfrostydev.welcomeplayer.blocks.MaterialTransitBlock;
 import xyz.mrfrostydev.welcomeplayer.blocks.ShowActivatorBlock;
 import xyz.mrfrostydev.welcomeplayer.blocks.VendorBlock;
+import xyz.mrfrostydev.welcomeplayer.blocks.entities.BeaconBlockEntity;
+import xyz.mrfrostydev.welcomeplayer.blocks.entities.MaterialTransitBlockEntity;
 import xyz.mrfrostydev.welcomeplayer.blocks.entities.VendorBlockEntity;
 
 import java.util.function.Supplier;
@@ -109,6 +113,46 @@ public class BlockRegistry {
             () -> BlockEntityType.Builder.of(
                     VendorBlockEntity::new,
                     VENDOR_BOTTOM.get()
+            ).build(null)
+    );
+
+    public static final DeferredHolder<Block, Block> BEACON = BLOCKS.register(
+            "beacon",
+            () -> new BeaconBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .mapColor(MapColor.METAL)
+                    .strength(-1.0F, 3600000.0F)
+                    .noLootTable()
+                    .pushReaction(PushReaction.IGNORE)
+                    .isValidSpawn(Blocks::never)
+            )
+    );
+
+    public static final Supplier<BlockEntityType<BeaconBlockEntity>> BEACON_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "beacon_entity",
+            () -> BlockEntityType.Builder.of(
+                    BeaconBlockEntity::new,
+                    BEACON.get()
+            ).build(null)
+    );
+
+    public static final DeferredHolder<Block, Block> MATERIAL_TRANSIT = BLOCKS.register(
+            "material_transit",
+            () -> new MaterialTransitBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .mapColor(MapColor.METAL)
+                    .strength(-1.0F, 3600000.0F)
+                    .noLootTable()
+                    .pushReaction(PushReaction.IGNORE)
+                    .isValidSpawn(Blocks::never)
+            )
+    );
+
+    public static final Supplier<BlockEntityType<MaterialTransitBlockEntity>> MATERIAL_TRANSIT_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "material_transit_entity",
+            () -> BlockEntityType.Builder.of(
+                    MaterialTransitBlockEntity::new,
+                    MATERIAL_TRANSIT.get()
             ).build(null)
     );
 

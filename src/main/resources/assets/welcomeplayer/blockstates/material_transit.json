@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "welcomeplayer:block/material_transit"
+    },
+    "facing=east": {
+      "model": "welcomeplayer:block/material_transit",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "welcomeplayer:block/material_transit",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "welcomeplayer:block/material_transit",
+      "y": 270
+    }
+  }
+}

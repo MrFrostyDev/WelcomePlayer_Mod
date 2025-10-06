@@ -7,6 +7,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.client.gui.menus.blocks.MaterialTransitScreen;
 import xyz.mrfrostydev.welcomeplayer.client.gui.menus.blocks.VendorScreen;
 import xyz.mrfrostydev.welcomeplayer.client.gui.overlays.ObjectiveTrackerOverlay;
 import xyz.mrfrostydev.welcomeplayer.client.gui.overlays.ShowHostMessageOverlay;
@@ -18,6 +19,7 @@ public class RegisterGuiEvent {
     @SubscribeEvent
     private static void onRegisterMenu(final RegisterMenuScreensEvent event) {
         event.register(MenuRegistry.VENDOR_MENU.get(), VendorScreen::new);
+        event.register(MenuRegistry.MATERIAL_TRANSIT_MENU.get(), MaterialTransitScreen::new);
     }
 
     @SubscribeEvent

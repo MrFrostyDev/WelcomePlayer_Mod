@@ -17,19 +17,29 @@ public class PlayerObjectives {
 
     private static final List<ObjectiveInfo> OBJECTIVES = new ArrayList<>();
 
+    // |------------------------------------------------------------|
+    // |--------------------------Furious---------------------------|
+    // |------------------------------------------------------------|
+
     public static final ResourceKey<PlayerObjective> BROKEN_BOXING = registerEntry("furious_broken_boxing", 8, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.broken_boxing.0",
+            "dialog.welcomeplayer.objective.broken_boxing.1"
     ));
 
     public static final ResourceKey<PlayerObjective> PAINFUL_SAPPER = registerEntry("furious_painful_sapper", 4, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.painful_sapper.0",
+            "dialog.welcomeplayer.objective.painful_sapper.1"
     ));
 
+    // |------------------------------------------------------------|
+    // |---------------------------Bored----------------------------|
+    // |------------------------------------------------------------|
+
     public static final ResourceKey<PlayerObjective> DOG_PERSON = registerEntry("bored_dog_person", 1, false, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.dog_person.0",
+            "dialog.welcomeplayer.objective.dog_person.1",
+            "dialog.welcomeplayer.objective.dog_person.2",
+            "dialog.welcomeplayer.objective.dog_person.3"
     ));
 
     public static final ResourceKey<PlayerObjective> CAT_PERSON = registerEntry("bored_cat_person", 1, false, createDialog(
@@ -46,6 +56,10 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.0",
             "dialog.welcomeplayer.objective.1"
     ));
+
+    // |------------------------------------------------------------|
+    // |--------------------------Neutral---------------------------|
+    // |------------------------------------------------------------|
 
     public static final ResourceKey<PlayerObjective> THE_BUTCHER = registerEntry("neutral_the_butcher", 20, true, createDialog(
             "dialog.welcomeplayer.objective.0",
@@ -78,7 +92,16 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.1"
     ));
 
-    public static final ResourceKey<PlayerObjective> MONSTER_HUNTER = registerEntry("interested_monster_hunter", 20, true, createDialog(
+    // |------------------------------------------------------------|
+    // |-------------------------Interested-------------------------|
+    // |------------------------------------------------------------|
+
+    public static final ResourceKey<PlayerObjective> MONSTER_HUNTER = registerEntry("interested_monster_hunter", 30, true, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
+
+    public static final ResourceKey<PlayerObjective> SET_BATTLE = registerEntry("interested_set_battle", 6, true, createDialog(
             "dialog.welcomeplayer.objective.0",
             "dialog.welcomeplayer.objective.1"
     ));
@@ -93,12 +116,21 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.1"
     ));
 
+    // |------------------------------------------------------------|
+    // |-------------------------Thrilled---------------------------|
+    // |------------------------------------------------------------|
+
     public static final ResourceKey<PlayerObjective> GOLIATH = registerEntry("thrilled_goliath", 1, false, createDialog(
             "dialog.welcomeplayer.objective.0",
             "dialog.welcomeplayer.objective.1"
     ));
 
     public static final ResourceKey<PlayerObjective> NIGHT_KILLER = registerEntry("thrilled_night_killer", 1, false, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
+
+    public static final ResourceKey<PlayerObjective> WONDER_EGGS = registerEntry("thrilled_wonder_eggs", 10, true, createDialog(
             "dialog.welcomeplayer.objective.0",
             "dialog.welcomeplayer.objective.1"
     ));

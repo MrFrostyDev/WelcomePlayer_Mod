@@ -47,7 +47,7 @@ public class VendorMenu extends AbstractContainerMenu {
         if (blockAtPos instanceof VendorBlockEntity) {
             return (VendorBlockEntity) blockAtPos;
         }
-        throw new IllegalStateException("The block entity is not correct at VendorMenu#getBLockEntity " + blockAtPos);
+        throw new IllegalStateException("The block entity is not correct at VendorMenu#getBlockEntity " + blockAtPos);
     }
 
     @Override

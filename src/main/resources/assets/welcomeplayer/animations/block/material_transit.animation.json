@@ -1,0 +1,41 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"material_transit.animation.open": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.75,
+			"bones": {
+				"door": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.75": {
+							"vector": [-35, 0, 0],
+							"easing": "easeOutBack",
+							"easingArgs": [1.5]
+						}
+					}
+				}
+			}
+		},
+		"material_Transit.animation.close": {
+			"animation_length": 0.75,
+			"bones": {
+				"door": {
+					"rotation": {
+						"0.0": {
+							"vector": [-35, 0, 0]
+						},
+						"0.75": {
+							"vector": [0, 0, 0],
+							"easing": "easeInBack",
+							"easingArgs": [1.5]
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

@@ -29,9 +29,13 @@ public class CreativeTabRegistry {
                 output.accept(ItemRegistry.LARGE_BATTERY.get());
 
                 output.accept(ItemRegistry.SHOW_ACTIVATOR.get());
+                output.accept(ItemRegistry.MATERIAL_TRANSIT.get());
+                output.accept(ItemRegistry.BEACON.get());
                 output.accept(ItemRegistry.VENDOR_TOP.get());
                 output.accept(ItemRegistry.VENDOR_BOTTOM.get());
 
+                output.accept(ItemRegistry.HANDIBOT_SPAWN_EGG.get());
+                output.accept(ItemRegistry.ERADICATOR_SPAWN_EGG.get());
             })
             .build()
     );

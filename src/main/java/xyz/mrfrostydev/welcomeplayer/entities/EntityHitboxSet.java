@@ -25,16 +25,18 @@ public class EntityHitboxSet {
     };
 
     private final Entity entity;
+    private final boolean damagePerBox;
     private boolean isActive;
     private final List<SequenceSet> sequenceSets;
     private List<UUID> hitUUIDList = new ArrayList<>(MAX_TARGETS);
     private final int time;
     private int tick;
 
-    private EntityHitboxSet(Entity entity, List<SequenceSet> sequenceSets){
+    private EntityHitboxSet(Entity entity, List<SequenceSet> sequenceSets, boolean damagePerBox){
         this.entity = entity;
         this.isActive = false;
         this.sequenceSets = sequenceSets;
+        this.damagePerBox = damagePerBox;
 
         int longestTime = 0;
         for(SequenceSet set : sequenceSets){
@@ -55,6 +57,15 @@ public class EntityHitboxSet {
         hitUUIDList.clear();
     }
 
+    public void stop(){
+        this.isActive = false;
+        this.tick = 0;
+        for(SequenceSet set : sequenceSets){
+            set.reset();
+        }
+        hitUUIDList.clear();
+    }
+
     public void tick(ServerLevel level){
         if(!this.isActive) return;
 
@@ -67,6 +78,9 @@ public class EntityHitboxSet {
             int nextTimestamp = set.getNextTimestamp();
             if((nextTimestamp != -1) && (nextTimestamp == tick)){
                 set.increment();
+                if(damagePerBox){
+                    hitUUIDList.clear();
+                }
             }
 
             Sequence sequence = set.getActiveSequence();
@@ -74,6 +88,7 @@ public class EntityHitboxSet {
             List<Entity> entities = level.getEntities(entity, relativeAABB, predicate);
             entities.forEach(e -> hitUUIDList.add(e.getUUID()));
             set.getAction().applyOnHit(level, entities, entity);
+
         }
         tick++;
     }
@@ -97,10 +112,13 @@ public class EntityHitboxSet {
         AABB newAABB = new AABB(
                 position.x - sizeX, position.y - sizeY, position.z - sizeZ,
                 position.x + sizeX, position.y + sizeY, position.z + sizeZ);
-
+        /*
         if(entity.level() instanceof ServerLevel svlevel){
+            svlevel.sendParticles(ParticleTypes.FLAME, newAABB.minX, newAABB.minY, newAABB.minZ, 1, 0, 0, 0, 0);
             svlevel.sendParticles(ParticleTypes.FLAME, newAABB.getCenter().x, newAABB.getCenter().y, newAABB.getCenter().z, 1, 0, 0, 0, 0);
+            svlevel.sendParticles(ParticleTypes.FLAME, newAABB.maxX, newAABB.maxY, newAABB.maxZ, 1, 0, 0, 0, 0);
         }
+        */
 
         return newAABB;
     }
@@ -111,6 +129,10 @@ public class EntityHitboxSet {
 
     public boolean isFinished(){
         return this.tick >= this.time && !this.isActive;
+    }
+
+    public int getTime() {
+        return time;
     }
 
     public CompoundTag saveData(){
@@ -225,39 +247,24 @@ public class EntityHitboxSet {
             sizeZ = center.z;
             this.hitbox = hitbox;
             this.sequences.clear();
-            this.sequences.add(new Sequence(
-                    hitbox,
-                    center.x, center.y, center.z,
-                    aabb.getXsize(), aabb.getYsize(), aabb.getZsize(),
-                    0));
+            this.sequences.add(new Sequence(new EntityHitbox(0, 0, 0), 0, 0 ,0, 0, 0 ,0, 0));
             this.action = action;
         }
 
-        private SequenceSetBuilder(double forwardOffset, double upOffset, double rightOffset,
-                                         double sizeX, double sizeY, double sizeZ,
-                                         EntityHitboxAction action) {
+        private SequenceSetBuilder(double sizeX, double sizeY, double sizeZ, EntityHitboxAction action) {
             this.hitbox = new EntityHitbox(sizeX, sizeY, sizeZ);
 
             this.sizeX = sizeX;
             this.sizeY = sizeY;
             this.sizeZ = sizeZ;
             this.sequences.clear();
-            this.sequences.add(new Sequence(
-                    hitbox,
-                    forwardOffset, upOffset, rightOffset,
-                    sizeX, sizeY, sizeZ,
-                    0));
+            this.sequences.add(new Sequence(new EntityHitbox(0, 0, 0), 0, 0 ,0, 0, 0 ,0, 0));
             this.action = action;
         }
 
-        public static SequenceSetBuilder create(EntityHitbox hitbox, EntityHitboxAction hitboxAction) {
-            return new SequenceSetBuilder(hitbox, hitboxAction);
-        }
-
-        public static SequenceSetBuilder create(double forwardOffset, double upOffset, double rightOffset,
-                                                double sizeX, double sizeY, double sizeZ,
+        public static SequenceSetBuilder create(double sizeX, double sizeY, double sizeZ,
                                                 EntityHitboxAction hitboxAction) {
-            return new SequenceSetBuilder(forwardOffset, upOffset, rightOffset, sizeX, sizeY, sizeZ, hitboxAction);
+            return new SequenceSetBuilder(sizeX, sizeY, sizeZ, hitboxAction);
         }
 
         public SequenceSetBuilder transition(double forwardOffset, double upOffset, double rightOffset, int timestamp){
@@ -266,8 +273,7 @@ public class EntityHitboxSet {
         }
 
         public SequenceSetBuilder transition(double forwardOffset, double upOffset, double rightOffset,
-                                             double sizeX, double sizeY, double sizeZ,
-                                  int timestamp){
+                                             double sizeX, double sizeY, double sizeZ, int timestamp){
             sequences.add(new Sequence(hitbox, forwardOffset, upOffset, rightOffset, sizeX, sizeY, sizeZ, timestamp));
             return this;
         }
@@ -279,8 +285,15 @@ public class EntityHitboxSet {
 
     public static class Builder {
         List<SequenceSetBuilder> builders = new ArrayList<>();
+        static boolean isDamagePerBox = false;
 
         public static Builder create() {
+            isDamagePerBox = false;
+            return new Builder();
+        }
+
+        public static Builder create(boolean damagePerBox) {
+            isDamagePerBox = damagePerBox;
             return new Builder();
         }
 
@@ -290,7 +303,7 @@ public class EntityHitboxSet {
         }
 
         public EntityHitboxSet build(Entity entity){
-            return new EntityHitboxSet(entity, builders.stream().map(SequenceSetBuilder::build).toList());
+            return new EntityHitboxSet(entity, builders.stream().map(SequenceSetBuilder::build).toList(), isDamagePerBox);
         }
     }
 }
