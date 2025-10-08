@@ -1,9 +1,12 @@
 package xyz.mrfrostydev.welcomeplayer.registries;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 
@@ -16,4 +19,12 @@ public class DataComponentRegistry {
         DATA_COMPONENTS.register(eventBus);
         ENCHANTMENT_COMPONENT_TYPES.register(eventBus);
     }
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> CHARGED = DATA_COMPONENTS.registerComponentType(
+            "charged",
+            builder -> builder
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+    );
+
 }

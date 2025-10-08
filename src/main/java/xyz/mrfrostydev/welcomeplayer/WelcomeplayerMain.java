@@ -21,6 +21,7 @@ public class WelcomeplayerMain {
         MenuRegistry.register(modEventBus);
         ItemRegistry.register(modEventBus);
         EntityRegistry.register(modEventBus);
+        MobEffectRegistry.register(modEventBus);
         GlobalLootModifierRegistry.register(modEventBus);
         CreativeTabRegistry.register(modEventBus);
         MemoryModuleRegistry.register(modEventBus);

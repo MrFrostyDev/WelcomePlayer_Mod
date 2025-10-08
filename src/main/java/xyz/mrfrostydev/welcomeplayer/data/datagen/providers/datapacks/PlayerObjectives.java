@@ -35,6 +35,16 @@ public class PlayerObjectives {
     // |---------------------------Bored----------------------------|
     // |------------------------------------------------------------|
 
+    public static final ResourceKey<PlayerObjective> DAY_LABOR = registerEntry("bored_day_labor", 6, true, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
+
+    public static final ResourceKey<PlayerObjective> METAL_ROSES = registerEntry("bored_metal_roses", 2, false, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
+
     public static final ResourceKey<PlayerObjective> DOG_PERSON = registerEntry("bored_dog_person", 1, false, createDialog(
             "dialog.welcomeplayer.objective.dog_person.0",
             "dialog.welcomeplayer.objective.dog_person.1",
@@ -57,9 +67,24 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.1"
     ));
 
+    public static final ResourceKey<PlayerObjective> PAIN = registerEntry("bored_pain", 50, true, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
+
     // |------------------------------------------------------------|
     // |--------------------------Neutral---------------------------|
     // |------------------------------------------------------------|
+
+    public static final ResourceKey<PlayerObjective> THE_SHEPARD = registerEntry("neutral_the_shepard", 10, true, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
+
+    public static final ResourceKey<PlayerObjective> PEST_CONTROL = registerEntry("neutral_pest_control", 12, true, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
 
     public static final ResourceKey<PlayerObjective> THE_BUTCHER = registerEntry("neutral_the_butcher", 20, true, createDialog(
             "dialog.welcomeplayer.objective.0",
@@ -76,18 +101,17 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.1"
     ));
 
-    public static final ResourceKey<PlayerObjective> ZOMBIE_KILLER = registerEntry("neutral_zombie_killer", 8, true, createDialog(
+    public static final ResourceKey<PlayerObjective> ZOMBIE_KILLER = registerEntry("neutral_zombie_killer", 10, true, createDialog(
             "dialog.welcomeplayer.objective.0",
             "dialog.welcomeplayer.objective.1"
     ));
-
 
     public static final ResourceKey<PlayerObjective> COAL_MINER = registerEntry("neutral_coal_miner", 30, true, createDialog(
             "dialog.welcomeplayer.objective.0",
             "dialog.welcomeplayer.objective.1"
     ));
 
-    public static final ResourceKey<PlayerObjective> HUMAN_CHARGER = registerEntry("neutral_human_charger", 10, true, createDialog(
+    public static final ResourceKey<PlayerObjective> HUMAN_CHARGER = registerEntry("neutral_human_charger", 16, true, createDialog(
             "dialog.welcomeplayer.objective.0",
             "dialog.welcomeplayer.objective.1"
     ));
@@ -101,7 +125,7 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.1"
     ));
 
-    public static final ResourceKey<PlayerObjective> SET_BATTLE = registerEntry("interested_set_battle", 6, true, createDialog(
+    public static final ResourceKey<PlayerObjective> SET_BATTLE = registerEntry("interested_set_battle", 5, true, createDialog(
             "dialog.welcomeplayer.objective.0",
             "dialog.welcomeplayer.objective.1"
     ));
@@ -116,9 +140,19 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.1"
     ));
 
+    public static final ResourceKey<PlayerObjective> RICH_DISPLAY = registerEntry("interested_rich_display", 16, true, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
+
     // |------------------------------------------------------------|
     // |-------------------------Thrilled---------------------------|
     // |------------------------------------------------------------|
+
+    public static final ResourceKey<PlayerObjective> SUFFERING = registerEntry("thrilled_suffering", 100, true, createDialog(
+            "dialog.welcomeplayer.objective.0",
+            "dialog.welcomeplayer.objective.1"
+    ));
 
     public static final ResourceKey<PlayerObjective> GOLIATH = registerEntry("thrilled_goliath", 1, false, createDialog(
             "dialog.welcomeplayer.objective.0",

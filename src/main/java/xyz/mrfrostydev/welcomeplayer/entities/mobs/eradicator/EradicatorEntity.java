@@ -9,6 +9,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectUtil;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,6 +33,7 @@ import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.ModDamageT
 import xyz.mrfrostydev.welcomeplayer.entities.EntityHitboxSet;
 import xyz.mrfrostydev.welcomeplayer.entities.ai.navigation.HoverPathNavigation;
 import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
+import xyz.mrfrostydev.welcomeplayer.registries.TagRegistry;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -113,7 +116,7 @@ public class EradicatorEntity extends Monster implements GeoEntity {
 
     @Override
     public boolean canAttackType(EntityType<?> type) {
-        return type == EntityType.PLAYER || type == EntityType.IRON_GOLEM;
+        return !type.is(TagRegistry.HOST_ROBOT);
     }
 
     @Override
@@ -235,6 +238,11 @@ public class EradicatorEntity extends Monster implements GeoEntity {
     @Override
     public int getHeadRotSpeed() {
         return 25;
+    }
+
+    @Override
+    public int getCurrentSwingDuration() {
+        return 40;
     }
 
     @Override

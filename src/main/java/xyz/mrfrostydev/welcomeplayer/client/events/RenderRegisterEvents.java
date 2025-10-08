@@ -8,10 +8,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.client.renderers.block.BeaconBlockEntityRenderer;
 import xyz.mrfrostydev.welcomeplayer.client.renderers.block.MaterialTransitBlockEntityRenderer;
-import xyz.mrfrostydev.welcomeplayer.client.renderers.entity.BouncePadEntityRenderer;
-import xyz.mrfrostydev.welcomeplayer.client.renderers.entity.EradicatorEntityRenderer;
-import xyz.mrfrostydev.welcomeplayer.client.renderers.entity.HandibotEntityRenderer;
-import xyz.mrfrostydev.welcomeplayer.client.renderers.entity.LaserBlastEntityRenderer;
+import xyz.mrfrostydev.welcomeplayer.client.renderers.entity.*;
 import xyz.mrfrostydev.welcomeplayer.registries.BlockRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
 
@@ -31,6 +28,7 @@ public class RenderRegisterEvents {
         // Entities
         EntityRenderers.register(EntityRegistry.BOUNCE_PAD.get(), BouncePadEntityRenderer::new);
         EntityRenderers.register(EntityRegistry.HANDIBOT.get(), HandibotEntityRenderer::new);
+        EntityRenderers.register(EntityRegistry.SERVICE_BOT.get(), ServiceBotEntityRenderer::new);
         EntityRenderers.register(EntityRegistry.ERADICATOR.get(), EradicatorEntityRenderer::new);
         EntityRenderers.register(EntityRegistry.LASER_BLAST_PROJECTILE.get(), LaserBlastEntityRenderer::new);
     }

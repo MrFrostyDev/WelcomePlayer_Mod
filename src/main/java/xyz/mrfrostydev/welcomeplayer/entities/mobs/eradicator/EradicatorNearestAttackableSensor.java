@@ -12,8 +12,8 @@ import java.util.Collection;
 import java.util.Set;
 
 public class EradicatorNearestAttackableSensor extends NearestLivingEntitySensor<EradicatorEntity> {
-    private static final TargetingConditions TARGET_CONDITIONS = TargetingConditions.forNonCombat().range(EradicatorEntity.TARGETING_RANGE);
-    private static final TargetingConditions TARGET_CONDITIONS_IGNORE_INVISIBILITY_TESTING = TargetingConditions.forNonCombat()
+    private static final TargetingConditions TARGET_CONDITIONS = TargetingConditions.forCombat().range(EradicatorEntity.TARGETING_RANGE);
+    private static final TargetingConditions TARGET_CONDITIONS_IGNORE_INVISIBILITY_TESTING = TargetingConditions.forCombat()
             .range(EradicatorEntity.TARGETING_RANGE)
             .ignoreInvisibilityTesting();
 

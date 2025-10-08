@@ -1,4 +1,4 @@
-package xyz.mrfrostydev.welcomeplayer.events.subscribers.objectives;
+package xyz.mrfrostydev.welcomeplayer.events.subscribers.events;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceKey;
@@ -14,9 +14,9 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
-import xyz.mrfrostydev.welcomeplayer.data.PlayerObjective;
-import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.PlayerObjectives;
-import xyz.mrfrostydev.welcomeplayer.events.ObjectiveStartedEvent;
+import xyz.mrfrostydev.welcomeplayer.data.AudienceEvent;
+import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.AudienceEvents;
+import xyz.mrfrostydev.welcomeplayer.events.AudienceEventStartedEvent;
 import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
 
 import javax.annotation.Nullable;
@@ -24,29 +24,29 @@ import java.util.Collections;
 import java.util.List;
 
 @EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
-public class ObjectiveSummonEvents {
+public class EventSummonEvents {
 
     @SubscribeEvent
-    public static void onObjectiveStart(ObjectiveStartedEvent event){
+    public static void onEventStart(AudienceEventStartedEvent event){
         if(!(event.getLevel() instanceof ServerLevel svlevel))return;
-        PlayerObjective obj = event.getStartedObjective();
+        AudienceEvent startedEvent = event.getStartedEvent();
 
-        if(spawnForObjective(svlevel, obj, PlayerObjectives.SET_BATTLE, EntityRegistry.HANDIBOT.get(), obj.maxValue())) return;
-        if(spawnForObjectiveSinglePlayer(svlevel, obj, PlayerObjectives.GOLIATH, EntityRegistry.ERADICATOR.get(), 1)) return;
+        if(spawnForEvent(svlevel, startedEvent, AudienceEvents.ROBOT_PATROL, EntityRegistry.HANDIBOT.get(), 2)) return;
+        if(spawnForEventSinglePlayer(svlevel, startedEvent, AudienceEvents.BIG_BOSS, EntityRegistry.ERADICATOR.get(), 1)) return;
     }
 
     // |--------------------------------------------------------------------------------|
     // |------------------------------------Methods-------------------------------------|
     // |--------------------------------------------------------------------------------|
 
-    private static boolean spawnForObjective(ServerLevel svlevel, PlayerObjective startedObj, ResourceKey<PlayerObjective> compObj, EntityType<?> entityType, int amount){
-        boolean isTrue = startedObj.is(svlevel, compObj);
+    private static boolean spawnForEvent(ServerLevel svlevel, AudienceEvent startedEvent, AudienceEvents.AudienceEventType eventType, EntityType<?> entityType, int amount){
+        boolean isTrue = startedEvent.is(eventType);
         if(isTrue) attemptSpawn(svlevel, entityType, amount);
         return isTrue;
     }
 
-    private static boolean spawnForObjectiveSinglePlayer(ServerLevel svlevel, PlayerObjective startedObj, ResourceKey<PlayerObjective> compObj, EntityType<?> entityType, int amount){
-        boolean isTrue = startedObj.is(svlevel, compObj);
+    private static boolean spawnForEventSinglePlayer(ServerLevel svlevel, AudienceEvent startedEvent, AudienceEvents.AudienceEventType eventType, EntityType<?> entityType, int amount){
+        boolean isTrue = startedEvent.is(eventType);
         if(isTrue) attemptSpawnSinglePlayer(svlevel, entityType, amount);
         return isTrue;
     }

@@ -8,6 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.entities.items.BouncePadEntity;
+import xyz.mrfrostydev.welcomeplayer.entities.mobs.service_bot.ServiceBotEntity;
 import xyz.mrfrostydev.welcomeplayer.entities.projectiles.LaserBlastProjectile;
 import xyz.mrfrostydev.welcomeplayer.entities.mobs.eradicator.EradicatorEntity;
 import xyz.mrfrostydev.welcomeplayer.entities.mobs.handibot.HandibotEntity;
@@ -27,6 +28,15 @@ public class EntityRegistry {
     // |----------------------------------------------------------------------------------|
     // |-------------------------------------Entities-------------------------------------|
     // |----------------------------------------------------------------------------------|
+    public static final DeferredHolder<EntityType<?>, EntityType<ServiceBotEntity>> SERVICE_BOT = ENTITIES.register(
+            "service_bot",
+            () -> EntityType.Builder.<ServiceBotEntity>of(ServiceBotEntity::new, MobCategory.CREATURE)
+                    .sized(0.8F, 1.3F)
+                    .eyeHeight(1.2F)
+                    .clientTrackingRange(8)
+                    .build("service_bot")
+    );
+
     public static final DeferredHolder<EntityType<?>, EntityType<HandibotEntity>> HANDIBOT = ENTITIES.register(
             "handibot",
             () -> EntityType.Builder.<HandibotEntity>of(HandibotEntity::new, MobCategory.MONSTER)

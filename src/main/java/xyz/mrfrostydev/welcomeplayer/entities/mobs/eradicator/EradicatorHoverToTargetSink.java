@@ -5,6 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.behavior.MoveToTargetSink;
+import net.minecraft.world.entity.ai.memory.MemoryStatus;
 import xyz.mrfrostydev.welcomeplayer.registries.MemoryModuleRegistry;
 
 public class EradicatorHoverToTargetSink extends MoveToTargetSink {
@@ -16,7 +17,7 @@ public class EradicatorHoverToTargetSink extends MoveToTargetSink {
     protected boolean checkExtraStartConditions(ServerLevel svlevel, Mob owner) {
         if(owner instanceof EradicatorEntity entity){
              return super.checkExtraStartConditions(svlevel, owner) &&
-                     entity.getBrain().getMemory(MemoryModuleRegistry.ERADICATOR_SHOOTING.get()).isEmpty();
+                     entity.getBrain().checkMemory(MemoryModuleRegistry.ERADICATOR_SHOOTING.get(), MemoryStatus.VALUE_ABSENT);
         }
 
         return super.checkExtraStartConditions(svlevel, owner);

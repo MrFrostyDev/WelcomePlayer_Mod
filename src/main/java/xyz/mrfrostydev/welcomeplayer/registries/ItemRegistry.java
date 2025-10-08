@@ -10,6 +10,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import xyz.mrfrostydev.welcomeplayer.items.GeoBlockItem;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.items.gadgets.BouncePadItem;
+import xyz.mrfrostydev.welcomeplayer.items.gadgets.PhaseLinkItem;
+import xyz.mrfrostydev.welcomeplayer.items.gadgets.StasisStickItem;
 
 
 public class ItemRegistry {
@@ -23,6 +25,8 @@ public class ItemRegistry {
     // |-------------------------------------Gadgets---------------------------------------|
     // |-----------------------------------------------------------------------------------|
     public static final DeferredHolder<Item, Item> BOUNCE_PAD = ITEMS.register("bounce_pad", () -> new BouncePadItem(new Item.Properties().stacksTo(8)));
+    public static final DeferredHolder<Item, Item> PHASE_LINK = ITEMS.register("phase_link", () -> new PhaseLinkItem(new Item.Properties().stacksTo(1), 5));
+    public static final DeferredHolder<Item, Item> STASIS_STICK = ITEMS.register("stasis_stick", () -> new StasisStickItem(new Item.Properties().attributes(StasisStickItem.createAttributes(5.0F, -3.1F)).stacksTo(1)));
 
     // |-----------------------------------------------------------------------------------|
     // |------------------------------------Block Items------------------------------------|
@@ -46,14 +50,18 @@ public class ItemRegistry {
     // |-----------------------------------------------------------------------------------|
     // |------------------------------------Misc Items-------------------------------------|
     // |-----------------------------------------------------------------------------------|
+    public static final DeferredHolder<Item, Item> RETROSTEEL = ITEMS.register("retrosteel", () -> new Item(new Item.Properties()));
+
     public static final DeferredHolder<Item, Item> SMALL_BATTERY = ITEMS.register("small_battery", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item, Item> BATTERY = ITEMS.register("battery", () -> new Item(new Item.Properties().stacksTo(16)));
     public static final DeferredHolder<Item, Item> LARGE_BATTERY = ITEMS.register("large_battery", () -> new Item(new Item.Properties().stacksTo(2)));
 
+    public static final DeferredHolder<Item, Item> SERVICE_BOT_SPAWN_EGG = ITEMS.register("service_bot_spawn_egg", () -> new DeferredSpawnEggItem(
+            EntityRegistry.SERVICE_BOT,0xf26d07, 0xf6d5c1, new Item.Properties()
+    ));
     public static final DeferredHolder<Item, Item> HANDIBOT_SPAWN_EGG = ITEMS.register("handibot_spawn_egg", () -> new DeferredSpawnEggItem(
             EntityRegistry.HANDIBOT,0xf26d07, 0x2e453b, new Item.Properties()
     ));
-
     public static final DeferredHolder<Item, Item> ERADICATOR_SPAWN_EGG = ITEMS.register("eradicator_spawn_egg", () -> new DeferredSpawnEggItem(
             EntityRegistry.ERADICATOR,0xf26d07, 0xffb429, new Item.Properties()
     ));

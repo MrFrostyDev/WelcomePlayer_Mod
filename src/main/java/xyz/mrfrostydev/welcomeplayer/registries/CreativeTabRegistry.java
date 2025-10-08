@@ -23,6 +23,8 @@ public class CreativeTabRegistry {
                 output.accept(ItemRegistry.RETROSTEEL_BLEND_WALL.get());
 
                 output.accept(ItemRegistry.BOUNCE_PAD.get());
+                output.accept(ItemRegistry.PHASE_LINK.get());
+                output.accept(ItemRegistry.STASIS_STICK.get());
 
                 output.accept(ItemRegistry.SMALL_BATTERY.get());
                 output.accept(ItemRegistry.BATTERY.get());
@@ -34,6 +36,7 @@ public class CreativeTabRegistry {
                 output.accept(ItemRegistry.VENDOR_TOP.get());
                 output.accept(ItemRegistry.VENDOR_BOTTOM.get());
 
+                output.accept(ItemRegistry.SERVICE_BOT_SPAWN_EGG.get());
                 output.accept(ItemRegistry.HANDIBOT_SPAWN_EGG.get());
                 output.accept(ItemRegistry.ERADICATOR_SPAWN_EGG.get());
             })

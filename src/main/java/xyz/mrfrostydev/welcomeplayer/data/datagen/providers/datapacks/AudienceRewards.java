@@ -92,7 +92,6 @@ public class AudienceRewards {
         register(context, LITTLE_IRON, new ItemStack(Items.IRON_INGOT, 5), AudiencePhase.NEUTRAL);
         register(context, LITTLE_GOLD, new ItemStack(Items.GOLD_INGOT, 3), AudiencePhase.NEUTRAL);
         register(context, LITTLE_DIAMOND, new ItemStack(Items.DIAMOND, 1), AudiencePhase.NEUTRAL);
-        register(context, LITTLE_DIAMOND, new ItemStack(Items.DIAMOND, 1), AudiencePhase.NEUTRAL);
         register(context, COMMON_EMERALD, new ItemStack(Items.EMERALD, 16), AudiencePhase.NEUTRAL);
         register(context, LOTS_SMALL_BATTERY_26, new ItemStack(ItemRegistry.SMALL_BATTERY, 26), AudiencePhase.NEUTRAL);
         register(context, LOTS_SMALL_BATTERY_30, new ItemStack(ItemRegistry.SMALL_BATTERY, 30), AudiencePhase.NEUTRAL);

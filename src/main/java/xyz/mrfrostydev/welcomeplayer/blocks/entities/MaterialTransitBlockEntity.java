@@ -16,7 +16,6 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -30,9 +29,7 @@ import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import xyz.mrfrostydev.welcomeplayer.client.gui.menus.blocks.MaterialTransitMenu;
 import xyz.mrfrostydev.welcomeplayer.data.PlayerObjective;
-import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.PlayerObjectives;
 import xyz.mrfrostydev.welcomeplayer.registries.BlockRegistry;
-import xyz.mrfrostydev.welcomeplayer.registries.ItemRegistry;
 import xyz.mrfrostydev.welcomeplayer.utils.ObjectiveUtil;
 
 import java.util.ArrayList;

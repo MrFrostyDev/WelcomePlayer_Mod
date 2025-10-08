@@ -112,11 +112,10 @@ public class ObjectiveUtil {
 
         List<ServerPlayer> players = svlevel.getPlayers(p -> !p.isSpectator());
         for(ServerPlayer player : players){
-            Vec3 pos = player.getForward().normalize().scale(1.5);
             svlevel.addFreshEntity(new ItemEntity(svlevel,
-                    player.getX() + pos.x,
-                    player.getEyeHeight() + pos.y,
-                    player.getZ() + pos.z,
+                    player.getX(),
+                    player.getEyeHeight(),
+                    player.getZ(),
                     rewardList.get(rand).stack()
             ));
         }
@@ -185,9 +184,12 @@ public class ObjectiveUtil {
     }
 
     public static boolean compareStackWithObjective(Level level, PlayerObjective curObj, ItemStack stack){
+        if(curObj.is(level, PlayerObjectives.DAY_LABOR) && stack.is(ItemRegistry.RETROSTEEL)) return true;
         if(curObj.is(level, PlayerObjectives.COAL_MINER) && (stack.is(Items.COAL) || stack.is(Items.CHARCOAL))) return true;
         if(curObj.is(level, PlayerObjectives.SHORT_FUSE) && stack.is(ItemRegistry.BATTERY)) return true;
+        if(curObj.is(level, PlayerObjectives.HUMAN_CHARGER) && stack.is(ItemRegistry.BATTERY)) return true;
         if(curObj.is(level, PlayerObjectives.WONDER_EGGS) && stack.is(Items.GOLDEN_APPLE)) return true;
+        if(curObj.is(level, PlayerObjectives.RICH_DISPLAY) && stack.is(Items.DIAMOND)) return true;
         return false;
     }
 }

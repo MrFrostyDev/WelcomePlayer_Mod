@@ -6,6 +6,7 @@ import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.TagRegistry;
 
 import java.util.concurrent.CompletableFuture;
@@ -37,6 +38,34 @@ public class EntityTypeTagsProvider extends net.minecraft.data.tags.EntityTypeTa
                         EntityType.MOOSHROOM,
                         EntityType.HOGLIN,
                         EntityType.RAVAGER
+                );
+
+        this.tag(TagRegistry.HOST_ROBOT)
+                .add(
+                        EntityRegistry.SERVICE_BOT.get(),
+                        EntityRegistry.HANDIBOT.get(),
+                        EntityRegistry.ERADICATOR.get()
+                );
+
+        this.tag(TagRegistry.UNDEAD)
+                .add(
+                        EntityType.SKELETON,
+                        EntityType.SKELETON_HORSE,
+                        EntityType.WITHER_SKELETON,
+                        EntityType.BOGGED,
+                        EntityType.STRAY,
+                        EntityType.ZOMBIE,
+                        EntityType.ZOMBIE_VILLAGER,
+                        EntityType.ZOMBIE_HORSE,
+                        EntityType.HUSK,
+                        EntityType.DROWNED
+                );
+
+        this.tag(TagRegistry.ARACHNID)
+                .add(
+                        EntityType.SPIDER,
+                        EntityType.CAVE_SPIDER,
+                        EntityType.SILVERFISH
                 );
     }
 }

@@ -15,6 +15,8 @@ import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.TagRegistry;
 import xyz.mrfrostydev.welcomeplayer.utils.ObjectiveUtil;
 
+import java.util.function.Predicate;
+
 @EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
 public class ObjectiveKillEvents {
 
@@ -26,11 +28,19 @@ public class ObjectiveKillEvents {
 
 
         LivingEntity entity = event.getEntity();
+
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.METAL_ROSES, EntityType.IRON_GOLEM)) return;
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.DUCK_HUNT, EntityType.CHICKEN)) return;
+
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.THE_SHEPARD, e -> e.getType().equals(EntityType.SHEEP) || e.getType().equals(EntityType.GOAT))) return;
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.PEST_CONTROL, TagRegistry.ARACHNID)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.ZOMBIE_KILLER, EntityType.ZOMBIE)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.THE_BUTCHER, TagRegistry.ANIMAL)) return;
+
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.SET_BATTLE, TagRegistry.HOST_ROBOT)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.MONSTER_HUNTER, TagRegistry.UNDEAD)) return;
-        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.SET_BATTLE, TagRegistry.HOST_ROBOT)) return;
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.PURE_VIOLENCE, e -> !e.getType().equals(EntityType.PLAYER))) return;
+
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.GOLIATH, EntityRegistry.ERADICATOR.get())) return;
     }
 
@@ -42,6 +52,12 @@ public class ObjectiveKillEvents {
     // |--------------------------------------------------------------------------------|
     // |------------------------------------Methods-------------------------------------|
     // |--------------------------------------------------------------------------------|
+
+    public static boolean compareEntityWithObjective(ServerLevel svlevel, LivingEntity entity, ResourceKey<PlayerObjective> event, Predicate<LivingEntity> predicate){
+        boolean isTrue = ObjectiveUtil.isCurrentObjective(svlevel, event) && predicate.test(entity);
+        if(isTrue) ObjectiveUtil.addProgress(svlevel, 1);
+        return isTrue;
+    }
 
     public static boolean compareEntityWithObjective(ServerLevel svlevel, LivingEntity entity, ResourceKey<PlayerObjective> event, EntityType<?> entityType){
         boolean isTrue = ObjectiveUtil.isCurrentObjective(svlevel, event) && entity.getType().equals(entityType);

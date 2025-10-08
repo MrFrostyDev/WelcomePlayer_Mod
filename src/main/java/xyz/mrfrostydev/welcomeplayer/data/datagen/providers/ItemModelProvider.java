@@ -13,6 +13,7 @@ public class ItemModelProvider extends net.neoforged.neoforge.client.model.gener
 
     @Override
     protected void registerModels() {
+        withExistingParent(ItemRegistry.SERVICE_BOT_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ItemRegistry.HANDIBOT_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ItemRegistry.ERADICATOR_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
     }

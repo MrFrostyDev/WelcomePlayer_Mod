@@ -41,4 +41,9 @@ public class TagRegistry {
             ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "host_robot")
     );
 
+    public static final TagKey<EntityType<?>> ARACHNID = TagKey.create(
+            Registries.ENTITY_TYPE,
+            ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "arachnid")
+    );
+
 }
