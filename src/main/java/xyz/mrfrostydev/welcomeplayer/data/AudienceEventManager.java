@@ -9,6 +9,8 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.server.level.ServerLevel;
 import xyz.mrfrostydev.welcomeplayer.registries.DatapackRegistry;
+import xyz.mrfrostydev.welcomeplayer.utils.AudienceEventUtil;
+import xyz.mrfrostydev.welcomeplayer.utils.AudienceUtil;
 
 import java.util.HashMap;
 import java.util.List;

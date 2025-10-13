@@ -13,8 +13,12 @@ import java.util.List;
 
 public class VendorUtil {
     public static final int SMALL_BATTERY_VALUE = 1;
-    public static final int BATTERY_VALUE = 4;
+    public static final int BATTERY_VALUE = 6;
     public static final int LARGE_BATTERY_VALUE = 24;
+
+    public static final int MAX_COMMON = 8;
+    public static final int MAX_UNCOMMON = 5;
+    public static final int MAX_RARE = 3;
 
     /* Server Specific Handling */
     public static VendorShopData computeVendorData(ServerLevel svlevel){

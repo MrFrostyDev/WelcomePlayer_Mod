@@ -25,6 +25,7 @@ public class ObjectiveDamageEvents {
         if(
                 obj.is(svlevel, PlayerObjectives.SUFFERING)
                 || obj.is(svlevel, PlayerObjectives.PAIN)
+                || obj.is(svlevel, PlayerObjectives.CRUEL_SUFFERING)
         ){
             if(victim.getType().equals(EntityType.PLAYER)){
                 ObjectiveUtil.addProgress(svlevel, (int)damage);

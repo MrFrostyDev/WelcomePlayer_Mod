@@ -83,6 +83,19 @@ public class VendorBlock extends HorizontalDirectionalBlock implements EntityBlo
         return InteractionResult.CONSUME;
     }
 
+    @Override
+    protected void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        BlockPos topPos = pos.above();
+        BlockPos belowPos = pos.below();
+        if(level.getBlockState(topPos).is(BlockRegistry.VENDOR_TOP)){
+            level.destroyBlock(topPos, false);
+        }
+        if(level.getBlockState(belowPos).is(BlockRegistry.VENDOR_BOTTOM)){
+            level.destroyBlock(belowPos, false);
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
     public boolean isTop() {
         return this.defaultBlockState().getValue(TOP);
     }

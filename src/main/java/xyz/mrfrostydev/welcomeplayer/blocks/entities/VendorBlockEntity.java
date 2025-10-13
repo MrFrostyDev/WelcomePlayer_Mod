@@ -26,10 +26,7 @@ import xyz.mrfrostydev.welcomeplayer.utils.AudienceUtil;
 import xyz.mrfrostydev.welcomeplayer.utils.VendorUtil;
 
 public class VendorBlockEntity extends BlockEntity implements MenuProvider {
-    public static final int MAX_COMMON = 10;
-    public static final int MAX_UNCOMMON = 6;
-    public static final int MAX_RARE = 2;
-    public static final int CONTAINER_SIZE = MAX_COMMON + MAX_UNCOMMON + MAX_RARE;
+    public static final int CONTAINER_SIZE = VendorUtil.MAX_COMMON + VendorUtil.MAX_UNCOMMON + VendorUtil.MAX_RARE;
 
     private boolean isActive;
     private int interest;

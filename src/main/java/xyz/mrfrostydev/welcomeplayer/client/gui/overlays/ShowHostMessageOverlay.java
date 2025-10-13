@@ -110,7 +110,7 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
         poseStack.rotateAround(new Quaternionf().fromAxisAngleDeg(0, 0, -1, rotDegrees), posX, posY, 0);
 
         int yOffset = 0;
-        for(FormattedCharSequence displayTextSeparated : font.split(Component.translatable(textReader.getDisplayText()), MAX_LINE_WIDTH)){
+        for(FormattedCharSequence displayTextSeparated : font.split(Component.literal(textReader.getDisplayText()), MAX_LINE_WIDTH)){
             guiGraphics.drawCenteredString(font, displayTextSeparated,
                     posX, posY + yOffset,
                     0xfa692a);

@@ -50,6 +50,7 @@ public class AnimatedSprite {
         this.posX = posX;
         this.posY = posY;
         this.imageHeight = textureHeight / totalFrames;
+        this.isVisible = true;
     }
 
     public void render(GuiGraphics guiGraphics, int tick, float partialTick){

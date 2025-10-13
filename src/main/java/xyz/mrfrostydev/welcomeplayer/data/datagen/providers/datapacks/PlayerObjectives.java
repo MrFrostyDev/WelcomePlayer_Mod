@@ -21,6 +21,14 @@ public class PlayerObjectives {
     // |--------------------------Furious---------------------------|
     // |------------------------------------------------------------|
 
+    public static final ResourceKey<PlayerObjective> CRUEL_SUFFERING = registerEntry("furious_cruel_suffering", 100, true, createDialog(
+            "dialog.welcomeplayer.objective.cruel_suffering.0",
+            "dialog.welcomeplayer.objective.cruel_suffering.1",
+            "dialog.welcomeplayer.objective.cruel_suffering.2",
+            "dialog.welcomeplayer.objective.cruel_suffering.3"
+    ));
+
+
     public static final ResourceKey<PlayerObjective> BROKEN_BOXING = registerEntry("furious_broken_boxing", 8, true, createDialog(
             "dialog.welcomeplayer.objective.broken_boxing.0",
             "dialog.welcomeplayer.objective.broken_boxing.1"
@@ -36,13 +44,17 @@ public class PlayerObjectives {
     // |------------------------------------------------------------|
 
     public static final ResourceKey<PlayerObjective> DAY_LABOR = registerEntry("bored_day_labor", 6, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.day_labour.0",
+            "dialog.welcomeplayer.objective.day_labour.1",
+            "dialog.welcomeplayer.objective.day_labour.2",
+            "dialog.welcomeplayer.objective.day_labour.3"
     ));
 
     public static final ResourceKey<PlayerObjective> METAL_ROSES = registerEntry("bored_metal_roses", 2, false, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.metal_roses.0",
+            "dialog.welcomeplayer.objective.metal_roses.1",
+            "dialog.welcomeplayer.objective.metal_roses.2",
+            "dialog.welcomeplayer.objective.metal_roses.3"
     ));
 
     public static final ResourceKey<PlayerObjective> DOG_PERSON = registerEntry("bored_dog_person", 1, false, createDialog(
@@ -53,96 +65,150 @@ public class PlayerObjectives {
     ));
 
     public static final ResourceKey<PlayerObjective> CAT_PERSON = registerEntry("bored_cat_person", 1, false, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.cat_person.0",
+            "dialog.welcomeplayer.objective.cat_person.1",
+            "dialog.welcomeplayer.objective.cat_person.2",
+            "dialog.welcomeplayer.objective.cat_person.3"
     ));
 
     public static final ResourceKey<PlayerObjective> SHORT_FUSE = registerEntry("bored_short_fuse", 10, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.short_fuse.0",
+            "dialog.welcomeplayer.objective.short_fuse.1",
+            "dialog.welcomeplayer.objective.short_fuse.2"
     ));
 
-    public static final ResourceKey<PlayerObjective> DUCK_HUNT = registerEntry("bored_duck_hunt", 10, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+    public static final ResourceKey<PlayerObjective> DUCK_HUNT = registerEntry("bored_duck_hunt", 12, true, createDialog(
+            "dialog.welcomeplayer.objective.duck_hunt.0",
+            "dialog.welcomeplayer.objective.duck_hunt.1",
+            "dialog.welcomeplayer.objective.duck_hunt.2",
+            "dialog.welcomeplayer.objective.duck_hunt.3"
     ));
 
     public static final ResourceKey<PlayerObjective> PAIN = registerEntry("bored_pain", 50, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.pain.0",
+            "dialog.welcomeplayer.objective.pain.1",
+            "dialog.welcomeplayer.objective.pain.2",
+            "dialog.welcomeplayer.objective.pain.3"
     ));
 
     // |------------------------------------------------------------|
     // |--------------------------Neutral---------------------------|
     // |------------------------------------------------------------|
 
-    public static final ResourceKey<PlayerObjective> THE_SHEPARD = registerEntry("neutral_the_shepard", 10, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+    public static final ResourceKey<PlayerObjective> THE_SHEPHERD = registerEntry("neutral_the_shepherd", 10, true, createDialog(
+            "dialog.welcomeplayer.objective.the_shepherd.0",
+            "dialog.welcomeplayer.objective.the_shepherd.1",
+            "dialog.welcomeplayer.objective.the_shepherd.2",
+            "dialog.welcomeplayer.objective.the_shepherd.3",
+            "dialog.welcomeplayer.objective.the_shepherd.4"
     ));
 
     public static final ResourceKey<PlayerObjective> PEST_CONTROL = registerEntry("neutral_pest_control", 12, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.pest_control.0",
+            "dialog.welcomeplayer.objective.pest_control.1",
+            "dialog.welcomeplayer.objective.pest_control.2",
+            "dialog.welcomeplayer.objective.pest_control.3"
     ));
 
     public static final ResourceKey<PlayerObjective> THE_BUTCHER = registerEntry("neutral_the_butcher", 20, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.the_butcher.0",
+            "dialog.welcomeplayer.objective.the_butcher.1",
+            "dialog.welcomeplayer.objective.the_butcher.2"
     ));
 
     public static final ResourceKey<PlayerObjective> EXPLORER = registerEntry("neutral_explorer", 1, false, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.explorer.0",
+            "dialog.welcomeplayer.objective.explorer.1",
+            "dialog.welcomeplayer.objective.explorer.2",
+            "dialog.welcomeplayer.objective.explorer.3"
     ));
 
-    public static final ResourceKey<PlayerObjective> DESTRUCTION = registerEntry("neutral_destruction", 12, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+    public static final ResourceKey<PlayerObjective> DEMOLITION = registerEntry("neutral_demolition", 15, true, createDialog(
+            "dialog.welcomeplayer.objective.demolition.0",
+            "dialog.welcomeplayer.objective.demolition.1",
+            "dialog.welcomeplayer.objective.demolition.2",
+            "dialog.welcomeplayer.objective.demolition.3"
     ));
 
     public static final ResourceKey<PlayerObjective> ZOMBIE_KILLER = registerEntry("neutral_zombie_killer", 10, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.zombie_killer.0",
+            "dialog.welcomeplayer.objective.zombie_killer.1",
+            "dialog.welcomeplayer.objective.zombie_killer.2"
     ));
 
     public static final ResourceKey<PlayerObjective> COAL_MINER = registerEntry("neutral_coal_miner", 30, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.coal_miner.0",
+            "dialog.welcomeplayer.objective.coal_miner.1",
+            "dialog.welcomeplayer.objective.coal_miner.2",
+            "dialog.welcomeplayer.objective.coal_miner.3"
     ));
 
-    public static final ResourceKey<PlayerObjective> HUMAN_CHARGER = registerEntry("neutral_human_charger", 16, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+    public static final ResourceKey<PlayerObjective> RATIONING = registerEntry("neutral_rationing", 50, true, createDialog(
+            "dialog.welcomeplayer.objective.rationing.0",
+            "dialog.welcomeplayer.objective.rationing.1",
+            "dialog.welcomeplayer.objective.rationing.2",
+            "dialog.welcomeplayer.objective.rationing.3"
     ));
+
 
     // |------------------------------------------------------------|
     // |-------------------------Interested-------------------------|
     // |------------------------------------------------------------|
 
-    public static final ResourceKey<PlayerObjective> MONSTER_HUNTER = registerEntry("interested_monster_hunter", 30, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+    public static final ResourceKey<PlayerObjective> MONSTER_HUNTER = registerEntry("interested_monster_hunter", 25, true, createDialog(
+            "dialog.welcomeplayer.objective.monster_hunter.0",
+            "dialog.welcomeplayer.objective.monster_hunter.1",
+            "dialog.welcomeplayer.objective.monster_hunter.2",
+            "dialog.welcomeplayer.objective.monster_hunter.3"
     ));
 
     public static final ResourceKey<PlayerObjective> SET_BATTLE = registerEntry("interested_set_battle", 5, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.set_battle.0",
+            "dialog.welcomeplayer.objective.set_battle.1",
+            "dialog.welcomeplayer.objective.set_battle.2",
+            "dialog.welcomeplayer.objective.set_battle.3",
+            "dialog.welcomeplayer.objective.set_battle.4"
     ));
 
     public static final ResourceKey<PlayerObjective> SURVEYOR = registerEntry("interested_surveyor", 2, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.surveyor.0",
+            "dialog.welcomeplayer.objective.surveyor.1",
+            "dialog.welcomeplayer.objective.surveyor.2",
+            "dialog.welcomeplayer.objective.surveyor.3",
+            "dialog.welcomeplayer.objective.surveyor.4"
     ));
 
     public static final ResourceKey<PlayerObjective> PURE_VIOLENCE = registerEntry("interested_pure_violence", 50, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.pure_violence.0",
+            "dialog.welcomeplayer.objective.pure_violence.1",
+            "dialog.welcomeplayer.objective.pure_violence.2"
     ));
 
     public static final ResourceKey<PlayerObjective> RICH_DISPLAY = registerEntry("interested_rich_display", 16, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.rich_display.0",
+            "dialog.welcomeplayer.objective.rich_display.1",
+            "dialog.welcomeplayer.objective.rich_display.2",
+            "dialog.welcomeplayer.objective.rich_display.3",
+            "dialog.welcomeplayer.objective.rich_display.4"
+    ));
+
+    public static final ResourceKey<PlayerObjective> HUMAN_CHARGER = registerEntry("interested_human_charger", 16, true, createDialog(
+            "dialog.welcomeplayer.objective.human_charger.0",
+            "dialog.welcomeplayer.objective.human_charger.1",
+            "dialog.welcomeplayer.objective.human_charger.2"
+    ));
+
+    public static final ResourceKey<PlayerObjective> DESTRUCTION = registerEntry("interested_destruction", 15, true, createDialog(
+            "dialog.welcomeplayer.objective.destruction.0",
+            "dialog.welcomeplayer.objective.destruction.1",
+            "dialog.welcomeplayer.objective.destruction.2"
+    ));
+
+    public static final ResourceKey<PlayerObjective> CARNIFEROUS_CROWD = registerEntry("interested_carniferous_crowd", 100, true, createDialog(
+            "dialog.welcomeplayer.objective.carniferous_crowd.0",
+            "dialog.welcomeplayer.objective.carniferous_crowd.1",
+            "dialog.welcomeplayer.objective.carniferous_crowd.2",
+            "dialog.welcomeplayer.objective.carniferous_crowd.3"
     ));
 
     // |------------------------------------------------------------|
@@ -150,23 +216,32 @@ public class PlayerObjectives {
     // |------------------------------------------------------------|
 
     public static final ResourceKey<PlayerObjective> SUFFERING = registerEntry("thrilled_suffering", 100, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.suffering.0",
+            "dialog.welcomeplayer.objective.suffering.1",
+            "dialog.welcomeplayer.objective.suffering.2",
+            "dialog.welcomeplayer.objective.suffering.3"
     ));
 
     public static final ResourceKey<PlayerObjective> GOLIATH = registerEntry("thrilled_goliath", 1, false, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.goliath.0",
+            "dialog.welcomeplayer.objective.goliath.1",
+            "dialog.welcomeplayer.objective.goliath.2",
+            "dialog.welcomeplayer.objective.goliath.3"
     ));
 
     public static final ResourceKey<PlayerObjective> NIGHT_KILLER = registerEntry("thrilled_night_killer", 1, false, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.night_killer.0",
+            "dialog.welcomeplayer.objective.night_killer.1",
+            "dialog.welcomeplayer.objective.night_killer.2",
+            "dialog.welcomeplayer.objective.night_killer.3"
     ));
 
     public static final ResourceKey<PlayerObjective> WONDER_EGGS = registerEntry("thrilled_wonder_eggs", 10, true, createDialog(
-            "dialog.welcomeplayer.objective.0",
-            "dialog.welcomeplayer.objective.1"
+            "dialog.welcomeplayer.objective.wonder_eggs.0",
+            "dialog.welcomeplayer.objective.wonder_eggs.1",
+            "dialog.welcomeplayer.objective.wonder_eggs.2",
+            "dialog.welcomeplayer.objective.wonder_eggs.3",
+            "dialog.welcomeplayer.objective.wonder_eggs.4"
     ));
 
 

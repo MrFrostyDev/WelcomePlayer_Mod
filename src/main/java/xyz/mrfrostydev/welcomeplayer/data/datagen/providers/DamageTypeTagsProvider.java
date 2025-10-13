@@ -25,7 +25,8 @@ public class DamageTypeTagsProvider extends net.minecraft.data.tags.DamageTypeTa
 
         this.tag(DamageTypeTags.NO_KNOCKBACK)
                 .add(
-                        ModDamageTypes.SAW
+                        ModDamageTypes.SAW,
+                        ModDamageTypes.SHOCK
                 );
     }
 }

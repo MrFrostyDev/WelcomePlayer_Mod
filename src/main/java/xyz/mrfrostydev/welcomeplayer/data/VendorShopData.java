@@ -7,33 +7,31 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.SavedData;
+import xyz.mrfrostydev.welcomeplayer.blocks.entities.VendorBlockEntity;
 import xyz.mrfrostydev.welcomeplayer.registries.DatapackRegistry;
+import xyz.mrfrostydev.welcomeplayer.utils.VendorUtil;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class VendorShopData extends SavedData {
-    public static final int MAX_COMMON = 6;
-    public static final int MAX_UNCOMMON = 4;
-    public static final int MAX_RARE = 2;
-
     public static final int COMMON_MIN_FAVOUR = 0;
-    public static final int UNCOMMON_MIN_FAVOUR = 100;
-    public static final int RARE_MIN_FAVOUR = 500;
+    public static final int UNCOMMON_MIN_FAVOUR = 400;
+    public static final int RARE_MIN_FAVOUR = 1000;
 
     public static final int DEFAULT_RESTOCK_TIME = 2000;
 
-    private TreeSet<VendorItem> stockTreeSet;
+    private final List<VendorItem> stockList;
     private int restockTime;
     private static final Comparator<VendorItem> FLESH_MERCHANT_COMPARATOR = new Comparator<VendorItem>() {
         @Override
         public int compare(VendorItem c1, VendorItem c2) {
-            return Integer.compare(c1.minFavour(), c2.minFavour());
+            return Integer.compare(c1.minInterest(), c2.minInterest());
         }
     };
 
     private VendorShopData(int restockTime){
-        this.stockTreeSet = new TreeSet<>(FLESH_MERCHANT_COMPARATOR);
+        this.stockList = new ArrayList<>(VendorBlockEntity.CONTAINER_SIZE);
         this.restockTime = restockTime;
     }
 
@@ -42,13 +40,12 @@ public class VendorShopData extends SavedData {
     }
 
     public VendorShopData(List<VendorItem> list, int restockTime){
-        this.stockTreeSet = new TreeSet<VendorItem>(FLESH_MERCHANT_COMPARATOR);
-        stockTreeSet.addAll(list);
+        this.stockList = list;
         this.restockTime = restockTime;
     }
 
     public List<VendorItem> getStockList() {
-        return stockTreeSet.stream().toList();
+        return stockList.stream().toList();
     }
 
     public int getRestockTime() {
@@ -56,7 +53,7 @@ public class VendorShopData extends SavedData {
     }
 
     public boolean isEmpty(){
-        return stockTreeSet.isEmpty();
+        return stockList.isEmpty();
     }
 
     public void restockTick(ServerLevel svlevel){
@@ -65,36 +62,41 @@ public class VendorShopData extends SavedData {
             restockTime = DEFAULT_RESTOCK_TIME;
             this.randomizeSelection(svlevel);
         }
+        setDirty();
     }
 
     public void randomizeSelection(Level level){
         List<VendorItem> allMerchantItems = level.registryAccess().registryOrThrow(DatapackRegistry.VENDOR_ITEMS).stream().collect(Collectors.toList());
-        List<VendorItem> commonItems = new ArrayList<>();
-        List<VendorItem> uncommonItems = new ArrayList<>(MAX_UNCOMMON);
-        List<VendorItem> rareItems = new ArrayList<>(MAX_RARE);
+        List<VendorItem> commonItems = new ArrayList<>(VendorUtil.MAX_COMMON);
+        List<VendorItem> uncommonItems = new ArrayList<>(VendorUtil.MAX_UNCOMMON);
+        List<VendorItem> rareItems = new ArrayList<>(VendorUtil.MAX_RARE);
 
         Collections.shuffle(allMerchantItems);
 
         for(VendorItem item : allMerchantItems){
-            boolean commonFull = commonItems.size() >= MAX_COMMON;
-            boolean uncommonFull = uncommonItems.size() >= MAX_UNCOMMON;
-            boolean rareFull = rareItems.size() >= MAX_RARE;
+            boolean commonFull = commonItems.size() >= VendorUtil.MAX_COMMON;
+            boolean uncommonFull = uncommonItems.size() >= VendorUtil.MAX_UNCOMMON;
+            boolean rareFull = rareItems.size() >= VendorUtil.MAX_RARE;
 
-            if(item.minFavour() >= COMMON_MIN_FAVOUR && !commonFull){
+            if(item.minInterest() >= COMMON_MIN_FAVOUR && item.minInterest() < UNCOMMON_MIN_FAVOUR && !commonFull){
                 commonItems.add(item);
             }
-            else if(item.minFavour() >= UNCOMMON_MIN_FAVOUR && !uncommonFull){
+            else if(item.minInterest() >= UNCOMMON_MIN_FAVOUR && item.minInterest() < RARE_MIN_FAVOUR && !uncommonFull){
                 uncommonItems.add(item);
             }
-            else if(item.minFavour() >= RARE_MIN_FAVOUR && !rareFull){
+            else if(item.minInterest() >= RARE_MIN_FAVOUR && !rareFull){
                 rareItems.add(item);
             }
 
             if(commonFull && uncommonFull && rareFull) break;
         }
 
-        stockTreeSet.clear();
-        stockTreeSet.addAll(allMerchantItems);
+        stockList.clear();
+        stockList.addAll(commonItems);
+        stockList.addAll(uncommonItems);
+        stockList.addAll(rareItems);
+        stockList.sort(FLESH_MERCHANT_COMPARATOR);
+        setDirty();
     }
 
     // |----------------------------------------------|

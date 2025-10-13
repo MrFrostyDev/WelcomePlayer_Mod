@@ -58,7 +58,7 @@ public class ObjectiveTrackerOverlay implements LayeredDraw.Layer {
 
         if(!data.getGoingObjective().is(objective)){
             objective = data.getGoingObjective();
-            textReader.addPermenantText(Component.translatable("objective.welcomeplayer." + objective.id()).toString());
+            textReader.addPermenantText(Component.translatable("objective.welcomeplayer." + objective.id(), data.getMaxProgress()).getString());
         }
 
         textReader.tick();
@@ -70,8 +70,11 @@ public class ObjectiveTrackerOverlay implements LayeredDraw.Layer {
         int posX = 15;
         int posY = ((guiGraphics.guiHeight() / 2) - 40);
 
+        if(font.getSplitter().stringWidth(textReader.getDisplayText()) > MAX_LINE_WIDTH)
+            posY -= font.lineHeight;
+
         int yOffset = 0;
-        for(FormattedCharSequence displayTextSeparated : font.split(Component.translatable(textReader.getDisplayText()), MAX_LINE_WIDTH)){
+        for(FormattedCharSequence displayTextSeparated : font.split(Component.literal(textReader.getDisplayText()), MAX_LINE_WIDTH)){
             GraphicUtil.drawStringWithScale(guiGraphics, font, displayTextSeparated,
                     posX, posY + yOffset, 0.8F, 0xfa692a, true);
 

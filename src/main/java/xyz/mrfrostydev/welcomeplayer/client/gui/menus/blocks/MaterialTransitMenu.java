@@ -8,7 +8,6 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
-import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.blocks.entities.MaterialTransitBlockEntity;
 import xyz.mrfrostydev.welcomeplayer.registries.BlockRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.MenuRegistry;

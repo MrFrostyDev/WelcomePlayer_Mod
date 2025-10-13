@@ -1,9 +1,10 @@
 package xyz.mrfrostydev.welcomeplayer.registries;
 
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -13,13 +14,9 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.blocks.*;
 import xyz.mrfrostydev.welcomeplayer.blocks.BeaconBlock;
-import xyz.mrfrostydev.welcomeplayer.blocks.MaterialTransitBlock;
-import xyz.mrfrostydev.welcomeplayer.blocks.ShowActivatorBlock;
-import xyz.mrfrostydev.welcomeplayer.blocks.VendorBlock;
-import xyz.mrfrostydev.welcomeplayer.blocks.entities.BeaconBlockEntity;
-import xyz.mrfrostydev.welcomeplayer.blocks.entities.MaterialTransitBlockEntity;
-import xyz.mrfrostydev.welcomeplayer.blocks.entities.VendorBlockEntity;
+import xyz.mrfrostydev.welcomeplayer.blocks.entities.*;
 
 import java.util.function.Supplier;
 
@@ -80,15 +77,122 @@ public class BlockRegistry {
             )
     );
 
+    public static final DeferredHolder<Block, Block> RETROSTEEL_ORANGE_TILES = BLOCKS.register(
+            "retrosteel_orange_tiles",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETROSTEEL_WHITE_TILES = BLOCKS.register(
+            "retrosteel_white_tiles",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETROSTEEL_METAL_BLOCK = BLOCKS.register(
+            "retrosteel_metal_block",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETROSTEEL_BEAMS = BLOCKS.register(
+            "retrosteel_beams",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETRO_PATTERN_WOOL = BLOCKS.register(
+            "retro_pattern_wool",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BROWN)
+                    .instrument(NoteBlockInstrument.GUITAR)
+                    .strength(0.8F)
+                    .sound(SoundType.WOOL)
+                    .ignitedByLava()
+            )
+    );
+
+    // |--------------------------------------------------------------------------------------|
+    // |-------------------------------------Decorations--------------------------------------|
+    // |--------------------------------------------------------------------------------------|
+
+    public static final DeferredHolder<Block, Block> RETRO_PATTERN_CARPET = BLOCKS.register(
+            "retro_pattern_carpet",
+            () -> new WoolCarpetBlock(
+                    DyeColor.BROWN,
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_BROWN)
+                            .strength(0.1F).sound(SoundType.WOOL)
+                            .ignitedByLava()
+            )
+    );
+
+    // |--------------------------------------------------------------------------------------|
+    // |----------------------------------------Metal-----------------------------------------|
+    // |--------------------------------------------------------------------------------------|
+
+    public static final DeferredHolder<Block, Block> RETROSTEEL_ORE = BLOCKS.register(
+            "retrosteel_ore",
+            () -> new DropExperienceBlock(UniformInt.of(0, 2), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0F, 3.0F)
+                    .sound(SoundType.AMETHYST)
+            )
+    );
+
+
     // |--------------------------------------------------------------------------------------|
     // |------------------------------------Block Entities------------------------------------|
     // |--------------------------------------------------------------------------------------|
+
+    public static final DeferredHolder<Block, Block> HOST_SCREEN = BLOCKS.register(
+            "host_screen",
+            () -> new HostScreenBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .mapColor(MapColor.METAL)
+                    .strength(-1.0F, 3600000.0F)
+                    .noLootTable()
+                    .pushReaction(PushReaction.IGNORE)
+                    .isValidSpawn(Blocks::never)
+            )
+    );
+
+    public static final Supplier<BlockEntityType<HostScreenBlockEntity>> HOST_SCREEN_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "host_screen_entity",
+            () -> BlockEntityType.Builder.of(
+                    HostScreenBlockEntity::new,
+                    HOST_SCREEN.get()
+            ).build(null)
+    );
 
     public static final DeferredHolder<Block, Block> VENDOR_TOP = BLOCKS.register(
             "vendor_top",
             () -> new VendorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
-                    .strength(40F, 3600000.0F)
+                    .strength(20F, 8.0F)
                     .noLootTable()
                     .pushReaction(PushReaction.IGNORE)
                     .isValidSpawn(Blocks::never),
@@ -100,7 +204,7 @@ public class BlockRegistry {
             "vendor_bottom",
             () -> new VendorBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
-                    .strength(40F, 3600000.0F)
+                    .strength(20F, 8.0F)
                     .noLootTable()
                     .pushReaction(PushReaction.IGNORE)
                     .isValidSpawn(Blocks::never),
@@ -133,6 +237,24 @@ public class BlockRegistry {
             () -> BlockEntityType.Builder.of(
                     BeaconBlockEntity::new,
                     BEACON.get()
+            ).build(null)
+    );
+
+    public static final DeferredHolder<Block, Block> RETRO_TESLA_COIL = BLOCKS.register(
+            "retro_tesla_coil",
+            () -> new TeslaBlock(BlockBehaviour.Properties.of()
+                    .noOcclusion()
+                    .mapColor(MapColor.METAL)
+                    .strength(16.0F, 6.0F)
+                    .pushReaction(PushReaction.IGNORE)
+            )
+    );
+
+    public static final Supplier<BlockEntityType<TeslaBlockEntity>> RETRO_TESLA_COIL_ENTITY = BLOCK_ENTITY_TYPES.register(
+            "retro_tesla_coil_entity",
+            () -> BlockEntityType.Builder.of(
+                    TeslaBlockEntity::new,
+                    RETRO_TESLA_COIL.get()
             ).build(null)
     );
 

@@ -1,7 +1,9 @@
 package xyz.mrfrostydev.welcomeplayer.blocks.entities;
 
+import com.google.common.collect.ImmutableList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
@@ -12,6 +14,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
@@ -29,11 +32,13 @@ import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import xyz.mrfrostydev.welcomeplayer.client.gui.menus.blocks.MaterialTransitMenu;
 import xyz.mrfrostydev.welcomeplayer.data.PlayerObjective;
+import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.PlayerObjectives;
 import xyz.mrfrostydev.welcomeplayer.registries.BlockRegistry;
 import xyz.mrfrostydev.welcomeplayer.utils.ObjectiveUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class MaterialTransitBlockEntity extends BlockEntity implements IItemHandler, MenuProvider, GeoBlockEntity {
     public static final int CONTAINER_SIZE = 3;
@@ -110,12 +115,26 @@ public class MaterialTransitBlockEntity extends BlockEntity implements IItemHand
     }
 
     public void completeTransit(List<ItemStack> stacks){
-        int addedProgress = 0;
-        for(ItemStack stack : stacks){
-            addedProgress += stack.getCount();
-            stack.setCount(0);
-        }
         if(level instanceof ServerLevel svlevel){
+            int addedProgress = 0;
+            PlayerObjective obj = ObjectiveUtil.getGoingObjective(svlevel);
+            if(obj.is(svlevel, PlayerObjectives.RATIONING)
+               || obj.is(svlevel, PlayerObjectives.CARNIFEROUS_CROWD)
+            ){
+                for(ItemStack stack : stacks){
+                    FoodProperties food = stack.getOrDefault(DataComponents.FOOD,
+                            new FoodProperties(0, 0, false, 0, Optional.empty(), ImmutableList.of()));
+                    addedProgress += food.nutrition();
+                    stack.setCount(0);
+                }
+            }
+            else{
+                for(ItemStack stack : stacks){
+                    addedProgress += stack.getCount();
+                    stack.setCount(0);
+                }
+            }
+
             ObjectiveUtil.addProgress(svlevel, addedProgress);
         }
     }

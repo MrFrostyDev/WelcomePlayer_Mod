@@ -1,0 +1,12 @@
+{
+	"parent": "minecraft:block/cube",
+	"textures": {
+		"down": "welcomeplayer:block/retro_pattern_wool_vertical",
+		"east": "welcomeplayer:block/retro_pattern_wool_sides",
+		"north": "welcomeplayer:block/retro_pattern_wool_end",
+		"particle": "welcomeplayer:block/retro_pattern_wool_vertical",
+		"south": "welcomeplayer:block/retro_pattern_wool_end",
+		"up": "welcomeplayer:block/retro_pattern_wool_vertical",
+		"west": "welcomeplayer:block/retro_pattern_wool_sides"
+	}
+}

@@ -21,20 +21,32 @@ public class CreativeTabRegistry {
                 output.accept(ItemRegistry.RETROSTEEL_WHITE_WALL.get());
                 output.accept(ItemRegistry.RETROSTEEL_BROWN_WALL.get());
                 output.accept(ItemRegistry.RETROSTEEL_BLEND_WALL.get());
+                output.accept(ItemRegistry.RETROSTEEL_ORANGE_TILES.get());
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_TILES.get());
+                output.accept(ItemRegistry.RETROSTEEL_METAL_BLOCK.get());
+                output.accept(ItemRegistry.RETROSTEEL_BEAMS.get());
+                output.accept(ItemRegistry.RETRO_PATTERN_WOOL.get());
+                output.accept(ItemRegistry.RETRO_PATTERN_CARPET.get());
 
                 output.accept(ItemRegistry.BOUNCE_PAD.get());
                 output.accept(ItemRegistry.PHASE_LINK.get());
                 output.accept(ItemRegistry.STASIS_STICK.get());
+                output.accept(ItemRegistry.SURVEILLANCE_PAD.get());
 
                 output.accept(ItemRegistry.SMALL_BATTERY.get());
                 output.accept(ItemRegistry.BATTERY.get());
                 output.accept(ItemRegistry.LARGE_BATTERY.get());
+
+                output.accept(ItemRegistry.RETROSTEEL_ORE.get());
+                output.accept(ItemRegistry.RAW_RETROSTEEL.get());
+                output.accept(ItemRegistry.RETROSTEEL_INGOT.get());
 
                 output.accept(ItemRegistry.SHOW_ACTIVATOR.get());
                 output.accept(ItemRegistry.MATERIAL_TRANSIT.get());
                 output.accept(ItemRegistry.BEACON.get());
                 output.accept(ItemRegistry.VENDOR_TOP.get());
                 output.accept(ItemRegistry.VENDOR_BOTTOM.get());
+                output.accept(ItemRegistry.RETRO_TESLA_COIL.get());
 
                 output.accept(ItemRegistry.SERVICE_BOT_SPAWN_EGG.get());
                 output.accept(ItemRegistry.HANDIBOT_SPAWN_EGG.get());

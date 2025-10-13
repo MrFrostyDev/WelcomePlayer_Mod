@@ -60,14 +60,15 @@ public class VendorScreen extends AbstractContainerScreen<VendorMenu> {
         super.init();
         int posX = (this.width / 2) - 95;
         int posY = (this.height / 2) - 72;
-        for(int i = 0; i< VendorBlockEntity.CONTAINER_SIZE; i++){
-            this.addRenderableWidget(new VendorOptionWidget(i, posX, posY, UNLOCK_TEXTURE_WIDTH, UNLOCK_TEXTURE_HEIGHT, null));
-
-            posX += UNLOCK_TEXTURE_WIDTH + 2;
-            if(i % 4 == 0){
+        for(int i = 0; i < VendorBlockEntity.CONTAINER_SIZE; i++){
+            if(i % 4 == 0 && i != 0){
                 posY += UNLOCK_TEXTURE_HEIGHT + 5;
+                posX = (this.width / 2) - 95;
             }
+            this.addRenderableWidget(new VendorOptionWidget(i, posX, posY, UNLOCK_TEXTURE_WIDTH, UNLOCK_TEXTURE_HEIGHT, null));
+            posX += UNLOCK_TEXTURE_WIDTH + 2;
         }
+
     }
 
     @Override
@@ -182,8 +183,8 @@ public class VendorScreen extends AbstractContainerScreen<VendorMenu> {
                     );
                 }
 
-                int posXItem = getX() + ((this.width - 16) / 2);
-                int posYItem = getY() + ((this.height - 16) / 2);
+                int posXItem = getX() + 9;
+                int posYItem = getY() + ((this.height - 16) / 2) + 1;
                 guiGraphics.renderItem(focusStack, posXItem, posYItem);
                 guiGraphics.renderItemDecorations(font, focusStack, posXItem, posYItem);
             }
@@ -209,7 +210,7 @@ public class VendorScreen extends AbstractContainerScreen<VendorMenu> {
 
         private boolean shopItemAvailable(){
             return menu.getShopItems().size() > index
-                    && menu.data.get(0) >= menu.getShopItems().get(index).minFavour();
+                    && menu.data.get(0) >= menu.getShopItems().get(index).minInterest();
         }
     }
 }

@@ -98,7 +98,7 @@ public class WelcomeplayerCommands {
             };
             AudienceUtil.setMood(svlevel, mood);
             AudienceUtil.syncToClients(svlevel);
-            source.sendSuccess(() -> Component.translatable("commands.welcomeplayer.mood.set", AudienceUtil.getMood(svlevel)), true);
+            source.sendSuccess(() -> Component.translatable("commands.welcomeplayer.mood.set", AudienceUtil.getMood(svlevel).mood()), true);
         }
         return value;
     }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "welcomeplayer:block/retro_pattern_wool_vertical"
+  }
+}

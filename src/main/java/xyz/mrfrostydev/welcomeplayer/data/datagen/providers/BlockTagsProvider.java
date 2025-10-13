@@ -22,7 +22,22 @@ public class BlockTagsProvider extends net.neoforged.neoforge.common.data.BlockT
                 .add(
                         BlockRegistry.RETROSTEEL_BLEND_WALL.get(),
                         BlockRegistry.RETROSTEEL_WHITE_WALL.get(),
-                        BlockRegistry.RETROSTEEL_BROWN_WALL.get()
+                        BlockRegistry.RETROSTEEL_BROWN_WALL.get(),
+                        BlockRegistry.RETROSTEEL_WHITE_TILES.get(),
+                        BlockRegistry.RETROSTEEL_ORANGE_TILES.get(),
+                        BlockRegistry.RETROSTEEL_BEAMS.get(),
+
+                        BlockRegistry.RETROSTEEL_ORE.get(),
+
+                        BlockRegistry.RETRO_TESLA_COIL.get()
+                );
+
+        this.tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(
+                        BlockRegistry.RETROSTEEL_BEAMS.get(),
+                        BlockRegistry.RETRO_TESLA_COIL.get(),
+
+                        BlockRegistry.RETROSTEEL_ORE.get()
                 );
     }
 }

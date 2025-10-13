@@ -1,0 +1,6 @@
+{
+	"parent": "minecraft:block/cube_all",
+	"textures": {
+		"all": "welcomeplayer:block/retrosteel_beams_cube"
+	}
+}

@@ -32,7 +32,7 @@ public class ObjectiveKillEvents {
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.METAL_ROSES, EntityType.IRON_GOLEM)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.DUCK_HUNT, EntityType.CHICKEN)) return;
 
-        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.THE_SHEPARD, e -> e.getType().equals(EntityType.SHEEP) || e.getType().equals(EntityType.GOAT))) return;
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.THE_SHEPHERD, e -> e.getType().equals(EntityType.SHEEP) || e.getType().equals(EntityType.GOAT))) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.PEST_CONTROL, TagRegistry.ARACHNID)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.ZOMBIE_KILLER, EntityType.ZOMBIE)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.THE_BUTCHER, TagRegistry.ANIMAL)) return;
@@ -42,12 +42,8 @@ public class ObjectiveKillEvents {
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.PURE_VIOLENCE, e -> !e.getType().equals(EntityType.PLAYER))) return;
 
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.GOLIATH, EntityRegistry.ERADICATOR.get())) return;
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.NIGHT_KILLER, EntityType.WARDEN)) return;
     }
-
-
-
-
-
 
     // |--------------------------------------------------------------------------------|
     // |------------------------------------Methods-------------------------------------|

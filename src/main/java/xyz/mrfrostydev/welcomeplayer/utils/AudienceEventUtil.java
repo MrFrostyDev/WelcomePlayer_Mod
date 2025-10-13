@@ -53,6 +53,7 @@ public class AudienceEventUtil {
         data.setDirty();
 
         NeoForge.EVENT_BUS.post(new AudienceEventStartedEvent(svlevel, data, event));
+        AudienceUtil.syncToClients(svlevel);
     }
 
     public static void setGoingEvent(ServerLevel svlevel, AudienceEvent event){
@@ -66,6 +67,7 @@ public class AudienceEventUtil {
         data.setDirty();
 
         NeoForge.EVENT_BUS.post(new AudienceEventStartedEvent(svlevel, data, event));
+        AudienceUtil.syncToClients(svlevel);
     }
 
     public static AudienceEvent getGoingEvent(ServerLevel svlevel){

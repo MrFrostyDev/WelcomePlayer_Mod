@@ -30,4 +30,9 @@ public class ParticleRegistry {
             "laser_charge",
             () -> new SimpleParticleType(false)
     );
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WARP_REWARD = PARTICLE_TYPES.register(
+            "warp_reward",
+            () -> new SimpleParticleType(false)
+    );
 }

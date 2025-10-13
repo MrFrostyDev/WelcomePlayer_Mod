@@ -194,13 +194,6 @@ public class LaserBlastProjectile extends Projectile implements GeoEntity {
         else{
             this.discard();
         }
-
-        if(this.level().isClientSide){
-            WelcomeplayerMain.LOGGER.debug("Client: setYRot: " + this.getYRot() + " setXRot: " + this.getXRot());
-        }
-        else{
-            WelcomeplayerMain.LOGGER.debug("Server: setYRot: " + this.getYRot() + " setXRot: " + this.getXRot());
-        }
     }
 
     protected static float lerpRotation(float currentRotation, float targetRotation) {

@@ -8,6 +8,7 @@ import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.particles.LaserBlastParticle;
 import xyz.mrfrostydev.welcomeplayer.particles.LaserChargeParticle;
 import xyz.mrfrostydev.welcomeplayer.particles.LaserTrailParticle;
+import xyz.mrfrostydev.welcomeplayer.particles.WarpRewardParticle;
 import xyz.mrfrostydev.welcomeplayer.registries.ParticleRegistry;
 
 @EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
@@ -18,5 +19,6 @@ public class ParticleRegisterEvents {
         event.registerSpriteSet(ParticleRegistry.LASER_BLAST.get(), LaserBlastParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.LASER_TRAIL.get(), LaserTrailParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.LASER_CHARGE.get(), LaserChargeParticle.Provider::new);
+        event.registerSpriteSet(ParticleRegistry.WARP_REWARD.get(), WarpRewardParticle.Provider::new);
     }
 }

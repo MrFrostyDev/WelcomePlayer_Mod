@@ -129,14 +129,19 @@ public class AudienceUtil {
         AudiencePhase phase = getPhase(svlevel);
 
         List<AudienceMood> possibleMoods = new ArrayList<>();
-        possibleMoods.add(AudienceMood.NEUTRAL);
 
-        if(phase.equals(AudiencePhase.THRILLED) || phase.equals(AudiencePhase.INTERESTED)){
+        if(phase.equals(AudiencePhase.THRILLED) ){
             possibleMoods.add(AudienceMood.HAPPY);
+            possibleMoods.add(AudienceMood.SAD);
+            possibleMoods.add(AudienceMood.CRUEL);
+        }
+        else if(phase.equals(AudiencePhase.INTERESTED)){
+            possibleMoods.add(AudienceMood.NEUTRAL);
             possibleMoods.add(AudienceMood.SAD);
             possibleMoods.add(AudienceMood.ANGRY);
         }
         else if(phase.equals(AudiencePhase.BORED)){
+            possibleMoods.add(AudienceMood.NEUTRAL);
             possibleMoods.add(AudienceMood.SAD);
             possibleMoods.add(AudienceMood.ANGRY);
         }
@@ -145,6 +150,7 @@ public class AudienceUtil {
             possibleMoods.add(AudienceMood.CRUEL);
         }
         else{
+            possibleMoods.add(AudienceMood.NEUTRAL);
             possibleMoods.add(AudienceMood.HAPPY);
             possibleMoods.add(AudienceMood.SAD);
         }
@@ -183,27 +189,26 @@ public class AudienceUtil {
         addModified = modifyWithThreshold(svlevel, addModified);
         addModified = modifyWithMood(svlevel, addModified);
         data.addInterest(addModified);
-
     }
 
     public static void addInterestRaw(ServerLevel svlevel, int add){
         AudienceData data = getAudienceData(svlevel);
         data.addInterest(add);
-
     }
 
     public static AudiencePhase getPhase(ServerLevel svlevel){
         int favour = getInterest(svlevel);
-        if (favour > 400) return AudiencePhase.THRILLED;
-        if (favour > 100) return AudiencePhase.INTERESTED;
-        if (favour > -100) return AudiencePhase.NEUTRAL;
-        if (favour > -400) return AudiencePhase.BORED;
+        if (favour > 1000) return AudiencePhase.THRILLED;
+        if (favour > 400) return AudiencePhase.INTERESTED;
+        if (favour > -400) return AudiencePhase.NEUTRAL;
+        if (favour > -1000) return AudiencePhase.BORED;
         return AudiencePhase.FURIOUS;
     }
 
     public static void setMood(ServerLevel svlevel, AudienceMood set){
         AudienceData data = getAudienceData(svlevel);
         data.setMood(set);
+        syncToClients(svlevel);
     }
 
     public static AudienceMood getMood(ServerLevel svlevel){

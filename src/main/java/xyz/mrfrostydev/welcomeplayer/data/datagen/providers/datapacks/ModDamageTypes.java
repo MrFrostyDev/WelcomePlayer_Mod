@@ -10,10 +10,12 @@ import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 public interface ModDamageTypes {
     ResourceKey<DamageType> SAW = registerKey("saw");
     ResourceKey<DamageType> LASER = registerKey("laser");
+    ResourceKey<DamageType> SHOCK = registerKey("shock");
 
     static void bootstrap(BootstrapContext<DamageType> context) {
         context.register(SAW, new DamageType("saw", 0.1F));
         context.register(LASER, new DamageType("laser", 0.1F));
+        context.register(SHOCK, new DamageType("shock", 0.1F));
     }
 
     static ResourceKey<DamageType> registerKey(String id){
