@@ -28,7 +28,7 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
 
     private static final int TIME_PER_CHAR = 9;
 
-    private final int MAX_LINE_WIDTH = 120;
+    private final int MAX_LINE_WIDTH = 150;
     private final AnimatedImage announcerImage;
 
     private static ArrayDeque<String> dialogDeque;

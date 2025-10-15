@@ -3,8 +3,10 @@ package xyz.mrfrostydev.welcomeplayer.events.subscribers.objectives;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
@@ -24,10 +26,10 @@ public class ObjectiveKillEvents {
     public static void onEntityKill(LivingDeathEvent event){
         if(!(event.getEntity().level() instanceof ServerLevel svlevel))return;
         if(event.getSource().getEntity() == null)return;
-        if(!(event.getSource().getEntity().getType().equals(EntityType.PLAYER)))return; // Must be killed by player
-
-
         LivingEntity entity = event.getEntity();
+        Entity attacker = event.getSource().getEntity();
+
+        if(!(attacker.getType().equals(EntityType.PLAYER)))return; // Must be killed by player.
 
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.METAL_ROSES, EntityType.IRON_GOLEM)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.DUCK_HUNT, EntityType.CHICKEN)) return;

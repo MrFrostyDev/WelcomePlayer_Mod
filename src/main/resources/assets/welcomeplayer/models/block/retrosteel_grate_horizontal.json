@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "welcomeplayer:block/retrosteel_grate",
+    "side": "welcomeplayer:block/retrosteel_grate_side"
+  }
+}

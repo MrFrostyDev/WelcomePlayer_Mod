@@ -52,9 +52,13 @@ public class AudienceRewards {
     public static final ResourceKey<AudienceReward> LITTLE_GOLDEN_APPLE = registerKey("little_golden_apple");
     public static final ResourceKey<AudienceReward> LITTLE_LARGE_BATTERY_2 = registerKey("little_large_battery_2");
     public static final ResourceKey<AudienceReward> LITTLE_LARGE_BATTERY_3 = registerKey("little_large_battery_3");
+    public static final ResourceKey<AudienceReward> UNIQUE_PHASE_LINK = registerKey("unique_phase_link");
+
 
     public static final ResourceKey<AudienceReward> COMMON_LARGE_BATTERY_8 = registerKey("common_large_battery_8");
     public static final ResourceKey<AudienceReward> COMMON_LARGE_BATTERY_10 = registerKey("common_large_battery_10");
+    public static final ResourceKey<AudienceReward> UNIQUE_SHOCK_ORB_LAUNCHER = registerKey("unique_shock_orb_launcher");
+
 
     public static void bootstrap(BootstrapContext<AudienceReward> context){
         // |------------------------------------------------------------|
@@ -112,12 +116,14 @@ public class AudienceRewards {
         register(context, LOTS_BATTERY_17, new ItemStack(ItemRegistry.BATTERY, 17), AudiencePhase.INTERESTED);
         register(context, LITTLE_LARGE_BATTERY_2, new ItemStack(ItemRegistry.LARGE_BATTERY, 2), AudiencePhase.INTERESTED);
         register(context, LITTLE_LARGE_BATTERY_3, new ItemStack(ItemRegistry.LARGE_BATTERY, 3), AudiencePhase.INTERESTED);
+        register(context, UNIQUE_PHASE_LINK, new ItemStack(ItemRegistry.PHASE_LINK, 1), AudiencePhase.INTERESTED);
 
         // |------------------------------------------------------------|
         // |-------------------------Thrilled---------------------------|
         // |------------------------------------------------------------|
         register(context, COMMON_LARGE_BATTERY_8, new ItemStack(ItemRegistry.LARGE_BATTERY, 8), AudiencePhase.THRILLED);
         register(context, COMMON_LARGE_BATTERY_10, new ItemStack(ItemRegistry.LARGE_BATTERY, 10), AudiencePhase.THRILLED);
+        register(context, UNIQUE_SHOCK_ORB_LAUNCHER, new ItemStack(ItemRegistry.SHOCK_ORB_LAUNCHER, 1), AudiencePhase.THRILLED);
     }
 
     public static ResourceKey<AudienceReward> registerKey(String name){

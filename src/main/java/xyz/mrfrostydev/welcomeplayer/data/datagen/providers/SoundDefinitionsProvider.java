@@ -48,5 +48,96 @@ public class SoundDefinitionsProvider extends net.neoforged.neoforge.common.data
                 .subtitle("sound.welcomeplayer.buzz_saw")
                 .replace(false)
         );
+
+        add(SoundEventRegistry.LASER_CHARGE, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "laser_charge"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:laser_charge")
+                )
+                .subtitle("sound.welcomeplayer.laser_charge")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.LASER_BLAST, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "laser_blast"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:laser_blast")
+                )
+                .subtitle("sound.welcomeplayer.laser_blast")
+                .replace(false)
+        );
+
+
+        add(SoundEventRegistry.SHOCK_HUM, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "shock_hum"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:shock_hum")
+                )
+                .subtitle("sound.welcomeplayer.shock_hum")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.SHOCK_ZAP, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "shock_zap"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:shock_zap")
+                )
+                .subtitle("sound.welcomeplayer.shock_zap")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.LAUNCHER_BLAST, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "launcher_blast"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:launcher_blast")
+                )
+                .subtitle("sound.welcomeplayer.launcher_blast")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.LAUNCHER_CHARGE, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "launcher_charge"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:launcher_charge")
+                )
+                .subtitle("sound.welcomeplayer.launcher_charge")
+                .replace(false)
+        );
     }
 }

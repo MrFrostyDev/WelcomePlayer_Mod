@@ -1,7 +1,6 @@
 package xyz.mrfrostydev.welcomeplayer.entities.mobs.eradicator;
 
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Unit;
 import net.minecraft.world.entity.Mob;
 import xyz.mrfrostydev.welcomeplayer.entities.EntityHitboxSet;
@@ -22,15 +21,15 @@ public class EradicatorMeleeAttack extends MeleeAttackWithHitbox {
     }
 
     @Override
-    protected void start(ServerLevel level, Mob owner, long gameTime) {
-        super.start(level, owner, gameTime);
+    protected void start(ServerLevel svlevel, Mob owner, long gameTime) {
+        super.start(svlevel, owner, gameTime);
         owner.getBrain().setMemoryWithExpiry(MemoryModuleRegistry.ERADICATOR_SAWING.get(), Unit.INSTANCE, this.hitboxSet.getTime());
-        owner.playSound(SoundEventRegistry.BUZZ_SAW.get(), 3.0F, 0.8F + level.random.nextFloat() * 0.2F);
+        owner.playSound(SoundEventRegistry.BUZZ_SAW.get(), 3.0F, 0.8F + svlevel.random.nextFloat() * 0.2F);
     }
 
     @Override
-    protected void stop(ServerLevel level, Mob owner, long gameTime) {
-        super.stop(level, owner, gameTime);
+    protected void stop(ServerLevel svlevel, Mob owner, long gameTime) {
+        super.stop(svlevel, owner, gameTime);
         owner.getBrain().eraseMemory(MemoryModuleRegistry.ERADICATOR_SAWING.get());
     }
 }

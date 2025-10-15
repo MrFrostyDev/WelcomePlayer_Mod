@@ -1,5 +1,6 @@
 package xyz.mrfrostydev.welcomeplayer.registries;
 
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -66,9 +67,53 @@ public class BlockRegistry {
             )
     );
 
+    public static final DeferredHolder<Block, StairBlock> RETROSTEEL_WHITE_STAIRS = BLOCKS.register(
+            "retrosteel_white_stairs",
+            () -> new StairBlock(RETROSTEEL_WHITE_WALL.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, SlabBlock> RETROSTEEL_WHITE_SLAB = BLOCKS.register(
+            "retrosteel_white_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
     public static final DeferredHolder<Block, Block> RETROSTEEL_BROWN_WALL = BLOCKS.register(
             "retrosteel_brown_wall",
             () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, StairBlock> RETROSTEEL_BROWN_STAIRS = BLOCKS.register(
+            "retrosteel_brown_stairs",
+            () -> new StairBlock(RETROSTEEL_BROWN_WALL.get().defaultBlockState(), BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, SlabBlock> RETROSTEEL_BROWN_SLAB = BLOCKS.register(
+            "retrosteel_brown_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
                     .requiresCorrectToolForDrops()
@@ -99,6 +144,52 @@ public class BlockRegistry {
             )
     );
 
+    public static final DeferredHolder<Block, Block> RETROSTEEL_WHITE_PLATE = BLOCKS.register(
+            "retrosteel_white_plate",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETROSTEEL_ORANGE_PLATE = BLOCKS.register(
+            "retrosteel_orange_plate",
+            () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETROSTEEL_WHITE_LIGHT = BLOCKS.register(
+            "retrosteel_white_light",
+            () ->  new RotatedPillarBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.HAT)
+                    .requiresCorrectToolForDrops()
+                    .strength(6.0F, 3.0F)
+                    .lightLevel(s -> 15)
+                    .sound(SoundType.METAL)
+                    .isRedstoneConductor((s, g, p) -> false)
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETROSTEEL_SCREEN = BLOCKS.register(
+            "retrosteel_screen",
+            () ->  new HorizontalFacingBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(6.0F, 3.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
     public static final DeferredHolder<Block, Block> RETROSTEEL_METAL_BLOCK = BLOCKS.register(
             "retrosteel_metal_block",
             () -> new Block(BlockBehaviour.Properties.of()
@@ -114,6 +205,17 @@ public class BlockRegistry {
             "retrosteel_beams",
             () -> new Block(BlockBehaviour.Properties.of()
                     .noOcclusion()
+                    .mapColor(MapColor.METAL)
+                    .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(8.0F, 6.0F)
+                    .sound(SoundType.METAL)
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETROSTEEL_GRATE = BLOCKS.register(
+            "retrosteel_grate",
+            () ->  new RotatedPillarBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.METAL)
                     .instrument(NoteBlockInstrument.IRON_XYLOPHONE)
                     .requiresCorrectToolForDrops()

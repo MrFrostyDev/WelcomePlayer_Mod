@@ -1,0 +1,33 @@
+{
+  "credit": "Made by MrFrostyDev, with Blockbench",
+  "parent": "builtin/entity",
+  "display": {
+    "firstperson_righthand": {
+      "translation": [
+        -1,
+        2,
+        1
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        1.2
+      ]
+    },
+    "firstperson_lefthand": {
+      "translation": [
+        -1,
+        2,
+        1
+      ],
+      "scale": [
+        1.2,
+        1.2,
+        1.2
+      ]
+    }
+  },
+  "textures": {
+    "particle": "item/shock_orb_launcher_model"
+  }
+}

@@ -124,7 +124,7 @@ public class MaterialTransitBlockEntity extends BlockEntity implements IItemHand
                 for(ItemStack stack : stacks){
                     FoodProperties food = stack.getOrDefault(DataComponents.FOOD,
                             new FoodProperties(0, 0, false, 0, Optional.empty(), ImmutableList.of()));
-                    addedProgress += food.nutrition();
+                    addedProgress += food.nutrition() * stack.getCount();
                     stack.setCount(0);
                 }
             }

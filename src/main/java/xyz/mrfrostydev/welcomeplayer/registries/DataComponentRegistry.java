@@ -20,8 +20,22 @@ public class DataComponentRegistry {
         ENCHANTMENT_COMPONENT_TYPES.register(eventBus);
     }
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> UNSTABLE = DATA_COMPONENTS.registerComponentType(
+            "unstable",
+            builder -> builder
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+    );
+
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> CHARGED = DATA_COMPONENTS.registerComponentType(
             "charged",
+            builder -> builder
+                    .persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+    );
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> CHARGING = DATA_COMPONENTS.registerComponentType(
+            "charging",
             builder -> builder
                     .persistent(Codec.BOOL)
                     .networkSynchronized(ByteBufCodecs.BOOL)

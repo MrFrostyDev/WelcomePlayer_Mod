@@ -8,11 +8,11 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerEntity;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.ClipContext;
@@ -24,6 +24,7 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
+import xyz.mrfrostydev.welcomeplayer.registries.SoundEventRegistry;
 
 public class ShockBoltProjectile extends Projectile implements GeoEntity {
     private int lifetime;
@@ -34,17 +35,19 @@ public class ShockBoltProjectile extends Projectile implements GeoEntity {
 
     public ShockBoltProjectile(EntityType<? extends ShockBoltProjectile> entityType, Level level) {
         super(EntityRegistry.SHOCK_BOLT_PROJECTILE.get(), level);
+        this.lifetime = 4;
     }
 
-    public ShockBoltProjectile(Level level, Vec3 originPos, Vec3 targetPos) {
+    public ShockBoltProjectile(Level level, Entity owner, Vec3 originPos, Vec3 targetPos) {
         super(EntityRegistry.SHOCK_BOLT_PROJECTILE.get(), level);
+        this.setOwner(owner);
         this.lifetime = 4;
         double targetVecX = targetPos.x - originPos.x;
         double targetVecY = targetPos.y - originPos.y;
         double targetVecZ = targetPos.z - originPos.z;
 
         this.setPos(originPos.x + targetVecX / 2, originPos.y + targetVecY / 2, originPos.z + targetVecZ / 2);
-        this.setDeltaMovement(new Vec3(targetVecX, targetVecY, targetVecZ).normalize().scale(1.001));
+        this.setDeltaMovement(new Vec3(targetVecX, targetVecY, targetVecZ).normalize());
 
         double dist = originPos.distanceTo(targetPos);
         int length = 0;
@@ -63,12 +66,10 @@ public class ShockBoltProjectile extends Projectile implements GeoEntity {
 
     @Override
     public void tick() {
-        if(lifetime > 0){
-            lifetime--;
-            if (lifetime <= 0) {
-                this.discard();
-                return;
-            }
+        lifetime--;
+        if (lifetime <= 0) {
+            this.discard();
+            return;
         }
 
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity, ClipContext.Block.COLLIDER);
@@ -85,6 +86,12 @@ public class ShockBoltProjectile extends Projectile implements GeoEntity {
         this.setYRot(lerpRotation(this.yRotO, this.getYRot()));
         this.yRotO = this.getYRot();
         this.xRotO = this.getXRot();
+
+        if(lifetime == 3){
+            this.playSound(SoundEventRegistry.SHOCK_ZAP.get(),
+                    1.0F, 0.8F + this.level().random.nextFloat() * 0.2F);
+        }
+
         super.tick();
     }
 

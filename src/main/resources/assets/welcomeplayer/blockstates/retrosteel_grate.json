@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "welcomeplayer:block/retrosteel_grate_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "welcomeplayer:block/retrosteel_grate"
+    },
+    "axis=z": {
+      "model": "welcomeplayer:block/retrosteel_grate_horizontal",
+      "x": 90
+    }
+  }
+}

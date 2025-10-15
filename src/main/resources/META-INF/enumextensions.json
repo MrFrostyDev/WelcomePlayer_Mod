@@ -1,0 +1,13 @@
+{
+  "entries": [
+    {
+      "enum": "net/minecraft/client/model/HumanoidModel$ArmPose",
+      "name": "WELCOMEPLAYER_ARMPOSE_ONE_HAND_PISTOL",
+      "constructor": "(ZLnet/neoforged/neoforge/client/IArmPoseTransformer;)V",
+      "parameters": {
+        "class": "xyz/mrfrostydev/welcomeplayer/client/ModArmPoses",
+        "field": "ONE_HAND_PISTOL_ENUM_PROXY"
+      }
+    }
+  ]
+}

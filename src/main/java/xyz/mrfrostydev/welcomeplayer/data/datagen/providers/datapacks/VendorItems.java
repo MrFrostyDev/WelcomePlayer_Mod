@@ -51,6 +51,7 @@ public class VendorItems {
     public static final ResourceKey<VendorItem> UNCOMMON_QUARTZ = registerKey("uncommon_quartz");
     public static final ResourceKey<VendorItem> UNCOMMON_GHAST_TEAR = registerKey("uncommon_ghast_tear");
     public static final ResourceKey<VendorItem> UNCOMMON_HONEYCOMB = registerKey("uncommon_honeycomb");
+    public static final ResourceKey<VendorItem> UNCOMMON_LASER_CUTTER = registerKey("uncommon_laser_cutter");
 
 
     public static final ResourceKey<VendorItem> RARE_PHASE_LINK = registerKey("rare_phase_link");
@@ -62,6 +63,7 @@ public class VendorItems {
     public static final ResourceKey<VendorItem> RARE_HEART_OF_THE_SEA = registerKey("rare_heart_of_the_sea");
     public static final ResourceKey<VendorItem> RARE_TRIDENT = registerKey("rare_trident");
     public static final ResourceKey<VendorItem> RARE_MACE = registerKey("rare_mace");
+    public static final ResourceKey<VendorItem> RARE_SHOCK_ORB_LAUNCHER = registerKey("rare_shock_orb_launcher");
 
     public static void bootstrap(BootstrapContext<VendorItem> context){
         register(context, COMMON_APPLE, new ItemStack(Items.APPLE, 1), 3, 0);
@@ -103,6 +105,7 @@ public class VendorItems {
         register(context, UNCOMMON_QUARTZ, new ItemStack(Items.QUARTZ, 4), 2, 400);
         register(context, UNCOMMON_GHAST_TEAR, new ItemStack(Items.GHAST_TEAR, 1), 10, 400);
         register(context, UNCOMMON_HONEYCOMB, new ItemStack(Items.HONEYCOMB, 3), 18, 400);
+        register(context, UNCOMMON_LASER_CUTTER, new ItemStack(ItemRegistry.LASER_CUTTER, 1), 70, 400);
 
         register(context, RARE_PHASE_LINK, new ItemStack(ItemRegistry.PHASE_LINK, 1), 150, 1000);
         register(context, RARE_STASIS_STICK, new ItemStack(ItemRegistry.STASIS_STICK, 1), 60, 1000);
@@ -113,6 +116,7 @@ public class VendorItems {
         register(context, RARE_HEART_OF_THE_SEA, new ItemStack(Items.HEART_OF_THE_SEA, 1), 60, 1000);
         register(context, RARE_TRIDENT, new ItemStack(Items.TRIDENT, 1), 80, 1000);
         register(context, RARE_MACE, new ItemStack(Items.MACE, 1), 160, 1000);
+        register(context, RARE_SHOCK_ORB_LAUNCHER, new ItemStack(ItemRegistry.SHOCK_ORB_LAUNCHER, 1), 160, 1000);
 
     }
 

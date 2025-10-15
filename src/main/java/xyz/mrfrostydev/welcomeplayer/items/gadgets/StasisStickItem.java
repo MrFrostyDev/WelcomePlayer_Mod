@@ -74,7 +74,7 @@ public class StasisStickItem extends Item implements GeoItem {
         if(entity instanceof LivingEntity target){
             if(!player.getCooldowns().isOnCooldown(this)){
                 player.getCooldowns().addCooldown(this, COOLDOWN);
-                target.addEffect(new MobEffectInstance(MobEffectRegistry.STASIS, 60, 0));
+                target.addEffect(new MobEffectInstance(MobEffectRegistry.STASIS, 80, 0));
             }
         }
         return false;

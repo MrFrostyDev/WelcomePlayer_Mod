@@ -36,5 +36,7 @@ public class RenderRegisterEvents {
         EntityRenderers.register(EntityRegistry.ERADICATOR.get(), EradicatorEntityRenderer::new);
         EntityRenderers.register(EntityRegistry.LASER_BLAST_PROJECTILE.get(), LaserBlastEntityRenderer::new);
         EntityRenderers.register(EntityRegistry.SHOCK_BOLT_PROJECTILE.get(), ShockBoltEntityRenderer::new);
+        EntityRenderers.register(EntityRegistry.SHOCK_CHARGE_PROJECTILE.get(), ShockChargeEntityRenderer::new);
+
     }
 }

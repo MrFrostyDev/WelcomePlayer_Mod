@@ -31,6 +31,21 @@ public class ParticleRegistry {
             () -> new SimpleParticleType(false)
     );
 
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SHOCK_BLAST = PARTICLE_TYPES.register(
+            "shock_blast",
+            () -> new SimpleParticleType(false)
+    );
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SHOCK_CHARGE = PARTICLE_TYPES.register(
+            "shock_charge",
+            () -> new SimpleParticleType(false)
+    );
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ORB_TRAIL = PARTICLE_TYPES.register(
+            "orb_trail",
+            () -> new SimpleParticleType(false)
+    );
+
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WARP_REWARD = PARTICLE_TYPES.register(
             "warp_reward",
             () -> new SimpleParticleType(false)

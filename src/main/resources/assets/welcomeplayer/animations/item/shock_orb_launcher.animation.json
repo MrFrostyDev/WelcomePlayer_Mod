@@ -1,0 +1,241 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"shock_orb_launcher.animation.charge": {
+			"animation_length": 3,
+			"bones": {
+				"spindle": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"3.0": {
+							"vector": [0, 0, 630],
+							"easing": "easeInCubic"
+						}
+					}
+				}
+			}
+		},
+		"shock_orb_launcher.animation.charge_hold": {
+			"loop": true,
+			"animation_length": 0.5,
+			"bones": {
+				"base": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.0417": {
+							"vector": [0, 0, 2]
+						},
+						"0.0833": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [0, 0, -2]
+						},
+						"0.1667": {
+							"vector": [0, 0, 0]
+						},
+						"0.2083": {
+							"vector": [0, 0, 2]
+						},
+						"0.25": {
+							"vector": [0, 0, 0]
+						},
+						"0.2917": {
+							"vector": [0, 0, -2]
+						},
+						"0.3333": {
+							"vector": [0, 0, 0]
+						},
+						"0.375": {
+							"vector": [0, 0, 2]
+						},
+						"0.4167": {
+							"vector": [0, 0, 0]
+						},
+						"0.4583": {
+							"vector": [0, 0, -2]
+						},
+						"0.5": {
+							"vector": [0, 0, 0]
+						}
+					}
+				},
+				"spindle": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.5": {
+							"vector": [0, 0, 360]
+						}
+					}
+				}
+			}
+		},
+		"shock_orb_launcher.animation.fire": {
+			"animation_length": 1.5,
+			"bones": {
+				"base": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [0.43376, -0.03795, 4.99986]
+						},
+						"0.2083": {
+							"vector": [-14.98637, 0.64686, 2.41492],
+							"easing": "easeInBack",
+							"easingArgs": [1]
+						},
+						"0.2917": {
+							"vector": [-11.98891, -0.52177, -2.95894]
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInSine"
+						}
+					},
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.125": {
+							"vector": [0, 0, 1.5],
+							"easing": "easeInBack",
+							"easingArgs": [1]
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInSine"
+						}
+					}
+				},
+				"spindle": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 180]
+						},
+						"0.2083": {
+							"vector": [0, 0, 180]
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInCubic"
+						}
+					}
+				},
+				"arm": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.2083": {
+							"vector": [-25, -25, 0],
+							"easing": "linear"
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInQuad"
+						}
+					}
+				},
+				"arm2": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.2083": {
+							"vector": [-25, 25, 0],
+							"easing": "linear"
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInQuad"
+						}
+					}
+				},
+				"arm3": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.2083": {
+							"vector": [25, 25, 0],
+							"easing": "linear"
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInQuad"
+						}
+					}
+				},
+				"arm4": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.2083": {
+							"vector": [25, -25, 0],
+							"easing": "linear"
+						},
+						"1.5": {
+							"vector": [0, 0, 0],
+							"easing": "easeInQuad"
+						}
+					}
+				}
+			}
+		},
+		"shock_orb_launcher.animation.stable": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.25,
+			"bones": {
+				"red_light": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.25": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"shock_orb_launcher.animation.unstable": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.25,
+			"bones": {
+				"red_light": {
+					"position": {
+						"0.0": {
+							"vector": [0, 0, 0.045]
+						},
+						"0.25": {
+							"vector": [0, 0, 0.045]
+						}
+					}
+				}
+			}
+		},
+		"shock_orb_launcher.animation.idle": {
+			"loop": true,
+			"bones": {
+				"base": {
+					"rotation": {
+						"vector": [0, 0, 0]
+					},
+					"position": {
+						"vector": [0, 0, 0]
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

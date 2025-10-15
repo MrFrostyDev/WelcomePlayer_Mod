@@ -7,6 +7,8 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectUtil;
@@ -229,6 +231,11 @@ public class EradicatorEntity extends Monster implements GeoEntity {
     // |------------------------------------------------------------|
     // |----------------------------Misc----------------------------|
     // |------------------------------------------------------------|
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return SoundEvents.IRON_GOLEM_HURT;
+    }
 
     @Override
     public int getMaxHeadYRot() {

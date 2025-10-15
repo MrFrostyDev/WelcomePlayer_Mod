@@ -17,6 +17,7 @@ import net.minecraft.world.phys.Vec3;
 import xyz.mrfrostydev.welcomeplayer.entities.projectiles.LaserBlastProjectile;
 import xyz.mrfrostydev.welcomeplayer.registries.MemoryModuleRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.ParticleRegistry;
+import xyz.mrfrostydev.welcomeplayer.registries.SoundEventRegistry;
 
 public class EradicatorShoot extends Behavior<EradicatorEntity> {
     private static final int SHOOT_CHARGE_TIME = 20;
@@ -58,19 +59,20 @@ public class EradicatorShoot extends Behavior<EradicatorEntity> {
     }
 
     @Override
-    protected void start(ServerLevel svlevel, EradicatorEntity entity, long gameTime) {
-        entity.getBrain().setMemoryWithExpiry(MemoryModuleRegistry.ERADICATOR_SHOOT_CHARGING.get(), Unit.INSTANCE, SHOOT_CHARGE_TIME);
-        entity.getBrain().setMemoryWithExpiry(MemoryModuleRegistry.ERADICATOR_SHOOTING.get(), Unit.INSTANCE, SHOOT_DURATION);
-        entity.setPose(Pose.SHOOTING);
-        entity.playSound(SoundEvents.BREEZE_INHALE, 1.0F, 1.0F);
+    protected void start(ServerLevel svlevel, EradicatorEntity owner, long gameTime) {
+        owner.getBrain().setMemoryWithExpiry(MemoryModuleRegistry.ERADICATOR_SHOOT_CHARGING.get(), Unit.INSTANCE, SHOOT_CHARGE_TIME);
+        owner.getBrain().setMemoryWithExpiry(MemoryModuleRegistry.ERADICATOR_SHOOTING.get(), Unit.INSTANCE, SHOOT_DURATION);
+        owner.setPose(Pose.SHOOTING);
+        owner.playSound(SoundEvents.BREEZE_INHALE, 1.0F, 1.0F);
 
-        LivingEntity target = entity.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
+        LivingEntity target = owner.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).orElse(null);
         if(target != null){
-            entity.lookAt(EntityAnchorArgument.Anchor.EYES, target.position());
-            Vec3 shootPos = getShootPos(entity);
+            owner.lookAt(EntityAnchorArgument.Anchor.EYES, target.position());
+            Vec3 shootPos = getShootPos(owner);
             svlevel.sendParticles(ParticleRegistry.LASER_CHARGE.get(),
                     shootPos.x,  shootPos.y, shootPos.z,
                     1, 0, 0, 0, 0);
+            owner.playSound(SoundEventRegistry.LASER_CHARGE.get(), 3.0F, 0.8F + svlevel.random.nextFloat() * 0.2F);
         }
     }
 
@@ -97,6 +99,7 @@ public class EradicatorShoot extends Behavior<EradicatorEntity> {
                     LaserBlastProjectile laserBlastProjectile = new LaserBlastProjectile(svlevel, owner, shootPos.x, shootPos.y, shootPos.z);
                     laserBlastProjectile.setDeltaMovement(new Vec3(targetVecX, targetVecY, targetVecZ).normalize().scale(1.5));
                     svlevel.addFreshEntity(laserBlastProjectile);
+                    owner.playSound(SoundEventRegistry.LASER_BLAST.get(), 4.0F, 0.8F + svlevel.random.nextFloat() * 0.2F);
                 }
             }
         }

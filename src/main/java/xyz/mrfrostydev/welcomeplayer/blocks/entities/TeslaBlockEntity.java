@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
@@ -26,6 +27,7 @@ import xyz.mrfrostydev.welcomeplayer.damages.ShockDamageSource;
 import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.ModDamageTypes;
 import xyz.mrfrostydev.welcomeplayer.entities.projectiles.ShockBoltProjectile;
 import xyz.mrfrostydev.welcomeplayer.registries.BlockRegistry;
+import xyz.mrfrostydev.welcomeplayer.registries.SoundEventRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.TagRegistry;
 
 import java.util.List;
@@ -51,7 +53,7 @@ public class TeslaBlockEntity extends BlockEntity implements GeoBlockEntity {
                 for(Entity e : entities){
                     if(!(e instanceof LivingEntity target))continue;
                     Vec3 shootPos = new Vec3(pos.getX() + 0.5, pos.getY() + 1.7, pos.getZ() + 0.5);
-                    ShockBoltProjectile shockBolt = new ShockBoltProjectile(level, shootPos, new Vec3(e.getX(), e.getEyeY() - 0.2, e.getZ()));
+                    ShockBoltProjectile shockBolt = new ShockBoltProjectile(level, null, shootPos, new Vec3(e.getX(), e.getEyeY() - 0.2, e.getZ()));
                     level.addFreshEntity(shockBolt);
 
                     target.hurt(new ShockDamageSource(level.registryAccess().holderOrThrow(ModDamageTypes.SHOCK), null), 6);
@@ -60,6 +62,13 @@ public class TeslaBlockEntity extends BlockEntity implements GeoBlockEntity {
                     lightning.setDamage(0.0F);
                     target.thunderHit((ServerLevel) level, lightning);
                 }
+            }
+
+            if(tick % 16 == 0){
+                level.playSound(null, pos.above(),
+                        SoundEventRegistry.SHOCK_HUM.get(),
+                        SoundSource.BLOCKS,
+                        1.0F, 1.0F);
             }
         }
 

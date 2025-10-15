@@ -137,6 +137,7 @@ public class AudienceUtil {
         }
         else if(phase.equals(AudiencePhase.INTERESTED)){
             possibleMoods.add(AudienceMood.NEUTRAL);
+            possibleMoods.add(AudienceMood.HAPPY);
             possibleMoods.add(AudienceMood.SAD);
             possibleMoods.add(AudienceMood.ANGRY);
         }

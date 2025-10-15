@@ -1,0 +1,20 @@
+{
+	"parent": "minecraft:item/generated",
+	"textures": {
+		"layer0": "welcomeplayer:item/laser_cutter"
+	},
+	"overrides": [
+		{
+			"predicate": {
+				"welcomeplayer:charging": 0
+			},
+			"model": "welcomeplayer:item/laser_cutter_charged"
+		},
+		{
+			"predicate": {
+				"welcomeplayer:charging": 1
+			},
+			"model": "welcomeplayer:item/laser_cutter_charging"
+		}
+	]
+}

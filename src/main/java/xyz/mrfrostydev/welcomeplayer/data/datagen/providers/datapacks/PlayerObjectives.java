@@ -21,22 +21,18 @@ public class PlayerObjectives {
     // |--------------------------Furious---------------------------|
     // |------------------------------------------------------------|
 
-    public static final ResourceKey<PlayerObjective> CRUEL_SUFFERING = registerEntry("furious_cruel_suffering", 100, true, createDialog(
+    public static final ResourceKey<PlayerObjective> FORCED_RESUPPLY = registerEntry("furious_forced_resupply", 30, true, createDialog(
+            "dialog.welcomeplayer.objective.forced_resupply.0",
+            "dialog.welcomeplayer.objective.forced_resupply.1",
+            "dialog.welcomeplayer.objective.forced_resupply.2",
+            "dialog.welcomeplayer.objective.forced_resupply.3"
+    ));
+
+    public static final ResourceKey<PlayerObjective> CRUEL_SUFFERING = registerEntry("furious_cruel_suffering", 200, true, createDialog(
             "dialog.welcomeplayer.objective.cruel_suffering.0",
             "dialog.welcomeplayer.objective.cruel_suffering.1",
             "dialog.welcomeplayer.objective.cruel_suffering.2",
             "dialog.welcomeplayer.objective.cruel_suffering.3"
-    ));
-
-
-    public static final ResourceKey<PlayerObjective> BROKEN_BOXING = registerEntry("furious_broken_boxing", 8, true, createDialog(
-            "dialog.welcomeplayer.objective.broken_boxing.0",
-            "dialog.welcomeplayer.objective.broken_boxing.1"
-    ));
-
-    public static final ResourceKey<PlayerObjective> PAINFUL_SAPPER = registerEntry("furious_painful_sapper", 4, true, createDialog(
-            "dialog.welcomeplayer.objective.painful_sapper.0",
-            "dialog.welcomeplayer.objective.painful_sapper.1"
     ));
 
     // |------------------------------------------------------------|
@@ -84,7 +80,7 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.duck_hunt.3"
     ));
 
-    public static final ResourceKey<PlayerObjective> PAIN = registerEntry("bored_pain", 50, true, createDialog(
+    public static final ResourceKey<PlayerObjective> PAIN = registerEntry("bored_pain", 80, true, createDialog(
             "dialog.welcomeplayer.objective.pain.0",
             "dialog.welcomeplayer.objective.pain.1",
             "dialog.welcomeplayer.objective.pain.2",
@@ -215,7 +211,7 @@ public class PlayerObjectives {
     // |-------------------------Thrilled---------------------------|
     // |------------------------------------------------------------|
 
-    public static final ResourceKey<PlayerObjective> SUFFERING = registerEntry("thrilled_suffering", 100, true, createDialog(
+    public static final ResourceKey<PlayerObjective> SUFFERING = registerEntry("thrilled_suffering", 200, true, createDialog(
             "dialog.welcomeplayer.objective.suffering.0",
             "dialog.welcomeplayer.objective.suffering.1",
             "dialog.welcomeplayer.objective.suffering.2",

@@ -13,6 +13,7 @@ import xyz.mrfrostydev.welcomeplayer.entities.projectiles.LaserBlastProjectile;
 import xyz.mrfrostydev.welcomeplayer.entities.mobs.eradicator.EradicatorEntity;
 import xyz.mrfrostydev.welcomeplayer.entities.mobs.handibot.HandibotEntity;
 import xyz.mrfrostydev.welcomeplayer.entities.projectiles.ShockBoltProjectile;
+import xyz.mrfrostydev.welcomeplayer.entities.projectiles.ShockChargeProjectile;
 
 public class EntityRegistry {
     public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(Registries.ENTITY_TYPE, WelcomeplayerMain.MOD_ID);
@@ -78,10 +79,20 @@ public class EntityRegistry {
                     .build("laser_blast_projectile")
             );
 
+    public static final DeferredHolder<EntityType<?>, EntityType<ShockChargeProjectile>> SHOCK_CHARGE_PROJECTILE = ENTITIES.register(
+            "shock_charge_projectile",
+            () -> EntityType.Builder.<ShockChargeProjectile>of(ShockChargeProjectile::new, MobCategory.MISC)
+                    .sized(0.3125F, 0.3125F)
+                    .eyeHeight(0.0F)
+                    .clientTrackingRange(4)
+                    .updateInterval(10)
+                    .build("shock_charge_projectile")
+    );
+
     public static final DeferredHolder<EntityType<?>, EntityType<ShockBoltProjectile>> SHOCK_BOLT_PROJECTILE = ENTITIES.register(
             "shock_bolt_projectile",
             () -> EntityType.Builder.<ShockBoltProjectile>of(ShockBoltProjectile::new, MobCategory.MISC)
-                    .sized(0.8F, 0.3F)
+                    .sized(0.1F, 0.1F)
                     .eyeHeight(0.1F)
                     .clientTrackingRange(4)
                     .updateInterval(20)

@@ -18,20 +18,33 @@ public class CreativeTabRegistry {
             .title(Component.translatable("itemGroup." + WelcomeplayerMain.MOD_ID + ".tab"))
             .icon(() -> new ItemStack(Items.GLOWSTONE))
             .displayItems((params, output) -> {
-                output.accept(ItemRegistry.RETROSTEEL_WHITE_WALL.get());
                 output.accept(ItemRegistry.RETROSTEEL_BROWN_WALL.get());
+                output.accept(ItemRegistry.RETROSTEEL_BROWN_STAIRS.get());
+                output.accept(ItemRegistry.RETROSTEEL_BROWN_SLAB.get());
                 output.accept(ItemRegistry.RETROSTEEL_BLEND_WALL.get());
-                output.accept(ItemRegistry.RETROSTEEL_ORANGE_TILES.get());
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_WALL.get());
                 output.accept(ItemRegistry.RETROSTEEL_WHITE_TILES.get());
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_PLATE.get());
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_LIGHT.get());
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_STAIRS.get());
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_SLAB.get());
+                output.accept(ItemRegistry.RETROSTEEL_SCREEN.get());
+                output.accept(ItemRegistry.RETROSTEEL_ORANGE_TILES.get());
+                output.accept(ItemRegistry.RETROSTEEL_ORANGE_PLATE.get());
                 output.accept(ItemRegistry.RETROSTEEL_METAL_BLOCK.get());
                 output.accept(ItemRegistry.RETROSTEEL_BEAMS.get());
+                output.accept(ItemRegistry.RETROSTEEL_GRATE.get());
                 output.accept(ItemRegistry.RETRO_PATTERN_WOOL.get());
                 output.accept(ItemRegistry.RETRO_PATTERN_CARPET.get());
 
                 output.accept(ItemRegistry.BOUNCE_PAD.get());
                 output.accept(ItemRegistry.PHASE_LINK.get());
                 output.accept(ItemRegistry.STASIS_STICK.get());
+                output.accept(ItemRegistry.LASER_CUTTER.get());
                 output.accept(ItemRegistry.SURVEILLANCE_PAD.get());
+                output.accept(ItemRegistry.SHOCK_ORB_LAUNCHER.get());
+
+                output.accept(ItemRegistry.POTATO_BOMB.get());
 
                 output.accept(ItemRegistry.SMALL_BATTERY.get());
                 output.accept(ItemRegistry.BATTERY.get());

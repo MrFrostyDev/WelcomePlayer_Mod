@@ -22,10 +22,20 @@ public class BlockTagsProvider extends net.neoforged.neoforge.common.data.BlockT
                 .add(
                         BlockRegistry.RETROSTEEL_BLEND_WALL.get(),
                         BlockRegistry.RETROSTEEL_WHITE_WALL.get(),
+                        BlockRegistry.RETROSTEEL_WHITE_PLATE.get(),
+                        BlockRegistry.RETROSTEEL_WHITE_LIGHT.get(),
+                        BlockRegistry.RETROSTEEL_SCREEN.get(),
+                        BlockRegistry.RETROSTEEL_WHITE_STAIRS.get(),
+                        BlockRegistry.RETROSTEEL_WHITE_SLAB.get(),
                         BlockRegistry.RETROSTEEL_BROWN_WALL.get(),
+                        BlockRegistry.RETROSTEEL_BROWN_STAIRS.get(),
+                        BlockRegistry.RETROSTEEL_BROWN_SLAB.get(),
                         BlockRegistry.RETROSTEEL_WHITE_TILES.get(),
                         BlockRegistry.RETROSTEEL_ORANGE_TILES.get(),
+                        BlockRegistry.RETROSTEEL_ORANGE_PLATE.get(),
+                        BlockRegistry.RETROSTEEL_METAL_BLOCK.get(),
                         BlockRegistry.RETROSTEEL_BEAMS.get(),
+                        BlockRegistry.RETROSTEEL_GRATE.get(),
 
                         BlockRegistry.RETROSTEEL_ORE.get(),
 

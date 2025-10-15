@@ -21,12 +21,25 @@ public class ModBlockLoot extends BlockLootSubProvider {
 
     @Override
     public void generate() {
-        dropSelf(BlockRegistry.RETROSTEEL_ORANGE_TILES.get());
-        dropSelf(BlockRegistry.RETROSTEEL_WHITE_TILES.get());
         dropSelf(BlockRegistry.RETROSTEEL_BROWN_WALL.get());
-        dropSelf(BlockRegistry.RETROSTEEL_WHITE_WALL.get());
+        dropSelf(BlockRegistry.RETROSTEEL_BROWN_STAIRS.get());
+        dropSelf(BlockRegistry.RETROSTEEL_BROWN_SLAB.get());
         dropSelf(BlockRegistry.RETROSTEEL_BLEND_WALL.get());
+        dropSelf(BlockRegistry.RETROSTEEL_WHITE_TILES.get());
+        dropSelf(BlockRegistry.RETROSTEEL_WHITE_WALL.get());
+        dropSelf(BlockRegistry.RETROSTEEL_WHITE_PLATE.get());
+        dropSelf(BlockRegistry.RETROSTEEL_WHITE_LIGHT.get());
+        dropSelf(BlockRegistry.RETROSTEEL_WHITE_STAIRS.get());
+        dropSelf(BlockRegistry.RETROSTEEL_WHITE_SLAB.get());
+        dropSelf(BlockRegistry.RETROSTEEL_SCREEN.get());
+        dropSelf(BlockRegistry.RETROSTEEL_ORANGE_TILES.get());
+        dropSelf(BlockRegistry.RETROSTEEL_ORANGE_PLATE.get());
+        dropSelf(BlockRegistry.RETROSTEEL_METAL_BLOCK.get());
         dropSelf(BlockRegistry.RETROSTEEL_BEAMS.get());
+        dropSelf(BlockRegistry.RETROSTEEL_GRATE.get());
+
+        dropSelf(BlockRegistry.RETRO_PATTERN_WOOL.get());
+        dropSelf(BlockRegistry.RETRO_PATTERN_CARPET.get());
 
         add(BlockRegistry.RETROSTEEL_ORE.get(), b -> createOreDrop(b, ItemRegistry.RAW_RETROSTEEL.get()));
 

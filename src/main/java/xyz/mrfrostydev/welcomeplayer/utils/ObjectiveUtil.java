@@ -79,7 +79,7 @@ public class ObjectiveUtil {
         int pc = svlevel.getPlayers(s -> !s.isSpectator()).size();
         data.setMaxProgress(
                 obj.playerScaling()
-                ? (int)(obj.maxValue() + (obj.maxValue() * 0.5 * (pc - 1)))
+                ? (int)(obj.maxValue() + (obj.maxValue() * 0.5 * Math.min((pc - 1), 1)))
                 : obj.maxValue()
         );
 
@@ -190,6 +190,7 @@ public class ObjectiveUtil {
     }
 
     public static boolean compareStackWithObjective(Level level, PlayerObjective curObj, ItemStack stack){
+        if(curObj.is(level, PlayerObjectives.FORCED_RESUPPLY) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
         if(curObj.is(level, PlayerObjectives.DAY_LABOR) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
         if(curObj.is(level, PlayerObjectives.COAL_MINER) && (stack.is(Items.COAL) || stack.is(Items.CHARCOAL))) return true;
         if(curObj.is(level, PlayerObjectives.SHORT_FUSE) && stack.is(ItemRegistry.BATTERY)) return true;

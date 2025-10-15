@@ -9,12 +9,13 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.saveddata.SavedData;
+import xyz.mrfrostydev.welcomeplayer.events.subscribers.WorldTickEvents;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class AudienceData extends SavedData {
-    private static final int DEFAULT_CHANGE_COOLDOWN = 400; //(24000 / 2) * WorldTickEvents.DAYS_TILL_MOOD_CHANGE;
+    private static final int DEFAULT_CHANGE_COOLDOWN = 4000; //(24000 / 2) * WorldTickEvents.DAYS_TILL_MOOD_CHANGE
     public static final Codec<AudienceData> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
                     Codec.BOOL.fieldOf("active").forGetter(AudienceData::isActive),

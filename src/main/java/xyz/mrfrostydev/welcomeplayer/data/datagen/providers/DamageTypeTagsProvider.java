@@ -20,7 +20,8 @@ public class DamageTypeTagsProvider extends net.minecraft.data.tags.DamageTypeTa
     protected void addTags(HolderLookup.Provider lookupProvider) {
         this.tag(DamageTypeTags.BYPASSES_COOLDOWN)
                 .add(
-                        ModDamageTypes.SAW
+                        ModDamageTypes.SAW,
+                        ModDamageTypes.SHOCK
                 );
 
         this.tag(DamageTypeTags.NO_KNOCKBACK)

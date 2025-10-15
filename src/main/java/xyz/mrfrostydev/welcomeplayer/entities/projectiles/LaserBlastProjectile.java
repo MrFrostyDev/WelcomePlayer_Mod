@@ -29,7 +29,6 @@ import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
 import software.bernie.geckolib.util.GeckoLibUtil;
-import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.damages.LaserDamageSource;
 import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.ModDamageTypes;
 import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;

@@ -55,7 +55,7 @@ public class WorldTickEvents {
         }
 
         // Try to pick a random mood and event every 2 days.
-        if(levelTickCount % (/*24000 * DAYS_TILL_MOOD_CHANGE*/ 800) == 0){ //24000 * DAYS_TILL_MOOD_CHANGE
+        if(levelTickCount % (2000) == 0){ //24000 * DAYS_TILL_MOOD_CHANGE
             if(!AudienceUtil.isChangeCooldown(svlevel)){
                 AudienceUtil.pickMood(svlevel);
                 AudienceEventUtil.pickEvent(svlevel);

@@ -1,0 +1,21 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "welcomeplayer:item/laser_cutter_inventory_charged"
+  },
+  "perspectives": {
+    "thirdperson_righthand": {
+      "parent": "welcomeplayer:item/laser_cutter_model"
+    },
+    "thirdperson_lefthand": {
+      "parent": "welcomeplayer:item/laser_cutter_model"
+    },
+    "firstperson_righthand": {
+      "parent": "welcomeplayer:item/laser_cutter_model"
+    },
+    "firstperson_lefthand": {
+      "parent": "welcomeplayer:item/laser_cutter_model"
+    }
+  }
+}
