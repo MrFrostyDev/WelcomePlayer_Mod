@@ -1,12 +1,15 @@
 package xyz.mrfrostydev.welcomeplayer.entities.mobs.service_bot;
 
 import com.mojang.serialization.Dynamic;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
@@ -15,8 +18,11 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
@@ -24,6 +30,7 @@ import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import xyz.mrfrostydev.welcomeplayer.entities.ai.navigation.HoverPathNavigation;
 import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
+import xyz.mrfrostydev.welcomeplayer.utils.AudienceUtil;
 
 import java.util.Optional;
 
@@ -141,6 +148,12 @@ public class ServiceBotEntity extends PathfinderMob implements GeoEntity {
     // |------------------------------------------------------------|
     // |----------------------------Misc----------------------------|
     // |------------------------------------------------------------|
+
+    public static boolean checkServiceBotSpawnRules(
+            EntityType<ServiceBotEntity> serviceBot, ServerLevelAccessor levelAccessor, MobSpawnType spawnType, BlockPos pos, RandomSource random
+    ) {
+        return AudienceUtil.isActive(levelAccessor.getLevel());
+    }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {

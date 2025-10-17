@@ -24,6 +24,7 @@ import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.SimpleExplosionDamageCalculator;
 import net.minecraft.world.phys.*;
+import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animation.AnimatableManager;
@@ -56,7 +57,15 @@ public class ShockChargeProjectile extends Projectile implements GeoEntity {
         this.lifetime = 400;
     }
 
-    public ShockChargeProjectile(Level level, Entity owner, double x, double y, double z, boolean isUnstable) {
+    public ShockChargeProjectile(Level level, @Nullable Entity owner, double x, double y, double z, int lifetime, boolean isUnstable) {
+        super(EntityRegistry.SHOCK_CHARGE_PROJECTILE.get(), level);
+        this.lifetime = lifetime;
+        this.isUnstable = isUnstable;
+        this.setOwner(owner);
+        this.setPos(x, y, z);
+    }
+
+    public ShockChargeProjectile(Level level, @Nullable Entity owner, double x, double y, double z, boolean isUnstable) {
         super(EntityRegistry.SHOCK_CHARGE_PROJECTILE.get(), level);
         this.lifetime = 400;
         this.isUnstable = isUnstable;

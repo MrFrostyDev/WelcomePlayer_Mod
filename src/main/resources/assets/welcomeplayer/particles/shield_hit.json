@@ -1,0 +1,10 @@
+{
+  "textures": [
+    "welcomeplayer:shield_hit_0",
+    "welcomeplayer:shield_hit_1",
+    "welcomeplayer:shield_hit_2",
+    "welcomeplayer:shield_hit_3",
+    "welcomeplayer:shield_hit_4",
+    "welcomeplayer:shield_hit_5"
+  ]
+}

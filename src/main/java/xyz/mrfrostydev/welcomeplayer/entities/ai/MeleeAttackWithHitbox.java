@@ -52,16 +52,15 @@ public class MeleeAttackWithHitbox extends Behavior<Mob> {
     }
 
     @Override
-    protected void start(ServerLevel level, Mob entity, long gameTime) {
+    protected void start(ServerLevel level, Mob owner, long gameTime) {
         hitboxSet.start();
     }
 
     @Override
     protected void tick(ServerLevel svlevel, Mob owner, long gameTime) {
         LivingEntity target = owner.getBrain().getMemory(MemoryModuleType.ATTACK_TARGET).get();
-        owner.getBrain().setMemory(MemoryModuleType.LOOK_TARGET, new EntityTracker(target, true));
+        owner.getLookControl().setLookAt(target, 30.0F, 30.0F);
         owner.swing(InteractionHand.MAIN_HAND);
-        owner.getLookControl().setLookAt(target, 20, 20);
         hitboxSet.tick(svlevel);
     }
 

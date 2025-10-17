@@ -22,6 +22,7 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 import xyz.mrfrostydev.welcomeplayer.client.renderers.item.StasisStickItemRenderer;
 import xyz.mrfrostydev.welcomeplayer.registries.DataComponentRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.MobEffectRegistry;
+import xyz.mrfrostydev.welcomeplayer.registries.SoundEventRegistry;
 
 import java.util.function.Consumer;
 
@@ -75,6 +76,11 @@ public class StasisStickItem extends Item implements GeoItem {
             if(!player.getCooldowns().isOnCooldown(this)){
                 player.getCooldowns().addCooldown(this, COOLDOWN);
                 target.addEffect(new MobEffectInstance(MobEffectRegistry.STASIS, 80, 0));
+                player.level().playSound(null,
+                        player.getX(), player.getY(), player.getZ(),
+                        SoundEventRegistry.STASIS_IMPACT,
+                        player.getSoundSource(),
+                        1.0F, player.level().getRandom().nextFloat() * 0.4F + 0.8F);
             }
         }
         return false;

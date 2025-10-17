@@ -36,6 +36,152 @@ public class AudienceEvents {
     public static final AudienceEventType BOMB_SQUAD = new AudienceEventType("bomb_squad");
     public static final AudienceEventType NUCLEAR_SQUAD = new AudienceEventType("nuclear_squad");
     public static final AudienceEventType ROARING_THUNDER = new AudienceEventType("roaring_thunder");
+    public static final AudienceEventType ELECTRIC_SOUL = new AudienceEventType("electric_soul");
+    public static final AudienceEventType SPEED_SUBJECTS = new AudienceEventType("speed_subjects");
+    public static final AudienceEventType WARP_MALFUNCTION = new AudienceEventType("warp_malfunction");
+    public static final AudienceEventType BACKUP_SAFETY = new AudienceEventType("backup_safety");
+    public static final AudienceEventType REPULSION_TECH = new AudienceEventType("repulsion_tech");
+    public static final AudienceEventType PROPULSION_UPGRADE = new AudienceEventType("propulsion_upgrade");
+    public static final AudienceEventType CONTRABAND = new AudienceEventType("contraband");
+
+    // |------------------------------------------------------------------------|
+    // |-------------------------------Contraband-------------------------------|
+    // |------------------------------------------------------------------------|
+    public static final ResourceKey<AudienceEvent> BORED_ANGRY_CONTRABAND = registerEntry("bored_angry_contraband", createDialog(
+            "dialog.welcomeplayer.event.contraband.bored.0",
+            "dialog.welcomeplayer.event.contraband.bored.1",
+            "dialog.welcomeplayer.event.contraband.bored.2"
+    ));
+    public static final ResourceKey<AudienceEvent> INTERESTED_ANGRY_CONTRABAND = registerEntry("interested_angry_contraband", createDialog(
+            "dialog.welcomeplayer.event.contraband.interested.0",
+            "dialog.welcomeplayer.event.contraband.interested.1",
+            "dialog.welcomeplayer.event.contraband.interested.2",
+            "dialog.welcomeplayer.event.contraband.interested.3"
+    ));
+
+    // |------------------------------------------------------------------------|
+    // |---------------------------Propulsion Upgrade---------------------------|
+    // |------------------------------------------------------------------------|
+    public static final ResourceKey<AudienceEvent> NEUTRAL_HAPPY_PROPULSION_UPGRADE = registerEntry("neutral_happy_propulsion_upgrade", createDialog(
+            "dialog.welcomeplayer.event.propulsion_upgrade.neutral.0",
+            "dialog.welcomeplayer.event.propulsion_upgrade.neutral.1",
+            "dialog.welcomeplayer.event.propulsion_upgrade.neutral.2"
+    ));
+    public static final ResourceKey<AudienceEvent> INTERESTED_HAPPY_PROPULSION_UPGRADE = registerEntry("interested_happy_propulsion_upgrade", createDialog(
+            "dialog.welcomeplayer.event.propulsion_upgrade.interested.0",
+                "dialog.welcomeplayer.event.propulsion_upgrade.interested.1",
+            "dialog.welcomeplayer.event.propulsion_upgrade.interested.2",
+            "dialog.welcomeplayer.event.propulsion_upgrade.interested.3"
+    ));
+    public static final ResourceKey<AudienceEvent> THRILLED_HAPPY_PROPULSION_UPGRADE = registerEntry("thrilled_happy_propulsion_upgrade", createDialog(
+            "dialog.welcomeplayer.event.propulsion_upgrade.thrilled.0",
+            "dialog.welcomeplayer.event.propulsion_upgrade.thrilled.1",
+            "dialog.welcomeplayer.event.propulsion_upgrade.thrilled.2",
+            "dialog.welcomeplayer.event.propulsion_upgrade.thrilled.3"
+    ));
+
+    // |------------------------------------------------------------------------|
+    // |---------------------------Repulsion Upgrade----------------------------|
+    // |------------------------------------------------------------------------|
+    public static final ResourceKey<AudienceEvent> NEUTRAL_SAD_REPULSION_TECH = registerEntry("neutral_sad_repulsion_tech", createDialog(
+            "dialog.welcomeplayer.event.repulsion_tech.neutral.0",
+            "dialog.welcomeplayer.event.repulsion_tech.neutral.1",
+            "dialog.welcomeplayer.event.repulsion_tech.neutral.2"
+    ));
+    public static final ResourceKey<AudienceEvent> INTERESTED_SAD_REPULSION_TECH = registerEntry("interested_sad_repulsion_tech", createDialog(
+            "dialog.welcomeplayer.event.repulsion_tech.interested.0",
+            "dialog.welcomeplayer.event.repulsion_tech.interested.1",
+            "dialog.welcomeplayer.event.repulsion_tech.interested.2",
+            "dialog.welcomeplayer.event.repulsion_tech.interested.3"
+    ));
+    public static final ResourceKey<AudienceEvent> THRILLED_SAD_REPULSION_TECH = registerEntry("thrilled_sad_repulsion_tech", createDialog(
+            "dialog.welcomeplayer.event.repulsion_tech.thrilled.0",
+            "dialog.welcomeplayer.event.repulsion_tech.thrilled.1",
+            "dialog.welcomeplayer.event.repulsion_tech.thrilled.2"
+    ));
+
+    // |------------------------------------------------------------------------|
+    // |-----------------------------Backup Safety------------------------------|
+    // |------------------------------------------------------------------------|
+    public static final ResourceKey<AudienceEvent> BORED_SAD_BACKUP_SAFETY = registerEntry("bored_sad_backup_safety", createDialog(
+            "dialog.welcomeplayer.event.backup_safety.bored.0",
+            "dialog.welcomeplayer.event.backup_safety.bored.1",
+            "dialog.welcomeplayer.event.backup_safety.bored.2"
+    ));
+    public static final ResourceKey<AudienceEvent> NEUTRAL_SAD_BACKUP_SAFETY = registerEntry("neutral_sad_backup_safety", createDialog(
+            "dialog.welcomeplayer.event.backup_safety.neutral.0",
+            "dialog.welcomeplayer.event.backup_safety.neutral.1",
+            "dialog.welcomeplayer.event.backup_safety.neutral.2"
+    ));
+    public static final ResourceKey<AudienceEvent> INTERESTED_SAD_BACKUP_SAFETY = registerEntry("interested_sad_backup_safety", createDialog(
+            "dialog.welcomeplayer.event.backup_safety.interested.0",
+            "dialog.welcomeplayer.event.backup_safety.interested.1",
+            "dialog.welcomeplayer.event.backup_safety.interested.2",
+            "dialog.welcomeplayer.event.backup_safety.interested.3"
+    ));
+    public static final ResourceKey<AudienceEvent> THRILLED_SAD_BACKUP_SAFETY = registerEntry("thrilled_sad_backup_safety", createDialog(
+            "dialog.welcomeplayer.event.backup_safety.thrilled.0",
+            "dialog.welcomeplayer.event.backup_safety.thrilled.1",
+            "dialog.welcomeplayer.event.backup_safety.thrilled.2"
+    ));
+
+
+    // |------------------------------------------------------------------------|
+    // |----------------------------Warp Malfunction----------------------------|
+    // |------------------------------------------------------------------------|
+    public static final ResourceKey<AudienceEvent> BORED_NEUTRAL_WARP_MALFUNCTION = registerEntry("bored_neutral_warp_malfunction", createDialog(
+            "dialog.welcomeplayer.event.warp_malfunction.bored.0",
+            "dialog.welcomeplayer.event.warp_malfunction.bored.1",
+            "dialog.welcomeplayer.event.warp_malfunction.bored.2",
+            "dialog.welcomeplayer.event.warp_malfunction.bored.3"
+    ));
+    public static final ResourceKey<AudienceEvent> NEUTRAL_NEUTRAL_WARP_MALFUNCTION = registerEntry("neutral_neutral_warp_malfunction", createDialog(
+            "dialog.welcomeplayer.event.warp_malfunction.neutral.0",
+            "dialog.welcomeplayer.event.warp_malfunction.neutral.1",
+            "dialog.welcomeplayer.event.warp_malfunction.neutral.2",
+            "dialog.welcomeplayer.event.warp_malfunction.neutral.3"
+    ));
+    public static final ResourceKey<AudienceEvent> INTERESTED_NEUTRAL_WARP_MALFUNCTION = registerEntry("interested_neutral_warp_malfunction", createDialog(
+            "dialog.welcomeplayer.event.warp_malfunction.interested.0",
+            "dialog.welcomeplayer.event.warp_malfunction.interested.1",
+            "dialog.welcomeplayer.event.warp_malfunction.interested.2",
+            "dialog.welcomeplayer.event.warp_malfunction.interested.3"
+    ));
+
+    // |------------------------------------------------------------------------|
+    // |-----------------------------Speed Subjects-----------------------------|
+    // |------------------------------------------------------------------------|
+    public static final ResourceKey<AudienceEvent> NEUTRAL_HAPPY_SPEED_SUBJECTS = registerEntry("neutral_happy_speed_subjects", createDialog(
+            "dialog.welcomeplayer.event.speed_subjects.neutral.0",
+            "dialog.welcomeplayer.event.speed_subjects.neutral.1",
+            "dialog.welcomeplayer.event.speed_subjects.neutral.2"
+    ));
+    public static final ResourceKey<AudienceEvent> INTERESTED_HAPPY_SPEED_SUBJECTS = registerEntry("interested_happy_speed_subjects", createDialog(
+            "dialog.welcomeplayer.event.speed_subjects.interested.0",
+            "dialog.welcomeplayer.event.speed_subjects.interested.1",
+            "dialog.welcomeplayer.event.speed_subjects.interested.2"
+    ));
+    public static final ResourceKey<AudienceEvent> THRILLED_HAPPY_SPEED_SUBJECTS = registerEntry("thrilled_happy_speed_subjects", createDialog(
+            "dialog.welcomeplayer.event.speed_subjects.thrilled.0",
+            "dialog.welcomeplayer.event.speed_subjects.thrilled.1",
+            "dialog.welcomeplayer.event.speed_subjects.thrilled.2"
+    ));
+
+    // |------------------------------------------------------------------------|
+    // |------------------------------Electric Soul-----------------------------|
+    // |------------------------------------------------------------------------|
+    public static final ResourceKey<AudienceEvent> BORED_NEUTRAL_ELECTRIC_SOUL = registerEntry("bored_neutral_electric_soul", createDialog(
+            "dialog.welcomeplayer.event.electric_soul.bored.0",
+            "dialog.welcomeplayer.event.electric_soul.bored.1",
+            "dialog.welcomeplayer.event.electric_soul.bored.2",
+            "dialog.welcomeplayer.event.electric_soul.bored.3"
+
+    ));
+    public static final ResourceKey<AudienceEvent> INTERESTED_NEUTRAL_ELECTRIC_SOUL = registerEntry("interested_neutral_electric_soul", createDialog(
+            "dialog.welcomeplayer.event.electric_soul.interested.0",
+            "dialog.welcomeplayer.event.electric_soul.interested.1",
+            "dialog.welcomeplayer.event.electric_soul.interested.2"
+    ));
 
     // |------------------------------------------------------------------------|
     // |----------------------------Commercial Break----------------------------|
@@ -152,11 +298,14 @@ public class AudienceEvents {
     // |------------------------------------------------------------------------|
     public static final ResourceKey<AudienceEvent> FURIOUS_ANGRY_DESTRUCT_PROTOCOL = registerEntry("furious_angry_destruct_protocol", createDialog(
             "dialog.welcomeplayer.event.destruct_protocol.furious.0",
-            "dialog.welcomeplayer.event.destruct_protocol.furious.1"
+            "dialog.welcomeplayer.event.destruct_protocol.furious.1",
+            "dialog.welcomeplayer.event.destruct_protocol.furious.2"
     ));
     public static final ResourceKey<AudienceEvent> THRILLED_CRUEL_DESTRUCT_PROTOCOL = registerEntry("thrilled_cruel_destruct_protocol", createDialog(
             "dialog.welcomeplayer.event.destruct_protocol.thrilled_.0",
-            "dialog.welcomeplayer.event.destruct_protocol.thrilled_.1"
+            "dialog.welcomeplayer.event.destruct_protocol.thrilled_.1",
+            "dialog.welcomeplayer.event.destruct_protocol.thrilled_.2",
+            "dialog.welcomeplayer.event.destruct_protocol.thrilled_.3"
     ));
 
     // |------------------------------------------------------------------------|
@@ -249,24 +398,24 @@ public class AudienceEvents {
             "dialog.welcomeplayer.event.roaring_thunder.interested.3"
     ));
 
-    public static List<Component> createDialog(String... comp){
+    public static List<Component> createDialog(String... comp) {
         LinkedList<Component> compList = new LinkedList<>();
-        for(String translation : comp){
+        for (String translation : comp) {
             compList.add(Component.translatable(translation));
         }
         return compList;
     }
 
-    public static ResourceKey<AudienceEvent> registerEntry(String name, List<Component> dialog){
+    public static ResourceKey<AudienceEvent> registerEntry(String name, List<Component> dialog) {
         ResourceKey<AudienceEvent> event = ResourceKey.create(DatapackRegistry.AUDIENCE_EVENTS, ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, name));
         EVENTS.add(getEventInfoByString(name, event, dialog));
         return event;
     }
 
-    private static EventInfo getEventInfoByString(String name, ResourceKey<AudienceEvent> event, List<Component> dialog){
+    private static EventInfo getEventInfoByString(String name, ResourceKey<AudienceEvent> event, List<Component> dialog) {
         String[] values = name.split("_");
 
-        AudiencePhase phase = switch(values[0]){
+        AudiencePhase phase = switch (values[0]) {
             case "thrilled" -> AudiencePhase.THRILLED;
             case "interested" -> AudiencePhase.INTERESTED;
             case "neutral" -> AudiencePhase.NEUTRAL;
@@ -275,7 +424,7 @@ public class AudienceEvents {
             default -> throw new IllegalArgumentException("Invalid phase name was entered for: " + name);
         };
 
-        AudienceMood mood = switch(values[1]){
+        AudienceMood mood = switch (values[1]) {
             case "happy" -> AudienceMood.HAPPY;
             case "neutral" -> AudienceMood.NEUTRAL;
             case "sad" -> AudienceMood.SAD;
@@ -285,21 +434,21 @@ public class AudienceEvents {
         };
 
         StringBuilder id = new StringBuilder(values[2]);
-        for(int i=3; i<values.length; i++){
+        for (int i = 3; i < values.length; i++) {
             id.append("_").append(values[i]);
         }
 
         return new EventInfo(event, id.toString(), phase, mood, dialog);
     }
 
-    public static void bootstrap(BootstrapContext<AudienceEvent> context){
-        for(EventInfo i : EVENTS){
+    public static void bootstrap(BootstrapContext<AudienceEvent> context) {
+        for (EventInfo i : EVENTS) {
             register(context, i.key, i.id, i.phase, i.mood, i.dialog);
         }
     }
 
     private static void register(BootstrapContext<AudienceEvent> context,
-                                 ResourceKey<AudienceEvent> key, String id, AudiencePhase phase, AudienceMood mood, List<Component> list){
+                                 ResourceKey<AudienceEvent> key, String id, AudiencePhase phase, AudienceMood mood, List<Component> list) {
         context.register(key, new AudienceEvent(id, phase, mood, list));
     }
 
@@ -312,19 +461,21 @@ public class AudienceEvents {
 
         private String id;
 
-        public AudienceEventType(String id){
+        public AudienceEventType(String id) {
             this.id = id;
         }
 
-        public String id(){
+        public String id() {
             return id;
         }
 
-        public boolean is(AudienceEvent event){
+        public boolean is(AudienceEvent event) {
             return Objects.equals(event.ID(), id);
         }
     }
 
 
-    private record EventInfo(ResourceKey<AudienceEvent> key, String id, AudiencePhase phase, AudienceMood mood, List<Component> dialog) {}
+    private record EventInfo(ResourceKey<AudienceEvent> key, String id, AudiencePhase phase, AudienceMood mood,
+                             List<Component> dialog) {
+    }
 }

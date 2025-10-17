@@ -79,7 +79,7 @@ public class ObjectiveUtil {
         int pc = svlevel.getPlayers(s -> !s.isSpectator()).size();
         data.setMaxProgress(
                 obj.playerScaling()
-                ? (int)(obj.maxValue() + (obj.maxValue() * 0.5 * Math.min((pc - 1), 1)))
+                ? (int)(obj.maxValue() + (pc - 1) * (obj.maxValue() * 0.5))
                 : obj.maxValue()
         );
 
@@ -121,9 +121,11 @@ public class ObjectiveUtil {
             Vec3 playerDir = Vec3.directionFromRotation(player.getRotationVector()).scale(2.0);
             Vec3 placementPos = playerPos.add(playerDir);
 
-            ItemEntity itemEntity = new ItemEntity(svlevel, placementPos.x, placementPos.y, placementPos.z, rewardList.get(rand).stack(), 0, 0, 0);
+            ItemEntity itemEntity = new ItemEntity(svlevel, placementPos.x, placementPos.y, placementPos.z, rewardList.get(rand).stack().copy(), 0, 0, 0);
             svlevel.addFreshEntity(itemEntity);
             svlevel.sendParticles(ParticleRegistry.WARP_REWARD.get(), placementPos.x, placementPos.y + 0.3, placementPos.z, 1, 0, 0, 0, 0);
+
+            rand = RANDOM.nextInt(rewardList.size());
         }
         pickObjective(svlevel);
     }
@@ -191,7 +193,7 @@ public class ObjectiveUtil {
 
     public static boolean compareStackWithObjective(Level level, PlayerObjective curObj, ItemStack stack){
         if(curObj.is(level, PlayerObjectives.FORCED_RESUPPLY) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
-        if(curObj.is(level, PlayerObjectives.DAY_LABOR) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
+        if(curObj.is(level, PlayerObjectives.DAY_LABOUR) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
         if(curObj.is(level, PlayerObjectives.COAL_MINER) && (stack.is(Items.COAL) || stack.is(Items.CHARCOAL))) return true;
         if(curObj.is(level, PlayerObjectives.SHORT_FUSE) && stack.is(ItemRegistry.BATTERY)) return true;
         if(curObj.is(level, PlayerObjectives.HUMAN_CHARGER) && stack.is(ItemRegistry.BATTERY)) return true;

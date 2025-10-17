@@ -20,14 +20,14 @@ public class BlockTagsProvider extends net.neoforged.neoforge.common.data.BlockT
     protected void addTags(HolderLookup.Provider lookupProvider) {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(
-                        BlockRegistry.RETROSTEEL_BLEND_WALL.get(),
+                        BlockRegistry.RETROSTEEL_BLEND_BLOCK.get(),
                         BlockRegistry.RETROSTEEL_WHITE_WALL.get(),
                         BlockRegistry.RETROSTEEL_WHITE_PLATE.get(),
                         BlockRegistry.RETROSTEEL_WHITE_LIGHT.get(),
                         BlockRegistry.RETROSTEEL_SCREEN.get(),
                         BlockRegistry.RETROSTEEL_WHITE_STAIRS.get(),
                         BlockRegistry.RETROSTEEL_WHITE_SLAB.get(),
-                        BlockRegistry.RETROSTEEL_BROWN_WALL.get(),
+                        BlockRegistry.RETROSTEEL_BROWN_BLOCK.get(),
                         BlockRegistry.RETROSTEEL_BROWN_STAIRS.get(),
                         BlockRegistry.RETROSTEEL_BROWN_SLAB.get(),
                         BlockRegistry.RETROSTEEL_WHITE_TILES.get(),
@@ -48,6 +48,13 @@ public class BlockTagsProvider extends net.neoforged.neoforge.common.data.BlockT
                         BlockRegistry.RETRO_TESLA_COIL.get(),
 
                         BlockRegistry.RETROSTEEL_ORE.get()
+                );
+
+        this.tag(BlockTags.WALLS)
+                .add(
+                        BlockRegistry.RETROSTEEL_WHITE_WALL.get(),
+                        BlockRegistry.RETROSTEEL_BROWN_WALL.get(),
+                        BlockRegistry.RETROSTEEL_ORANGE_WALL.get()
                 );
     }
 }

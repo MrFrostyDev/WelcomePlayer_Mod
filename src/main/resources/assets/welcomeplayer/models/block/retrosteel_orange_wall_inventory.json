@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "welcomeplayer:block/retrosteel_orange_smooth"
+  }
+}

@@ -73,4 +73,45 @@ public class SoundEventRegistry {
             ))
     );
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> SHIELD_HIT = SOUND_EVENTS.register(
+            "shield_hit",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "shield_hit"
+            ))
+    );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> CONTRABAND_SIREN = SOUND_EVENTS.register(
+            "contraband_siren",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "contraband_siren"
+            ))
+    );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> PHASE_BLINK = SOUND_EVENTS.register(
+            "phase_blink",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "phase_blink"
+            ))
+    );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> PHASE_BLINK_BEEP = SOUND_EVENTS.register(
+            "phase_blink_bleep",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "phase_blink_bleep"
+            ))
+    );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> STASIS_IMPACT = SOUND_EVENTS.register(
+            "stasis_impact",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "stasis_impact"
+            ))
+    );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> LASER_CUTTER_SWING = SOUND_EVENTS.register(
+            "laser_cutter_swing",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "laser_cutter_swing"
+            ))
+    );
 }

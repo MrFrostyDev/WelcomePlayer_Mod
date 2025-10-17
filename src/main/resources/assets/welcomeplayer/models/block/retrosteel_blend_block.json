@@ -1,0 +1,12 @@
+{
+	"parent": "minecraft:block/cube",
+	"textures": {
+		"down": "welcomeplayer:block/retrosteel_white_smooth",
+		"east": "welcomeplayer:block/retrosteel_blend_block",
+		"north": "welcomeplayer:block/retrosteel_blend_block",
+		"particle": "welcomeplayer:block/retrosteel_blend_block",
+		"south": "welcomeplayer:block/retrosteel_blend_block",
+		"up": "welcomeplayer:block/retrosteel_brown_block",
+		"west": "welcomeplayer:block/retrosteel_blend_block"
+	}
+}

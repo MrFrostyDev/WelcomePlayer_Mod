@@ -33,9 +33,10 @@ public class EventSummonEvents {
         if(spawnForEvent(svlevel, startedEvent, AudienceEvents.ZOMBIE_HORDE, EntityType.ZOMBIE, 12)) return;
         if(spawnForEvent(svlevel, startedEvent, AudienceEvents.FAST_FOOD, EntityType.CHICKEN, 5)) return;
         if(spawnForEvent(svlevel, startedEvent, AudienceEvents.FAST_SERVICE, EntityRegistry.SERVICE_BOT.get(), 3)) return;
-        if(spawnForEvent(svlevel, startedEvent, AudienceEvents.ROBOT_PATROL, EntityRegistry.HANDIBOT.get(), 2)) return;
+        if(spawnForEvent(svlevel, startedEvent, AudienceEvents.ROBOT_PATROL, EntityRegistry.HANDIBOT.get(), 4)) return;
         if(spawnForEvent(svlevel, startedEvent, AudienceEvents.BOMB_SQUAD, EntityType.CREEPER, 5)) return;
         if(spawnForEvent(svlevel, startedEvent, AudienceEvents.ROARING_THUNDER, EntityType.DROWNED, 8)) return;
+        if(spawnForEvent(svlevel, startedEvent, AudienceEvents.DESTRUCT_PROTOCOL, EntityRegistry.HANDIBOT.get(), 2)) return;
         if(spawnForEventSinglePlayer(svlevel, startedEvent, AudienceEvents.BIG_BOSS, EntityRegistry.ERADICATOR.get(), 1)) return;
 
         if(startedEvent.is(AudienceEvents.NUCLEAR_SQUAD)){

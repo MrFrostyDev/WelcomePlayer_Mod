@@ -1,6 +1,6 @@
 {
 	"parent": "minecraft:block/cube_all",
 	"textures": {
-		"all": "welcomeplayer:block/retrosteel_brown_wall"
+		"all": "welcomeplayer:block/retrosteel_white_smooth"
 	}
 }

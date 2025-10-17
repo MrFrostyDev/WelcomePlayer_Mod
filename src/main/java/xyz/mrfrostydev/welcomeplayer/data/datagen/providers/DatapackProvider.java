@@ -5,6 +5,7 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.*;
 import xyz.mrfrostydev.welcomeplayer.registries.DatapackRegistry;
@@ -18,7 +19,8 @@ public class DatapackProvider extends DatapackBuiltinEntriesProvider {
             .add(DatapackRegistry.AUDIENCE_EVENTS, AudienceEvents::bootstrap)
             .add(DatapackRegistry.AUDIENCE_REWARDS, AudienceRewards::bootstrap)
             .add(DatapackRegistry.PLAYER_OBJECTIVES, PlayerObjectives::bootstrap)
-            .add(Registries.DAMAGE_TYPE, ModDamageTypes::bootstrap);
+            .add(Registries.DAMAGE_TYPE, ModDamageTypes::bootstrap)
+            .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap);
 
     public DatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(WelcomeplayerMain.MOD_ID));

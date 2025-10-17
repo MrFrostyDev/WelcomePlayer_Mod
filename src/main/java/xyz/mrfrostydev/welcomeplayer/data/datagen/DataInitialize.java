@@ -34,5 +34,6 @@ public class DataInitialize {
         generator.addProvider(event.includeClient(), new BlockStateProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new SoundDefinitionsProvider(output, existingFileHelper));
         generator.addProvider(event.includeServer(), new DamageTypeTagsProvider(output, datapackProvider.getRegistryProvider(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new ReciperProvider(output, lookupProvider));
     }
 }

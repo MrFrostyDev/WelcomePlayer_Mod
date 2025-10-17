@@ -22,6 +22,11 @@ public class TagRegistry {
             ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "battery")
     );
 
+    public static final TagKey<Item> CONTRABAND = TagKey.create(
+            Registries.ITEM,
+            ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "contraband")
+    );
+
     // |------------------------------------------------------------------------------------|
     // |------------------------------------Entity Tags-------------------------------------|
     // |------------------------------------------------------------------------------------|

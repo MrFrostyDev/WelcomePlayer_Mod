@@ -10,6 +10,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import software.bernie.geckolib.animatable.GeoItem;
@@ -21,6 +22,7 @@ import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import xyz.mrfrostydev.welcomeplayer.client.renderers.item.LaserCutterItemRenderer;
 import xyz.mrfrostydev.welcomeplayer.registries.DataComponentRegistry;
+import xyz.mrfrostydev.welcomeplayer.registries.SoundEventRegistry;
 
 import java.util.function.Consumer;
 
@@ -70,6 +72,11 @@ public class LaserCutterItem extends Item implements GeoItem {
             if(!player.hasInfiniteMaterials()){
                 stack.setDamageValue(stack.getDamageValue() + 1);
             }
+            player.level().playSound(null,
+                    player.getX(), player.getY(), player.getZ(),
+                    SoundEventRegistry.LASER_CUTTER_SWING,
+                    player.getSoundSource(),
+                    1.0F, player.level().getRandom().nextFloat() * 0.4F + 0.8F);
             return false;
         }
         else{
@@ -80,6 +87,11 @@ public class LaserCutterItem extends Item implements GeoItem {
 
     public static boolean isCharging(ItemStack stack){
         return stack.getOrDefault(DataComponentRegistry.CHARGING, false);
+    }
+
+    @Override
+    public boolean canPerformAction(ItemStack stack, net.neoforged.neoforge.common.ItemAbility itemAbility) {
+        return net.neoforged.neoforge.common.ItemAbilities.DEFAULT_SWORD_ACTIONS.contains(itemAbility);
     }
 
     // |------------------------------------------------------------|

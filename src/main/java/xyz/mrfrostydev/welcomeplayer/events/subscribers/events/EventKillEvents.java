@@ -18,6 +18,7 @@ import xyz.mrfrostydev.welcomeplayer.data.AudienceEvent;
 import xyz.mrfrostydev.welcomeplayer.data.PlayerObjective;
 import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.AudienceEvents;
 import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.PlayerObjectives;
+import xyz.mrfrostydev.welcomeplayer.entities.projectiles.ShockChargeProjectile;
 import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.TagRegistry;
 import xyz.mrfrostydev.welcomeplayer.utils.AudienceEventUtil;
@@ -29,7 +30,7 @@ import java.util.function.Predicate;
 public class EventKillEvents {
 
     @SubscribeEvent
-    public static void onRobotDeath(LivingDeathEvent event){
+    public static void onEntityDeath(LivingDeathEvent event){
         if(!(event.getEntity().level() instanceof ServerLevel svlevel))return;
         if(event.getSource().getEntity() == null)return;
         LivingEntity entity = event.getEntity();
@@ -45,6 +46,11 @@ public class EventKillEvents {
             svlevel.sendParticles(ParticleTypes.EXPLOSION,
                     entity.getX(), entity.getY() + 0.4, entity.getZ(),
                     4, 0.8, 0.8, 0.8, 0);
+        }
+        else if(goingEvent.is(AudienceEvents.ELECTRIC_SOUL)){
+            ShockChargeProjectile shock = new ShockChargeProjectile(svlevel, null,
+                    entity.getX(), entity.getEyeY(), entity.getZ(), 100, true);
+            svlevel.addFreshEntity(shock);
         }
     }
 }

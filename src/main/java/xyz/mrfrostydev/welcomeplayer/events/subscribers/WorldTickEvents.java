@@ -26,16 +26,16 @@ public class WorldTickEvents {
     @SubscribeEvent
     public static void onWorldTickPost(LevelTickEvent.Post event){
         if(!(event.getLevel() instanceof ServerLevel svlevel))return;
-        AudienceEvent goingEvent = AudienceEventUtil.getGoingEvent(svlevel);
         List<? extends Player> playerList = event.getLevel().players().stream().toList();
         int increaseByPlayer = Math.floorDiv(playerList.size(), 2);
         int levelTickCount = event.getLevel().getServer().getTickCount();
 
         VendorUtil.doTick(svlevel);
-        AudienceUtil.doTick(svlevel);
-        ObjectiveUtil.doTick(svlevel);
 
         if(!(AudienceUtil.isActive(svlevel)))return;
+
+        AudienceUtil.doTick(svlevel);
+        ObjectiveUtil.doTick(svlevel);
 
         if(levelTickCount % FLESH_LORDS_TICK == 0){
             AudienceData data = AudienceUtil.getAudienceData(svlevel);

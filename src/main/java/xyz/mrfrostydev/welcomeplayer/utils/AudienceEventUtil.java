@@ -77,6 +77,8 @@ public class AudienceEventUtil {
     }
 
     public static void sendEventDialog(AudienceEvent event){
+        if(event.is(AudienceEvent.NOTHING)) return;
+
         List<Component> eventDialog = event.dialog();
         for(Component comp : eventDialog){
             PacketDistributor.sendToAllPlayers(ServerShowHostMessagePacket.create(comp));

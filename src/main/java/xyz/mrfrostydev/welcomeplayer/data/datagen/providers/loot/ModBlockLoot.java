@@ -21,10 +21,10 @@ public class ModBlockLoot extends BlockLootSubProvider {
 
     @Override
     public void generate() {
-        dropSelf(BlockRegistry.RETROSTEEL_BROWN_WALL.get());
+        dropSelf(BlockRegistry.RETROSTEEL_BROWN_BLOCK.get());
         dropSelf(BlockRegistry.RETROSTEEL_BROWN_STAIRS.get());
         dropSelf(BlockRegistry.RETROSTEEL_BROWN_SLAB.get());
-        dropSelf(BlockRegistry.RETROSTEEL_BLEND_WALL.get());
+        dropSelf(BlockRegistry.RETROSTEEL_BLEND_BLOCK.get());
         dropSelf(BlockRegistry.RETROSTEEL_WHITE_TILES.get());
         dropSelf(BlockRegistry.RETROSTEEL_WHITE_WALL.get());
         dropSelf(BlockRegistry.RETROSTEEL_WHITE_PLATE.get());

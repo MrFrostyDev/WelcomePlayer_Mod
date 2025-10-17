@@ -30,12 +30,19 @@ import java.util.List;
 import java.util.Optional;
 
 public class HandibotEntity extends Monster implements GeoEntity {
-    public static final double TARGETING_RANGE = 20;
+    public static final double TARGETING_RANGE = 24;
     public static final double ATTACK_RANGE = 2;
     public static final int ATTACK_COOLDOWN = 40;
 
+    boolean shouldDrop = true;
+
     public HandibotEntity(EntityType<HandibotEntity> entityType, Level level) {
         super(EntityRegistry.HANDIBOT.get(), level);
+    }
+
+    public HandibotEntity(Level level, boolean shouldDrop) {
+        super(EntityRegistry.HANDIBOT.get(), level);
+        this.shouldDrop = shouldDrop;
     }
 
     @Override
@@ -46,7 +53,7 @@ public class HandibotEntity extends Monster implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 18)
+                .add(Attributes.MAX_HEALTH, 22)
                 .add(Attributes.STEP_HEIGHT, 1)
                 .add(Attributes.FOLLOW_RANGE, TARGETING_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, 0.32F)
@@ -115,8 +122,8 @@ public class HandibotEntity extends Monster implements GeoEntity {
     public List<EntityHitboxSet> registerHitboxSets(){
         EntityHitboxSet attackHitbox = EntityHitboxSet.Builder.create()
                 .add(EntityHitboxSet.SequenceSetBuilder
-                        .create(0.6, 0.6, 0.6, HandibotEntity::onHit)
-                        .transition(ATTACK_RANGE, 1.2, 0, 9)
+                        .create(1.0, 0.8, 1.0, HandibotEntity::onHit)
+                        .transition(ATTACK_RANGE - 0.4, 1.2, 0, 9)
                 )
                 .build(this);
 
@@ -187,6 +194,7 @@ public class HandibotEntity extends Monster implements GeoEntity {
             hitboxesList.add(set.saveData());
         }
         tag.put("hitboxSets", hitboxesList);
+        tag.putBoolean("shouldDrop", this.shouldDrop);
     }
 
     @Override
@@ -197,11 +205,17 @@ public class HandibotEntity extends Monster implements GeoEntity {
             EntityHitboxSet set = hitboxSets.get(i);
             set.loadData(hitboxesList.getCompound(i));
         }
+        this.shouldDrop = tag.getBoolean("shouldDrop");
     }
 
     // |------------------------------------------------------------|
     // |----------------------------Misc----------------------------|
     // |------------------------------------------------------------|
+
+    @Override
+    protected boolean shouldDropLoot() {
+        return this.shouldDrop;
+    }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {

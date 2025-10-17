@@ -2,6 +2,7 @@ package xyz.mrfrostydev.welcomeplayer.utils;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.saveddata.SavedData;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -85,6 +86,7 @@ public class AudienceUtil {
         AudienceData data = getAudienceData(svlevel);
         data.setActive(true);
         ObjectiveUtil.pickObjective(svlevel);
+        AudienceEventUtil.setGoingEvent(svlevel, AudienceEvent.NOTHING);
     }
 
     public static void stopGameShow(ServerLevel svlevel){
@@ -229,6 +231,10 @@ public class AudienceUtil {
 
     public static void sendDialog(Component component){
         PacketDistributor.sendToAllPlayers(ServerShowHostMessagePacket.create(component));
+    }
+
+    public static void sendDialog(Component component, ServerPlayer player){
+        PacketDistributor.sendToPlayer(player, ServerShowHostMessagePacket.create(component));
     }
 
     public static void syncToClients(ServerLevel svlevel){

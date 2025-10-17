@@ -17,6 +17,7 @@ import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.util.GeckoLibUtil;
 import xyz.mrfrostydev.welcomeplayer.client.renderers.item.PhaseLinkItemRenderer;
+import xyz.mrfrostydev.welcomeplayer.registries.SoundEventRegistry;
 
 import java.util.ArrayDeque;
 import java.util.Deque;import java.util.function.Consumer;
@@ -55,9 +56,20 @@ public class PhaseLinkItem extends Item implements GeoItem {
             newPos = freeSpaces.pop();
             player.teleportTo(newPos.getX() + 0.5, newPos.getY(), newPos.getZ() + 0.5);
             player.getCooldowns().addCooldown(this, 100);
+            level.playSound(null,
+                    player.getX(), player.getY(), player.getZ(),
+                    SoundEventRegistry.PHASE_BLINK,
+                    player.getSoundSource(),
+                    1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
             return InteractionResultHolder.consume(usedStack);
         }
         else{
+            player.getCooldowns().addCooldown(this, 10);
+            level.playSound(null,
+                    player.getX(), player.getY(), player.getZ(),
+                    SoundEventRegistry.PHASE_BLINK_BEEP,
+                    player.getSoundSource(),
+                    1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
             return InteractionResultHolder.fail(usedStack);
         }
     }

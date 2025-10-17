@@ -65,13 +65,13 @@ public class EradicatorEntity extends Monster implements GeoEntity {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 80)
+                .add(Attributes.MAX_HEALTH, 250.0F)
                 .add(Attributes.STEP_HEIGHT, 1)
                 .add(Attributes.FOLLOW_RANGE, TARGETING_RANGE)
                 .add(Attributes.MOVEMENT_SPEED, 0.35F)
                 .add(Attributes.ATTACK_DAMAGE, 32.0)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.9)
-                .add(Attributes.ARMOR, 20.0)
+                .add(Attributes.ARMOR, 25.0)
                 .add(Attributes.ARMOR_TOUGHNESS, 5.0);
     }
 

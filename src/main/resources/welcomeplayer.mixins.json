@@ -4,8 +4,7 @@
   "package": "xyz.mrfrostydev.welcomeplayer.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "PrimedTntMixin",
-    "TamableAnimalMixin"
+    "PrimedTntMixin"
   ],
   "client": [
   ],

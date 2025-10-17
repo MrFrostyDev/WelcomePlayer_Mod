@@ -139,5 +139,95 @@ public class SoundDefinitionsProvider extends net.neoforged.neoforge.common.data
                 .subtitle("sound.welcomeplayer.launcher_charge")
                 .replace(false)
         );
+
+        add(SoundEventRegistry.SHIELD_HIT, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "shield_hit"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:shield_hit")
+                )
+                .subtitle("sound.welcomeplayer.shield_hit")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.CONTRABAND_SIREN, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "contraband_siren"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(10)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:contraband_siren")
+                )
+                .subtitle("sound.welcomeplayer.contraband_siren")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.PHASE_BLINK, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "phase_blink"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:phase_blink")
+                )
+                .subtitle("sound.welcomeplayer.phase_blink")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.PHASE_BLINK_BEEP, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "phase_blink_beep"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(6)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:phase_blink_beep")
+                )
+                .subtitle("sound.welcomeplayer.phase_blink_beep")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.STASIS_IMPACT, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "stasis_impact"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(8)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:stasis_impact")
+                )
+                .subtitle("sound.welcomeplayer.stasis_impact")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.LASER_CUTTER_SWING, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "laser_cutter_swing"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(6)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:laser_cutter_swing")
+                )
+                .subtitle("sound.welcomeplayer.laser_cutter_swing")
+                .replace(false)
+        );
     }
 }

@@ -43,20 +43,29 @@ public class ItemRegistry {
     public static final DeferredHolder<Item, Item> RETRO_TESLA_COIL = ITEMS.register("retro_tesla_coil", () -> new GeoBlockItem(BlockRegistry.RETRO_TESLA_COIL.get(), "retro_tesla_coil", new Item.Properties()));
 
 
-    public static final DeferredHolder<Item, Item> RETROSTEEL_BLEND_WALL = ITEMS.register("retrosteel_blend_wall", () -> new BlockItem(BlockRegistry.RETROSTEEL_BLEND_WALL.get(), new Item.Properties()));
-    public static final DeferredHolder<Item, Item> RETROSTEEL_WHITE_WALL = ITEMS.register("retrosteel_white_wall", () -> new BlockItem(BlockRegistry.RETROSTEEL_WHITE_WALL.get(), new Item.Properties()));
-    public static final DeferredHolder<Item, Item> RETROSTEEL_BROWN_WALL = ITEMS.register("retrosteel_brown_wall", () -> new BlockItem(BlockRegistry.RETROSTEEL_BROWN_WALL.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_BLEND_BLOCK = ITEMS.register("retrosteel_blend_block", () -> new BlockItem(BlockRegistry.RETROSTEEL_BLEND_BLOCK.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_BROWN_BLOCK = ITEMS.register("retrosteel_brown_block", () -> new BlockItem(BlockRegistry.RETROSTEEL_BROWN_BLOCK.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_BROWN_STAIRS = ITEMS.register("retrosteel_brown_stairs", () -> new BlockItem(BlockRegistry.RETROSTEEL_BROWN_STAIRS.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_BROWN_SLAB = ITEMS.register("retrosteel_brown_slab", () -> new BlockItem(BlockRegistry.RETROSTEEL_BROWN_SLAB.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_BROWN_WALL = ITEMS.register("retrosteel_brown_wall", () -> new BlockItem(BlockRegistry.RETROSTEEL_BROWN_WALL.get(), new Item.Properties()));
+
     public static final DeferredHolder<Item, Item> RETROSTEEL_ORANGE_TILES = ITEMS.register("retrosteel_orange_tiles", () -> new BlockItem(BlockRegistry.RETROSTEEL_ORANGE_TILES.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_ORANGE_SMOOTH = ITEMS.register("retrosteel_orange_smooth", () -> new BlockItem(BlockRegistry.RETROSTEEL_ORANGE_SMOOTH.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_ORANGE_PLATE = ITEMS.register("retrosteel_orange_plate", () -> new BlockItem(BlockRegistry.RETROSTEEL_ORANGE_PLATE.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_ORANGE_STAIRS = ITEMS.register("retrosteel_orange_stairs", () -> new BlockItem(BlockRegistry.RETROSTEEL_ORANGE_STAIRS.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_ORANGE_SLAB = ITEMS.register("retrosteel_orange_slab", () -> new BlockItem(BlockRegistry.RETROSTEEL_ORANGE_SLAB.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_ORANGE_WALL = ITEMS.register("retrosteel_orange_wall", () -> new BlockItem(BlockRegistry.RETROSTEEL_ORANGE_WALL.get(), new Item.Properties()));
+
+    public static final DeferredHolder<Item, Item> RETROSTEEL_WHITE_SMOOTH = ITEMS.register("retrosteel_white_smooth", () -> new BlockItem(BlockRegistry.RETROSTEEL_WHITE_SMOOTH.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_WHITE_TILES = ITEMS.register("retrosteel_white_tiles", () -> new BlockItem(BlockRegistry.RETROSTEEL_WHITE_TILES.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_WHITE_PLATE = ITEMS.register("retrosteel_white_plate", () -> new BlockItem(BlockRegistry.RETROSTEEL_WHITE_PLATE.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_WHITE_LIGHT = ITEMS.register("retrosteel_white_light", () -> new BlockItem(BlockRegistry.RETROSTEEL_WHITE_LIGHT.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_WHITE_STAIRS = ITEMS.register("retrosteel_white_stairs", () -> new BlockItem(BlockRegistry.RETROSTEEL_WHITE_STAIRS.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_WHITE_SLAB = ITEMS.register("retrosteel_white_slab", () -> new BlockItem(BlockRegistry.RETROSTEEL_WHITE_SLAB.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_WHITE_WALL = ITEMS.register("retrosteel_white_wall", () -> new BlockItem(BlockRegistry.RETROSTEEL_WHITE_WALL.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_SCREEN = ITEMS.register("retrosteel_screen", () -> new BlockItem(BlockRegistry.RETROSTEEL_SCREEN.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_METAL_BLOCK = ITEMS.register("retrosteel_metal_block", () -> new BlockItem(BlockRegistry.RETROSTEEL_METAL_BLOCK.get(), new Item.Properties()));
+    public static final DeferredHolder<Item, Item> RETROSTEEL_METAL_TILES = ITEMS.register("retrosteel_metal_tiles", () -> new BlockItem(BlockRegistry.RETROSTEEL_METAL_TILES.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_BEAMS = ITEMS.register("retrosteel_beams", () -> new BlockItem(BlockRegistry.RETROSTEEL_BEAMS.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_GRATE = ITEMS.register("retrosteel_grate", () -> new BlockItem(BlockRegistry.RETROSTEEL_GRATE.get(), new Item.Properties()));
 

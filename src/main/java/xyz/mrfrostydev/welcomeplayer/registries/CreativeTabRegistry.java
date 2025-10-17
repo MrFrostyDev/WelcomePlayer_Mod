@@ -18,20 +18,29 @@ public class CreativeTabRegistry {
             .title(Component.translatable("itemGroup." + WelcomeplayerMain.MOD_ID + ".tab"))
             .icon(() -> new ItemStack(Items.GLOWSTONE))
             .displayItems((params, output) -> {
-                output.accept(ItemRegistry.RETROSTEEL_BROWN_WALL.get());
+                output.accept(ItemRegistry.RETROSTEEL_BROWN_BLOCK.get());
                 output.accept(ItemRegistry.RETROSTEEL_BROWN_STAIRS.get());
                 output.accept(ItemRegistry.RETROSTEEL_BROWN_SLAB.get());
-                output.accept(ItemRegistry.RETROSTEEL_BLEND_WALL.get());
-                output.accept(ItemRegistry.RETROSTEEL_WHITE_WALL.get());
+                output.accept(ItemRegistry.RETROSTEEL_BROWN_WALL.get());
+                output.accept(ItemRegistry.RETROSTEEL_BLEND_BLOCK.get());
+
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_SMOOTH.get());
                 output.accept(ItemRegistry.RETROSTEEL_WHITE_TILES.get());
                 output.accept(ItemRegistry.RETROSTEEL_WHITE_PLATE.get());
                 output.accept(ItemRegistry.RETROSTEEL_WHITE_LIGHT.get());
                 output.accept(ItemRegistry.RETROSTEEL_WHITE_STAIRS.get());
                 output.accept(ItemRegistry.RETROSTEEL_WHITE_SLAB.get());
+                output.accept(ItemRegistry.RETROSTEEL_WHITE_WALL.get());
+
                 output.accept(ItemRegistry.RETROSTEEL_SCREEN.get());
+                output.accept(ItemRegistry.RETROSTEEL_ORANGE_SMOOTH.get());
                 output.accept(ItemRegistry.RETROSTEEL_ORANGE_TILES.get());
                 output.accept(ItemRegistry.RETROSTEEL_ORANGE_PLATE.get());
+                output.accept(ItemRegistry.RETROSTEEL_ORANGE_STAIRS.get());
+                output.accept(ItemRegistry.RETROSTEEL_ORANGE_SLAB.get());
+                output.accept(ItemRegistry.RETROSTEEL_ORANGE_WALL.get());
                 output.accept(ItemRegistry.RETROSTEEL_METAL_BLOCK.get());
+                output.accept(ItemRegistry.RETROSTEEL_METAL_TILES.get());
                 output.accept(ItemRegistry.RETROSTEEL_BEAMS.get());
                 output.accept(ItemRegistry.RETROSTEEL_GRATE.get());
                 output.accept(ItemRegistry.RETRO_PATTERN_WOOL.get());

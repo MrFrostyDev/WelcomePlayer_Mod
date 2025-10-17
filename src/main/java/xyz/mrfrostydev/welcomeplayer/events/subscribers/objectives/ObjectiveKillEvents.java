@@ -42,6 +42,7 @@ public class ObjectiveKillEvents {
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.SET_BATTLE, TagRegistry.HOST_ROBOT)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.MONSTER_HUNTER, TagRegistry.UNDEAD)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.PURE_VIOLENCE, e -> !e.getType().equals(EntityType.PLAYER))) return;
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.ENDLESS_VIOLENCE, e -> !e.getType().equals(EntityType.PLAYER))) return;
 
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.GOLIATH, EntityRegistry.ERADICATOR.get())) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.NIGHT_KILLER, EntityType.WARDEN)) return;

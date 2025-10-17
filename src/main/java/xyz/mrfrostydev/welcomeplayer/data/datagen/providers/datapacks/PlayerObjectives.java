@@ -35,11 +35,17 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.cruel_suffering.3"
     ));
 
+    public static final ResourceKey<PlayerObjective> ENDLESS_VIOLENCE = registerEntry("furious_endless_violence", 80, true, createDialog(
+            "dialog.welcomeplayer.objective.endless_violence.0",
+            "dialog.welcomeplayer.objective.endless_violence.1",
+            "dialog.welcomeplayer.objective.endless_violence.2"
+    ));
+
     // |------------------------------------------------------------|
     // |---------------------------Bored----------------------------|
     // |------------------------------------------------------------|
 
-    public static final ResourceKey<PlayerObjective> DAY_LABOR = registerEntry("bored_day_labor", 6, true, createDialog(
+    public static final ResourceKey<PlayerObjective> DAY_LABOUR = registerEntry("bored_day_labour", 6, true, createDialog(
             "dialog.welcomeplayer.objective.day_labour.0",
             "dialog.welcomeplayer.objective.day_labour.1",
             "dialog.welcomeplayer.objective.day_labour.2",
@@ -205,6 +211,13 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.carniferous_crowd.1",
             "dialog.welcomeplayer.objective.carniferous_crowd.2",
             "dialog.welcomeplayer.objective.carniferous_crowd.3"
+    ));
+
+    public static final ResourceKey<PlayerObjective> DISCHARGE = registerEntry("interested_discharge", 2, true, createDialog(
+            "dialog.welcomeplayer.objective.discharge.0",
+            "dialog.welcomeplayer.objective.discharge.1",
+            "dialog.welcomeplayer.objective.discharge.2",
+            "dialog.welcomeplayer.objective.discharge.3"
     ));
 
     // |------------------------------------------------------------|

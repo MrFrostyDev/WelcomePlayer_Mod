@@ -58,7 +58,7 @@ public class ObjectiveSummonEvents {
             for(int i=0; i<amount; i++){
                 BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), offset, 20);
                 if(pos == null) pos = player.getOnPos();
-                entityType.spawn(svlevel, pos, MobSpawnType.PATROL);
+                entityType.spawn(svlevel, pos, MobSpawnType.EVENT);
                 offset++;
             }
         }
@@ -71,7 +71,7 @@ public class ObjectiveSummonEvents {
         for(int i=0; i<amount; i++){
             BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), 0, 20);
             if(pos == null) pos = player.getOnPos();
-            entityType.spawn(svlevel, pos, MobSpawnType.PATROL);
+            entityType.spawn(svlevel, pos, MobSpawnType.EVENT);
         }
     }
 

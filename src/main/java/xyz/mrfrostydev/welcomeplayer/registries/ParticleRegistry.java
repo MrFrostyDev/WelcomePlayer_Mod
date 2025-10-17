@@ -50,4 +50,9 @@ public class ParticleRegistry {
             "warp_reward",
             () -> new SimpleParticleType(false)
     );
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SHIELD_HIT = PARTICLE_TYPES.register(
+            "shield_hit",
+            () -> new SimpleParticleType(false)
+    );
 }
