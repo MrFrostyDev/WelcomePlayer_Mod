@@ -16,7 +16,7 @@ public class CreativeTabRegistry {
 
     public static final Supplier<CreativeModeTab> WELCOMEPLAYER_TAB = CREATIVE_MODE_TABS.register("welcomeplayer_tab", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + WelcomeplayerMain.MOD_ID + ".tab"))
-            .icon(() -> new ItemStack(Items.GLOWSTONE))
+            .icon(() -> new ItemStack(ItemRegistry.BOUNCE_PAD))
             .displayItems((params, output) -> {
                 output.accept(ItemRegistry.RETROSTEEL_BROWN_BLOCK.get());
                 output.accept(ItemRegistry.RETROSTEEL_BROWN_STAIRS.get());
