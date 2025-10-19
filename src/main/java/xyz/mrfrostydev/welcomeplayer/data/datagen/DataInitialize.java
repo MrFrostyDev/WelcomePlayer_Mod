@@ -30,10 +30,10 @@ public class DataInitialize {
         generator.addProvider(event.includeServer(), new ItemTagsProvider(output, lookupProvider, blockTagsProvider.contentsGetter()));
         generator.addProvider(event.includeServer(), new GlobalLootModifierProvider(output, lookupProvider));
         generator.addProvider(event.includeServer(), new LootTableProvider(output, lookupProvider));
+        generator.addProvider(event.includeServer(), new DamageTypeTagsProvider(output, datapackProvider.getRegistryProvider(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new ReciperProvider(output, lookupProvider));
         generator.addProvider(event.includeClient(), new ItemModelProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new BlockStateProvider(output, existingFileHelper));
         generator.addProvider(event.includeClient(), new SoundDefinitionsProvider(output, existingFileHelper));
-        generator.addProvider(event.includeServer(), new DamageTypeTagsProvider(output, datapackProvider.getRegistryProvider(), existingFileHelper));
-        generator.addProvider(event.includeServer(), new ReciperProvider(output, lookupProvider));
     }
 }

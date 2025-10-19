@@ -54,7 +54,8 @@ public class ServiceBotEntity extends PathfinderMob implements GeoEntity {
                 .add(Attributes.MOVEMENT_SPEED, 0.25F)
                 .add(Attributes.ATTACK_DAMAGE, 1.0)
                 .add(Attributes.ARMOR, 10.0)
-                .add(Attributes.ARMOR_TOUGHNESS, 1.0);
+                .add(Attributes.ARMOR_TOUGHNESS, 1.0)
+                .add(Attributes.FALL_DAMAGE_MULTIPLIER, 0.0F);
     }
 
     // |------------------------------------------------------------|

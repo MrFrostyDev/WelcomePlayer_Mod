@@ -2,6 +2,7 @@ package xyz.mrfrostydev.welcomeplayer.client.events;
 
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -9,7 +10,7 @@ import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.items.gadgets.LaserCutterItem;
 import xyz.mrfrostydev.welcomeplayer.registries.ItemRegistry;
 
-@EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
+@EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID, value = Dist.CLIENT)
 public class ItemPropertiesEvents {
 
     @SubscribeEvent

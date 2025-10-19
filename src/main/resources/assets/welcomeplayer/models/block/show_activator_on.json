@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "welcomeplayer:block/show_activator_top",
+    "side": "welcomeplayer:block/show_activator_side_on"
+  }
+}

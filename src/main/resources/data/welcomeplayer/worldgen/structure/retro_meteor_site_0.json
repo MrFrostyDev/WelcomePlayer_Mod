@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:jigsaw",
+  "start_pool": "welcomeplayer:debris/retro_meteor_site_0",
+  "size": 1,
+  "max_distance_from_center": 64,
+  "biomes": "#welcomeplayer:has_structure/retro_debris_biomes",
+  "step": "surface_structures",
+  "terrain_adaptation": "bury",
+  "start_height": {
+    "absolute": -8
+  },
+  "project_start_to_heightmap": "WORLD_SURFACE_WG",
+  "use_expansion_hack": false,
+  "liquid_settings": "ignore_waterlogging",
+  "spawn_overrides": {},
+  "pool_aliases": []
+}

@@ -1,0 +1,30 @@
+{
+  // What structures to pick to try and spawn if a spot passes the placement check.
+  // If two or more structures in this list can spawn in a biome at a spot, a random one based on weight is chosen to spawn
+  "structures": [
+    {
+      "structure": "welcomeplayer:retro_starting_stage",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    // The kind of placement to use. The other kind is ring based like strongholds use.
+    "type": "minecraft:concentric_rings",
+
+    // Make sure this is unique and does not match any other structure set's salt
+    "salt": 1583672421,
+
+    // The thickness of a ring plus that of a gap between two rings. Value between 0 and 1023 (inclusive). Unit is 6 chunk
+    "distance": 0,
+
+    // The total number of generation attempts in this dimension. Value between 1 and 4095 (inclusive)
+    "count": 1,
+
+    // How many attempts are on the closest ring to spawn. Value between 0 and 1023 (inclusive).
+    // The number of attempts on the Nth ring is: spread * (N^2 + 3 * N + 2) / 6, until the number of attempts reaches the total count
+    "spread": 0,
+
+    // Any number of biome(s) (an ID, or a tag with #, or an array containing IDs) — Biomes in which the structure is likely to be generated
+    "preferred_biomes": "#c:is_overworld"
+  }
+}

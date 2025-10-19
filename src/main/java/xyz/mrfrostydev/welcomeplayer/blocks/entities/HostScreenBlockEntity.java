@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import software.bernie.geckolib.animatable.GeoBlockEntity;
@@ -34,8 +35,10 @@ public class HostScreenBlockEntity extends BlockEntity implements GeoBlockEntity
             if(AudienceUtil.isActive(svlevel)){
                 blockEntity.isActive = true;
             }
-            level.setBlockAndUpdate(pos, state);
+            BlockState newState = level.getBlockState(pos);
             blockEntity.setChanged();
+            level.setBlockAndUpdate(pos, state);
+            level.sendBlockUpdated(pos, newState, newState, Block.UPDATE_ALL);
         }
     }
 
@@ -85,7 +88,6 @@ public class HostScreenBlockEntity extends BlockEntity implements GeoBlockEntity
     private final AnimatableInstanceCache animCache = GeckoLibUtil.createInstanceCache(this);
     private static final RawAnimation INACTIVE_ANIM = RawAnimation.begin().thenPlay("host_screen.animation.inactive");
     private static final RawAnimation ACTIVE_ANIM = RawAnimation.begin().thenPlay("host_screen.animation.active");
-
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {

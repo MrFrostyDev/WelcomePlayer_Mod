@@ -8,7 +8,6 @@ import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.data.AudienceData;
-import xyz.mrfrostydev.welcomeplayer.data.AudienceEvent;
 import xyz.mrfrostydev.welcomeplayer.data.PlayerObjective;
 import xyz.mrfrostydev.welcomeplayer.network.SyncAudienceDataSmallPacket;
 import xyz.mrfrostydev.welcomeplayer.utils.AudienceEventUtil;
@@ -20,8 +19,8 @@ import java.util.List;
 
 @EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
 public class WorldTickEvents {
-    public static final int FLESH_LORDS_TICK = 200;
-    public static final int DAYS_TILL_MOOD_CHANGE = 1;
+    public static final int TICK_COOLDOWN = 200;
+    public static final int MOOD_CHANGE_COOLDOWN = 12000;
 
     @SubscribeEvent
     public static void onWorldTickPost(LevelTickEvent.Post event){
@@ -37,7 +36,7 @@ public class WorldTickEvents {
         AudienceUtil.doTick(svlevel);
         ObjectiveUtil.doTick(svlevel);
 
-        if(levelTickCount % FLESH_LORDS_TICK == 0){
+        if(levelTickCount % TICK_COOLDOWN == 0){
             AudienceData data = AudienceUtil.getAudienceData(svlevel);
             AudienceUtil.addInterestRaw(svlevel, -1 + increaseByPlayer);
 
@@ -54,8 +53,8 @@ public class WorldTickEvents {
             }
         }
 
-        // Try to pick a random mood and event every 2 days.
-        if(levelTickCount % (2000) == 0){ //24000 * DAYS_TILL_MOOD_CHANGE
+        // Try to pick a random mood and event every day.
+        if(levelTickCount % MOOD_CHANGE_COOLDOWN == 0){
             if(!AudienceUtil.isChangeCooldown(svlevel)){
                 AudienceUtil.pickMood(svlevel);
                 AudienceEventUtil.pickEvent(svlevel);

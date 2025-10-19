@@ -1,0 +1,133 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "min": 3,
+        "max": 5
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:shock_orb_launcher",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:laser_cutter",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:phase_link",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:stasis_stick",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:large_battery",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:retrosteel_screen",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:bounce_pad",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_ingot",
+          "weight": 10
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:battery",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:raw_retrosteel",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 4
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:copper_ingot",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:iron_nugget",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 3,
+                "max": 8
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:redstone",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:paper",
+          "weight": 20
+        },
+        {
+          "type": "minecraft:item",
+          "name": "welcomeplayer:small_battery",
+          "weight": 20,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "min": 2,
+                "max": 5
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

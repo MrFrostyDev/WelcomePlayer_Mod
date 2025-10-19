@@ -7,11 +7,14 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.data.AudienceEvent;
 import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.AudienceEvents;
 import xyz.mrfrostydev.welcomeplayer.events.AudienceEventEndEvent;
 import xyz.mrfrostydev.welcomeplayer.events.AudienceEventStartedEvent;
+import xyz.mrfrostydev.welcomeplayer.events.subscribers.WorldTickEvents;
+import xyz.mrfrostydev.welcomeplayer.utils.AudienceEventUtil;
 
 @EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
 public class EventTeleportEvents {
@@ -22,6 +25,20 @@ public class EventTeleportEvents {
         AudienceEvent startedEvent = event.getStartedEvent();
 
         if(startedEvent.is(AudienceEvents.WARP_MALFUNCTION)){
+            for (ServerPlayer player : svlevel.getPlayers( p -> !p.isSpectator())) {
+                randomTeleport(svlevel, player);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onEventTickTeleport(LevelTickEvent.Post event){
+        if(!(event.getLevel() instanceof ServerLevel svlevel))return;
+        AudienceEvent goingEvent = AudienceEventUtil.getGoingEvent(svlevel);
+
+        int tickCount = svlevel.getServer().getTickCount();
+        if(goingEvent.is(AudienceEvents.WARP_MALFUNCTION)
+                && (tickCount == WorldTickEvents.MOOD_CHANGE_COOLDOWN / 3) || tickCount == WorldTickEvents.MOOD_CHANGE_COOLDOWN - WorldTickEvents.MOOD_CHANGE_COOLDOWN / 3){
             for (ServerPlayer player : svlevel.getPlayers( p -> !p.isSpectator())) {
                 randomTeleport(svlevel, player);
             }

@@ -35,9 +35,31 @@ public class EventTickEvents {
     public static void onLevelTick(LevelTickEvent.Post event){
         if(!(event.getLevel() instanceof ServerLevel svlevel))return;
         AudienceEvent goingEvent = AudienceEventUtil.getGoingEvent(svlevel);
-        int levelTickCount = event.getLevel().getServer().getTickCount();
+        int levelTickCount = svlevel.getServer().getTickCount();
 
-        if(levelTickCount % 400 == 0 && goingEvent.is(AudienceEvents.CONTRABAND)){
+        handleContraband(svlevel, goingEvent, levelTickCount);
+    }
+
+    @SubscribeEvent
+    public static void onTickEntity(EntityTickEvent.Post event){
+       Entity entity = event.getEntity();
+
+       int tick = event.getEntity().tickCount;
+       if(tick % 20 == 0){
+           if (entity.hasData(DataAttachmentRegistry.REPULSION_COOLDOWN.get())){
+               int cooldown = entity.getData(DataAttachmentRegistry.REPULSION_COOLDOWN.get());
+               if(cooldown > 0){
+                   entity.setData(DataAttachmentRegistry.REPULSION_COOLDOWN.get(), cooldown - 1);
+               }
+               else{
+                   entity.removeData(DataAttachmentRegistry.REPULSION_COOLDOWN.get());
+               }
+           }
+       }
+    }
+
+    private static void handleContraband(ServerLevel svlevel, AudienceEvent goingEvent, int tick){
+        if(tick % 400 == 0 && goingEvent.is(AudienceEvents.CONTRABAND)){
             svlevel.players().forEach(p -> {
                 if(p.isHolding(i -> i.is(TagRegistry.CONTRABAND) && canBeSeenOnSurface(svlevel, p))){
                     int offset = 0;
@@ -61,24 +83,6 @@ public class EventTickEvents {
                 }
             });
         }
-    }
-
-    @SubscribeEvent
-    public static void onTickEntity(EntityTickEvent.Post event){
-       Entity entity = event.getEntity();
-
-       int tick = event.getEntity().tickCount;
-       if(tick % 20 == 0){
-           if (entity.hasData(DataAttachmentRegistry.REPULSION_COOLDOWN.get())){
-               int cooldown = entity.getData(DataAttachmentRegistry.REPULSION_COOLDOWN.get());
-               if(cooldown > 0){
-                   entity.setData(DataAttachmentRegistry.REPULSION_COOLDOWN.get(), cooldown - 1);
-               }
-               else{
-                   entity.removeData(DataAttachmentRegistry.REPULSION_COOLDOWN.get());
-               }
-           }
-       }
     }
 
     @Nullable
@@ -111,13 +115,11 @@ public class EventTickEvents {
     }
 
     private static boolean canBeSeenOnSurface(ServerLevel svlevel, Player player) {
-        if (!svlevel.isClientSide) {
-            BlockPos blockpos = BlockPos.containing(player.getX(), player.getEyeY(), player.getZ());
-            float brightness = svlevel.getBrightness(LightLayer.SKY, blockpos);
-            if (svlevel.random.nextFloat() * 30.0F < (brightness - 0.4F) * 2.0F
-                    && svlevel.canSeeSky(blockpos)) {
-                return true;
-            }
+        BlockPos blockpos = BlockPos.containing(player.getX(), player.getEyeY(), player.getZ());
+        float brightness = svlevel.getBrightness(LightLayer.SKY, blockpos);
+        if (svlevel.random.nextFloat() * 30.0F < (brightness - 0.4F) * 2.0F
+                && svlevel.canSeeSky(blockpos)) {
+            return true;
         }
         return false;
     }

@@ -12,6 +12,7 @@
   "item.welcomeplayer.battery": "Battery",
   "item.welcomeplayer.large_battery": "Large Battery",
 
+  "item.welcomeplayer.ration": "Ration",
   "item.welcomeplayer.potato_bomb": "Ticking Potato Bomb",
 
   "item.welcomeplayer.raw_retrosteel": "Raw Retrosteel",
@@ -22,10 +23,12 @@
   "item.welcomeplayer.service_bot_spawn_egg": "Service Bot Spawn egg",
 
   "block.welcomeplayer.host_screen": "Hot Screen",
+  "block.welcomeplayer.show_activator": "Show Activator",
   "block.welcomeplayer.vendor": "Vendor",
   "block.welcomeplayer.vendor.balance": "Battery Balance: ",
   "block.welcomeplayer.vendor_top": "Vendor Top",
   "block.welcomeplayer.vendor_bottom": "Vendor Bottom",
+  "block.welcomeplayer.beacon": "Beacon",
   "block.welcomeplayer.material_transit": "Material Transit Unit",
   "block.welcomeplayer.retro_tesla_coil": "Retro Tesla Coil",
 
@@ -71,9 +74,6 @@
   "commands.welcomeplayer.event.get": "[Welcomeplayer] The current event is: %s",
   "commands.welcomeplayer.event.set": "[Welcomeplayer] The current event is now: %s",
 
-  "dialog.welcomeplayer.objective.fail.0": "You have failed, miserably...",
-  "dialog.welcomeplayer.objective.success.0": "Good job completing you objective.",
-
   "death.welcomeplayer.damage.laser": "%1$s was vaporised by extreme sci-fi energy",
   "death.welcomeplayer.damage.saw": "%1$s was torn apart by violent saw blades",
   "death.welcomeplayer.damage.shock": "%1$s was shocked to death, literally...",
@@ -88,6 +88,35 @@
   "item.welcomeplayer.surveillance.mood.sad": "Their mood is sad.",
   "item.welcomeplayer.surveillance.mood.angry": "Their mood is angry.",
   "item.welcomeplayer.surveillance.mood.cruel": "Their mood is cruel.",
+  "item.welcomeplayer.surveillance.event": "Event: ",
+
+  "dialog.welcomeplayer.intro.0": "Wel- Wel- Welcome Players!",
+  "dialog.welcomeplayer.intro.1": "We expected you to show up! Look at you all!",
+  "dialog.welcomeplayer.intro.2": "You are the prime contestants for our little game we like to play!",
+  "dialog.welcomeplayer.intro.3": "Come on! Smile, wave! You're live!",
+  "dialog.welcomeplayer.intro.4": "I'd imagine you are all quite lost.",
+  "dialog.welcomeplayer.intro.5": "Do not worry, let's give everyone a quick reminder folks!",
+  "dialog.welcomeplayer.intro.6": "I will give you tasks to complete in your little overworld.",
+  "dialog.welcomeplayer.intro.7": "All you need to do is complete them within an hour! Easy right?",
+  "dialog.welcomeplayer.intro.8": "Some of them are pretty simple while others require some elbow grease.",
+  "dialog.welcomeplayer.intro.9": "If you complete it within the hour, CONGRATULATIONS! You'll gain the audience's interest and even a reward!",
+  "dialog.welcomeplayer.intro.10": "While you are trying to complete a task, we will inject some minor events to make it more interesting.",
+  "dialog.welcomeplayer.intro.11": "Keep us entertained and we'll shower you with free gifts! Fail to make us invested and we'll dispose of you quickly.",
+  "dialog.welcomeplayer.intro.12": "Simple right?",
+  "dialog.welcomeplayer.intro.13": "Well with no further questions, lets get started folks!",
+  "dialog.welcomeplayer.intro.14": "We'll start you with your first task! Good luck!",
+
+  "dialog.welcomeplayer.objective.success.0": "Hey! Good job! We only got 9999999999... tasks left to go!",
+  "dialog.welcomeplayer.objective.success.1": "Impressive! I underestimated you in that one. Kind of.",
+  "dialog.welcomeplayer.objective.success.2": "Good job! I'd clap but that is a primitive gesture.",
+  "dialog.welcomeplayer.objective.success.3": "Cheer folks! They have done it! Now lets see if they can handle the next task.",
+  "dialog.welcomeplayer.objective.success.4": "You did it! You almost made it through all the tasks! Hahaha, not really!",
+
+  "dialog.welcomeplayer.objective.fail.0": "I didn't expect much. You failed, booo! Try again.",
+  "dialog.welcomeplayer.objective.fail.1": "Aww you almost made it but failed. Hahaha... yeah almost.",
+  "dialog.welcomeplayer.objective.fail.2": "Round of applause for our contestants... FAILURE!",
+  "dialog.welcomeplayer.objective.fail.3": "Is it me or my screen is on a frits? Oh no you did actually fail.",
+  "dialog.welcomeplayer.objective.fail.4": "You guys are so boring. I'm marking the task as fail. Hurry up and move on.",
 
   "objective.welcomeplayer.endless_violence": "Kill %1$s living things.",
   "dialog.welcomeplayer.objective.endless_violence.0": "The audience wants to see total chaos!",
@@ -215,13 +244,13 @@
   "dialog.welcomeplayer.objective.night_killer.2": "One that bellows a loud cry and moves by sound.",
   "dialog.welcomeplayer.objective.night_killer.3": "The Warden. Find it and kill it for us. Show us this creature's power.",
 
-  "objective.welcomeplayer.forced_resupply": "Deposit %1$s Retrosteel Ores in any Material Transit.",
+  "objective.welcomeplayer.forced_resupply": "Deposit %1$s Raw Retrosteel in any Material Transit.",
   "dialog.welcomeplayer.objective.forced_resupply.0": "It seems our contestants are no good for a crowd",
   "dialog.welcomeplayer.objective.forced_resupply.1": "So instead, lets put them to work!",
   "dialog.welcomeplayer.objective.forced_resupply.2": "We need a massive resupply of some Retrosteel.",
   "dialog.welcomeplayer.objective.forced_resupply.3": "You have been nothing but BORING so CHOP CHOP!",
 
-  "objective.welcomeplayer.day_labour": "Deposit %1$s Retrosteel Ores in any Material Transit.",
+  "objective.welcomeplayer.day_labour": "Deposit %1$s Raw Retrosteel in any Material Transit.",
   "dialog.welcomeplayer.objective.day_labour.0": "I've always wondered \"Hey. We have plenty strong able contestants here.\"",
   "dialog.welcomeplayer.objective.day_labour.1": "\"Why not put them into good use other than entertainment?\"",
   "dialog.welcomeplayer.objective.day_labour.2": "Go out and find us some of our precious ore Retrosteel.",
@@ -272,6 +301,8 @@
   "dialog.welcomeplayer.objective.cruel_suffering.1": "Many of them wish the contestants were dead!",
   "dialog.welcomeplayer.objective.cruel_suffering.2": "Even though we can't allow that directly (for legal reasons)!",
   "dialog.welcomeplayer.objective.cruel_suffering.3": "We can do something to sedate their bloodthirst!",
+
+  "event.welcomeplayer.nothing": "No Event",
 
   "event.welcomeplayer.contraband": "Contraband",
   "dialog.welcomeplayer.event.contraband.bored.0": "Crackdown time boys!",
@@ -335,7 +366,7 @@
   "dialog.welcomeplayer.event.warp_malfunction.interested.0": "Ye- yes this is getting boring! So lets bring the contestants somewhere else!",
   "dialog.welcomeplayer.event.warp_malfunction.interested.1": "This is not a cover for our warping issues we've been having during the show!",
   "dialog.welcomeplayer.event.warp_malfunction.interested.2": "In fact, I am so confident it isn't that I will deliberately do it again!",
-  "dialog.welcomeplayer.event.warp_malfunction.interested.3": "As soon as the next event starts!",
+  "dialog.welcomeplayer.evenft.warp_malfunction.interested.3": "As soon as the next event starts!",
 
   "event.welcomeplayer.speed_subjects": "Speed Subjects",
   "dialog.welcomeplayer.event.speed_subjects.neutral.0": "Lets dabble in some creature modification, what do you think?",

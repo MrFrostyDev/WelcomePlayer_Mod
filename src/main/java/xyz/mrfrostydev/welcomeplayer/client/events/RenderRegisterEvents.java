@@ -2,6 +2,7 @@ package xyz.mrfrostydev.welcomeplayer.client.events;
 
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
@@ -14,7 +15,7 @@ import xyz.mrfrostydev.welcomeplayer.client.renderers.entity.*;
 import xyz.mrfrostydev.welcomeplayer.registries.BlockRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.EntityRegistry;
 
-@EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
+@EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID, value = Dist.CLIENT)
 public class RenderRegisterEvents {
 
     @SubscribeEvent

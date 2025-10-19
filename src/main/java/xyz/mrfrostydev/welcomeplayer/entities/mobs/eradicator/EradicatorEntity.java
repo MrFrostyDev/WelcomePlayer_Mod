@@ -72,7 +72,8 @@ public class EradicatorEntity extends Monster implements GeoEntity {
                 .add(Attributes.ATTACK_DAMAGE, 32.0)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.9)
                 .add(Attributes.ARMOR, 25.0)
-                .add(Attributes.ARMOR_TOUGHNESS, 5.0);
+                .add(Attributes.ARMOR_TOUGHNESS, 5.0)
+                .add(Attributes.FALL_DAMAGE_MULTIPLIER, 0.5F);
     }
 
     // |------------------------------------------------------------|

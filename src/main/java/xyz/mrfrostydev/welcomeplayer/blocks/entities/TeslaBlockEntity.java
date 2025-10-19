@@ -47,8 +47,6 @@ public class TeslaBlockEntity extends BlockEntity implements GeoBlockEntity {
             int tick = ((ServerLevel)level).getServer().getTickCount();
             if(tick % TICK_COOLDOWN == 0){
                 AABB area = new AABB(pos.above()).inflate(COIL_RANGE);
-                area = area.setMaxY(area.maxY - 1);
-                area = area.setMinY(area.minY + 1);
                 List<Entity> entities = level.getEntities((Entity)null, area, e -> !e.getType().is(TagRegistry.HOST_ROBOT) && !e.isSpectator());
                 for(Entity e : entities){
                     if(!(e instanceof LivingEntity target))continue;

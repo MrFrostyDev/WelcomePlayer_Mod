@@ -60,7 +60,8 @@ public class HandibotEntity extends Monster implements GeoEntity {
                 .add(Attributes.ATTACK_DAMAGE, 7.0)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
                 .add(Attributes.ARMOR, 15.0)
-                .add(Attributes.ARMOR_TOUGHNESS, 3.0);
+                .add(Attributes.ARMOR_TOUGHNESS, 3.0)
+                .add(Attributes.FALL_DAMAGE_MULTIPLIER, 0.25F);
     }
 
     // |------------------------------------------------------------|

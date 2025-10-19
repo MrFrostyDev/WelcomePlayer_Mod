@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.LayeredDraw;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.FormattedCharSequence;
@@ -14,7 +15,9 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.joml.Quaternionf;
 import software.bernie.geckolib.util.RenderUtil;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.data.ClientAudienceData;
 import xyz.mrfrostydev.welcomeplayer.network.StartShowIntroductionPacket;
+import xyz.mrfrostydev.welcomeplayer.registries.SoundEventRegistry;
 import xyz.mrfrostydev.welcomeplayer.utils.AnimatedImage;
 import xyz.mrfrostydev.welcomeplayer.utils.TextReader;
 
@@ -26,7 +29,7 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
     private static final int ANNOUNCER_WIDTH = 100;
     private static final int ANNOUNCER_HEIGHT = 272;
 
-    private static final int TIME_PER_CHAR = 9;
+    private static final int TIME_PER_CHAR = 7;
 
     private final int MAX_LINE_WIDTH = 150;
     private final AnimatedImage announcerImage;
@@ -52,7 +55,7 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
     @Override
     public void render(GuiGraphics guiGraphics, DeltaTracker deltaTracker) {
         if(!dialogDeque.isEmpty()){
-            textReader.addText(dialogDeque.pop());
+            textReader.addText(dialogDeque.pop(), !ClientAudienceData.get().isActive() ? 9 : TIME_PER_CHAR);
         }
         // Handle introduction dialog
         if(isIntro && textReader.getDialogQueue().isEmpty()){
@@ -118,6 +121,10 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
             yOffset += font.lineHeight;
         }
         poseStack.popPose();
+
+        if(!textReader.isTextFullyDisplayed() && tick % 3 == 0){
+            minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEventRegistry.PHASE_BLINK_BEEP.get(), 1.2F));
+        }
     }
 
     public static void addHostMessage(String text) {
@@ -127,12 +134,21 @@ public class ShowHostMessageOverlay implements LayeredDraw.Layer {
     public static void triggerIntroMessage() {
         if(!isIntro){
             isIntro = true;
-            dialogDeque.add("dialog.welcomeplayer.intro.0");
-            dialogDeque.add("dialog.welcomeplayer.intro.1");
-            dialogDeque.add("dialog.welcomeplayer.intro.2");
-            dialogDeque.add("dialog.welcomeplayer.intro.3");
-            dialogDeque.add("dialog.welcomeplayer.intro.4");
-            dialogDeque.add("dialog.welcomeplayer.intro.5");
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.0").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.1").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.2").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.3").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.4").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.5").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.6").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.7").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.8").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.9").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.10").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.11").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.12").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.13").getString());
+            dialogDeque.add(Component.translatable("dialog.welcomeplayer.intro.14").getString());
         }
     }
 }

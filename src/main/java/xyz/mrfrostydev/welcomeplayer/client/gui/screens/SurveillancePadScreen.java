@@ -10,6 +10,7 @@ import net.minecraft.util.FormattedCharSequence;
 import software.bernie.geckolib.util.RenderUtil;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.data.AudienceData;
+import xyz.mrfrostydev.welcomeplayer.data.AudienceEvent;
 import xyz.mrfrostydev.welcomeplayer.data.AudienceMood;
 import xyz.mrfrostydev.welcomeplayer.data.AudiencePhase;
 import xyz.mrfrostydev.welcomeplayer.utils.AnimatedImage;
@@ -23,8 +24,9 @@ public class SurveillancePadScreen extends Screen {
     private static final ResourceLocation SCREEN_ANGRY_RESOURCE = ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "textures/gui/screens/surveillance_angry_screen.png");
     private static final ResourceLocation SCREEN_CRUEL_RESOURCE = ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "textures/gui/screens/surveillance_cruel_screen.png");
 
-    private final TextReader phaseText = new TextReader(2);
-    private final TextReader moodText = new TextReader(2);
+    private final TextReader phaseText = new TextReader(3);
+    private final TextReader moodText = new TextReader(3);
+    private final TextReader eventText = new TextReader(3);
 
     private final AnimatedImage animatedNeutral = new AnimatedImage(SCREEN_RESOURCE, 12, 256, 512, 2);
     private final AnimatedImage animatedSad = new AnimatedImage(SCREEN_SAD_RESOURCE, 12, 256, 512, 2);
@@ -35,6 +37,7 @@ public class SurveillancePadScreen extends Screen {
     private AnimatedImage usedImage = animatedNeutral;
 
     private final int MAX_LINE_WIDTH_TOP = 170;
+    private final int MAX_LINE_WIDTH_BOTTOM = 65;
 
     AudienceData data;
     int imageWidth;
@@ -51,6 +54,7 @@ public class SurveillancePadScreen extends Screen {
     public void tick() {
         moodText.tick();
         phaseText.tick();
+        eventText.tick();
     }
 
     @Override
@@ -77,9 +81,11 @@ public class SurveillancePadScreen extends Screen {
 
         AudienceMood mood = data.getMood();
         AudiencePhase phase = data.getPhase();
+        AudienceEvent event = data.getEventManager().getGoingEvent();
 
         String phaseComponent = "item.welcomeplayer.surveillance.interest.neutral";
         String moodComponent = "item.welcomeplayer.surveillance.mood.neutral";
+        String eventComponent = "item.welcomeplayer.surveillance.event";
 
         if(phase == AudiencePhase.FURIOUS) phaseComponent = "item.welcomeplayer.surveillance.interest.furious";
         else if(phase == AudiencePhase.BORED) phaseComponent = "item.welcomeplayer.surveillance.interest.bored";
@@ -105,6 +111,7 @@ public class SurveillancePadScreen extends Screen {
 
         phaseText.addPermenantText(Component.translatable(phaseComponent).getString());
         moodText.addPermenantText(Component.translatable(moodComponent).getString());
+        eventText.addPermenantText(Component.translatable(eventComponent).append(event.getName()).getString());
 
         usedImage.setPosition((this.width - this.imageWidth) / 2, (this.height - this.imageHeight) / 2);
         usedImage.setVisible(true);
@@ -140,6 +147,13 @@ public class SurveillancePadScreen extends Screen {
             GraphicUtil.drawStringWithScale(guiGraphics, font, displayTextSeparated,
                     posX, posY + 2 + OffsetY, 0.8F, 0xfa692a, true);
             OffsetY += font.lineHeight;
+        }
+
+        int OffsetEventY = 0;
+        for(FormattedCharSequence displayTextSeparated : font.split(Component.translatable(eventText.getDisplayText()), MAX_LINE_WIDTH_BOTTOM)){
+            GraphicUtil.drawStringWithScale(guiGraphics, font, displayTextSeparated,
+                    posX, posY + 37 + OffsetEventY, 0.8F, 0xfa692a, true);
+            OffsetEventY += font.lineHeight;
         }
     }
 }

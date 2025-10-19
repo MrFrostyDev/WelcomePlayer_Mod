@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AudienceData extends SavedData {
-    private static final int DEFAULT_CHANGE_COOLDOWN = 4000; //(24000 / 2) * WorldTickEvents.DAYS_TILL_MOOD_CHANGE
+    private static final int DEFAULT_CHANGE_COOLDOWN = (24000 / 2) * WorldTickEvents.MOOD_CHANGE_COOLDOWN;
     public static final Codec<AudienceData> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
                     Codec.BOOL.fieldOf("active").forGetter(AudienceData::isActive),
@@ -222,7 +222,7 @@ public class AudienceData extends SavedData {
 
         private AudienceDataSmall(){
             isActive = false;
-            interest = 0;
+            interest = 100;
             changeCooldown = 0;
             isPhaseShifting = false;
         }

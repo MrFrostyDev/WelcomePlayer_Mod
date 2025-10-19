@@ -48,11 +48,22 @@ public class TextReader {
         permanent = false;
     }
 
+    public void addText(String message, int tickPerChar){
+        this.tickPerChar = tickPerChar;
+        dialogDeque.add(message);
+        permanent = false;
+    }
+
     public void addPermenantText(String message){
         dialogDeque.add(message);
         permanent = true;
     }
 
+    public void addPermenantText(String message, int tickPerChar){
+        this.tickPerChar = tickPerChar;
+        dialogDeque.add(message);
+        permanent = true;
+    }
 
     public String getDisplayText(){
         return displayText;
@@ -64,5 +75,9 @@ public class TextReader {
 
     public int getMessageTime() {
         return messageTime;
+    }
+
+    public boolean isTextFullyDisplayed(){
+        return stringReveal.isRevealed();
     }
 }

@@ -4,7 +4,35 @@
   "structures": [
     {
       "structure": "welcomeplayer:retro_office_0",
-      "weight": 1
+      "weight": 5
+    },
+    {
+      "structure": "welcomeplayer:retro_station_0",
+      "weight": 5
+    },
+    {
+      "structure": "welcomeplayer:retro_station_1",
+      "weight": 5
+    },
+    {
+      "structure": "welcomeplayer:retro_station_2",
+      "weight": 5
+    },
+    {
+      "structure": "welcomeplayer:retro_meteor_site_0",
+      "weight": 5
+    },
+    {
+      "structure": "welcomeplayer:retro_tower_0",
+      "weight": 10
+    },
+    {
+      "structure": "welcomeplayer:retro_tower_1",
+      "weight": 5
+    },
+    {
+      "structure": "welcomeplayer:retro_tower_2",
+      "weight": 5
     }
   ],
   "placement": {

@@ -1,6 +1,7 @@
 package xyz.mrfrostydev.welcomeplayer.registries;
 
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -80,6 +81,7 @@ public class ItemRegistry {
     // |-----------------------------------------------------------------------------------|
     // |------------------------------------Misc Items-------------------------------------|
     // |-----------------------------------------------------------------------------------|
+    public static final DeferredHolder<Item, Item> RATION = ITEMS.register("ration", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.8F).build())));
     public static final DeferredHolder<Item, Item> POTATO_BOMB = ITEMS.register("potato_bomb", () -> new PotatoBombItem(new Item.Properties().durability(30).stacksTo(1)));
 
     public static final DeferredHolder<Item, Item> RETROSTEEL_INGOT = ITEMS.register("retrosteel_ingot", () -> new Item(new Item.Properties()));
@@ -90,7 +92,6 @@ public class ItemRegistry {
     public static final DeferredHolder<Item, Item> SMALL_BATTERY = ITEMS.register("small_battery", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item, Item> BATTERY = ITEMS.register("battery", () -> new Item(new Item.Properties().stacksTo(16)));
     public static final DeferredHolder<Item, Item> LARGE_BATTERY = ITEMS.register("large_battery", () -> new Item(new Item.Properties().stacksTo(4)));
-
 
     public static final DeferredHolder<Item, Item> SERVICE_BOT_SPAWN_EGG = ITEMS.register("service_bot_spawn_egg", () -> new DeferredSpawnEggItem(
             EntityRegistry.SERVICE_BOT,0xf26d07, 0xf6d5c1, new Item.Properties()

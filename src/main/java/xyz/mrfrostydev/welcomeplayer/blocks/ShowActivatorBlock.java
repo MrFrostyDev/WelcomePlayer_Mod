@@ -2,6 +2,7 @@ package xyz.mrfrostydev.welcomeplayer.blocks;
 
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -20,7 +21,9 @@ public class ShowActivatorBlock extends HorizontalDirectionalBlock {
 
     public ShowActivatorBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(ACTIVATED, false));
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(ACTIVATED, false)
+                .setValue(FACING, Direction.NORTH));
     }
 
     @Override
@@ -46,12 +49,14 @@ public class ShowActivatorBlock extends HorizontalDirectionalBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ACTIVATED);
+        builder.add(ACTIVATED, FACING);
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return this.defaultBlockState().setValue(ACTIVATED, false);
+        return this.defaultBlockState()
+                .setValue(ACTIVATED, false)
+                .setValue(FACING, Direction.NORTH);
     }
 
     @Override

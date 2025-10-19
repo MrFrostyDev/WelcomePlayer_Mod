@@ -1,6 +1,7 @@
 package xyz.mrfrostydev.welcomeplayer.client.events;
 
 
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
@@ -8,7 +9,7 @@ import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.particles.*;
 import xyz.mrfrostydev.welcomeplayer.registries.ParticleRegistry;
 
-@EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID)
+@EventBusSubscriber(modid = WelcomeplayerMain.MOD_ID, value = Dist.CLIENT)
 public class ParticleRegisterEvents {
 
     @SubscribeEvent

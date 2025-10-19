@@ -53,6 +53,7 @@ public class CreativeTabRegistry {
                 output.accept(ItemRegistry.SURVEILLANCE_PAD.get());
                 output.accept(ItemRegistry.SHOCK_ORB_LAUNCHER.get());
 
+                output.accept(ItemRegistry.RATION.get());
                 output.accept(ItemRegistry.POTATO_BOMB.get());
 
                 output.accept(ItemRegistry.SMALL_BATTERY.get());

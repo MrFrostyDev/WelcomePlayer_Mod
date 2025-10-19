@@ -34,6 +34,7 @@ public class AudienceRewards {
     public static final ResourceKey<AudienceReward> BATTERY_4 = registerKey("battery_4");
     public static final ResourceKey<AudienceReward> BATTERY_5 = registerKey("battery_5");
 
+    public static final ResourceKey<AudienceReward> RATION_20 = registerKey("rations_20");
     public static final ResourceKey<AudienceReward> COBBLESTONE_32 = registerKey("cobblestone_32");
     public static final ResourceKey<AudienceReward> APPLE_20 = registerKey("apple_20");
     public static final ResourceKey<AudienceReward> BREAD_50 = registerKey("bread_50");
@@ -48,7 +49,8 @@ public class AudienceRewards {
     public static final ResourceKey<AudienceReward> DIAMOND_1 = registerKey("diamond_1");
     public static final ResourceKey<AudienceReward> STASIS_STICK_NEUTRAL = registerKey("stasis_stick_neutral");
     public static final ResourceKey<AudienceReward> LASER_CUTTER_NEUTRAL = registerKey("laser_cutter_neutral");
-    
+
+    public static final ResourceKey<AudienceReward> RATION_40 = registerKey("rations_40");
     public static final ResourceKey<AudienceReward> COOKED_BEEF_32 = registerKey("cooked_beef_32");
     public static final ResourceKey<AudienceReward> GOLD_INGOT_8 = registerKey("gold_ingot_8");
     public static final ResourceKey<AudienceReward> IRON_INGOT_12 = registerKey("iron_ingot_12");
@@ -110,6 +112,7 @@ public class AudienceRewards {
         // |------------------------------------------------------------|
         // |-------------------------Neutral----------------------------|
         // |------------------------------------------------------------|
+        register(context, RATION_20, new ItemStack(ItemRegistry.RATION, 20), AudiencePhase.NEUTRAL);
         register(context, COBBLESTONE_32, new ItemStack(Items.COBBLESTONE, 32), AudiencePhase.NEUTRAL);
         register(context, APPLE_20, new ItemStack(Items.APPLE, 20), AudiencePhase.NEUTRAL);
         register(context, BREAD_50, new ItemStack(Items.BREAD, 50), AudiencePhase.NEUTRAL);
@@ -128,6 +131,7 @@ public class AudienceRewards {
         // |------------------------------------------------------------|
         // |------------------------Interested--------------------------|
         // |------------------------------------------------------------|
+        register(context, RATION_40, new ItemStack(ItemRegistry.RATION, 40), AudiencePhase.INTERESTED);
         register(context, COOKED_BEEF_32, new ItemStack(Items.COOKED_BEEF, 32), AudiencePhase.INTERESTED);
         register(context, BOUNCE_PAD_6, new ItemStack(ItemRegistry.BOUNCE_PAD, 6), AudiencePhase.INTERESTED);
         register(context, IRON_INGOT_12, new ItemStack(Items.IRON_INGOT, 12), AudiencePhase.INTERESTED);

@@ -21,7 +21,7 @@ public class ObjectiveTrackerOverlay implements LayeredDraw.Layer {
     private static final ResourceLocation BACK_BAR_SPRITE = ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "objective_back_bar");
     private static final ResourceLocation PROGRESS_BAR_SPRITE = ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "objective_progress_bar");
 
-    private static final int TIME_PER_CHAR = 9;
+    private static final int TIME_PER_CHAR = 6;
     private final int MAX_LINE_WIDTH = 180;
 
     private Minecraft minecraft;

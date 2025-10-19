@@ -1,6 +1,5 @@
 package xyz.mrfrostydev.welcomeplayer.blocks;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.client.Minecraft;
@@ -66,8 +65,10 @@ public class BeaconBlock extends HorizontalDirectionalBlock implements EntityBlo
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         if(state.getValue(TOP)) return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
         if(state.getValue(ACTIVATED)){
-            Minecraft.getInstance().gui.setOverlayMessage(
-                    Component.translatable("message.welcomeplayer.beacon.already_active"), false);
+            if(level.isClientSide){
+                Minecraft.getInstance().gui.setOverlayMessage(
+                        Component.translatable("message.welcomeplayer.beacon.already_active"), false);
+            }
             return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
         }
 
@@ -82,12 +83,15 @@ public class BeaconBlock extends HorizontalDirectionalBlock implements EntityBlo
                 level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
                 return ItemInteractionResult.SUCCESS;
             }
-            else Minecraft.getInstance().gui.setOverlayMessage(
+            else if (level.isClientSide){
+                Minecraft.getInstance().gui.setOverlayMessage(
                         Component.translatable("message.welcomeplayer.beacon.need_battery"), false);
+            }
         }
-        else Minecraft.getInstance().gui.setOverlayMessage(
+        else if (level.isClientSide) {
+            Minecraft.getInstance().gui.setOverlayMessage(
                     Component.translatable("message.welcomeplayer.beacon.no_event"), false);
-
+        }
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 

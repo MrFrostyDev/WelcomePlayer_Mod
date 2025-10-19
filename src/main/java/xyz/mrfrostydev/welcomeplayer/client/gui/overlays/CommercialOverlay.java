@@ -65,7 +65,7 @@ public class CommercialOverlay implements LayeredDraw.Layer {
 
         if(cooldown > 0) cooldown--;
         if((int)(Math.random() * 20) == 0 && cooldown <= 0 && activeAds.size() <= 6){
-            cooldown = 400;
+            cooldown = 600;
             ResourceLocation resource = AVAILABLE_ADS.get(RANDOM.nextInt(AVAILABLE_ADS.size()));
             int durationHalf = MAX_DURATION / 2;
             Ad in = new Ad(resource, (int)(Math.random() * durationHalf + durationHalf),

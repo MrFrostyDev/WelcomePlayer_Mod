@@ -2,15 +2,13 @@ package xyz.mrfrostydev.welcomeplayer.items.gadgets;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import xyz.mrfrostydev.welcomeplayer.client.gui.screens.SurveillancePadScreen;
+import xyz.mrfrostydev.welcomeplayer.data.AudienceData;
 import xyz.mrfrostydev.welcomeplayer.data.ClientAudienceData;
-import xyz.mrfrostydev.welcomeplayer.entities.items.BouncePadEntity;
 import xyz.mrfrostydev.welcomeplayer.utils.ScreenUtil;
 
 public class SurveillancePadItem extends Item {
@@ -23,8 +21,11 @@ public class SurveillancePadItem extends Item {
         ItemStack usedStack = player.getItemInHand(usedHand);
         if(!player.isCrouching()){
             if(level.isClientSide){
-                ScreenUtil.openSurveillancePad(Minecraft.getInstance(), ClientAudienceData.get());
-                return InteractionResultHolder.consume(usedStack);
+                AudienceData data = ClientAudienceData.get();
+                if(data.isActive()){
+                    ScreenUtil.openSurveillancePad(Minecraft.getInstance(), data);
+                    return InteractionResultHolder.consume(usedStack);
+                }
             }
         }
         return super.use(level, player, usedHand);

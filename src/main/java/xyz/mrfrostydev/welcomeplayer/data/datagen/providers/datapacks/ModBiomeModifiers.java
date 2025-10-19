@@ -1,14 +1,12 @@
 package xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks;
 
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.MobSpawnSettings;
-import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.world.BiomeModifier;
@@ -28,7 +26,7 @@ public class ModBiomeModifiers {
 
         context.register(SPAWN_SERVICE_BOT, new BiomeModifiers.AddSpawnsBiomeModifier(
                 biomes.getOrThrow(Tags.Biomes.IS_OVERWORLD),
-                List.of(new MobSpawnSettings.SpawnerData(EntityRegistry.SERVICE_BOT.get(), 30, 1, 1))
+                List.of(new MobSpawnSettings.SpawnerData(EntityRegistry.SERVICE_BOT.get(), 40, 1, 1))
         ));
     }
 

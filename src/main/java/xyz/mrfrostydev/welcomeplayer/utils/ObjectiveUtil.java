@@ -14,7 +14,6 @@ import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
-import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.data.*;
 import xyz.mrfrostydev.welcomeplayer.data.datagen.providers.datapacks.PlayerObjectives;
 import xyz.mrfrostydev.welcomeplayer.events.ObjectiveEndEvent;
@@ -63,7 +62,6 @@ public class ObjectiveUtil {
             throw new RuntimeException("While picking an objective, no options were available. Datapack may not have enough enabled objectives for this phase.");
         }
         int rand = RANDOM.nextInt(objList.size());
-        WelcomeplayerMain.LOGGER.debug("[Welcomeplayer] Random Index for Objectives: " + rand);
         PlayerObjective obj = objList.get(rand);
         setGoingObjective(svlevel, obj);
     }
@@ -94,7 +92,7 @@ public class ObjectiveUtil {
 
     public static void failObjective(ServerLevel svlevel){
         AudienceUtil.addInterestRaw(svlevel, -50);
-        AudienceUtil.sendDialog(Component.translatable("dialog.welcomeplayer.objective.fail.0"));
+        AudienceUtil.sendDialog(Component.translatable("dialog.welcomeplayer.objective.fail." + RANDOM.nextInt(5)));
 
         pickObjective(svlevel);
     }
@@ -102,7 +100,7 @@ public class ObjectiveUtil {
     public static void completeObjective(ServerLevel svlevel){
         AudiencePhase phase = AudienceUtil.getPhase(svlevel);
         AudienceUtil.addInterestRaw(svlevel, 100);
-        AudienceUtil.sendDialog(Component.translatable("dialog.welcomeplayer.objective.success.0"));
+        AudienceUtil.sendDialog(Component.translatable("dialog.welcomeplayer.objective.success." + RANDOM.nextInt(5)));
 
         List<AudienceReward> rewardList = svlevel
                 .registryAccess()

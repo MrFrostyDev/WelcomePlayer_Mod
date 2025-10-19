@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "activated=false": {
+      "model": "welcomeplayer:block/show_activator"
+    },
+    "activated=true": {
+      "model": "welcomeplayer:block/show_activator_on"
+    }
+  }
+}

@@ -13,6 +13,7 @@ import xyz.mrfrostydev.welcomeplayer.registries.ItemRegistry;
 public class VendorItems {
 
     public static final ResourceKey<VendorItem> COMMON_APPLE = registerKey("common_apple");
+    public static final ResourceKey<VendorItem> COMMON_RATION = registerKey("common_ration");
     public static final ResourceKey<VendorItem> COMMON_GRASS_BLOCK = registerKey("common_grass_block");
     public static final ResourceKey<VendorItem> COMMON_COBBLESTONE = registerKey("common_cobblestone");
     public static final ResourceKey<VendorItem> COMMON_OAK_LOG = registerKey("common_oak_log");
@@ -35,11 +36,11 @@ public class VendorItems {
     public static final ResourceKey<VendorItem> COMMON_SHIELD = registerKey("common_shield");
     public static final ResourceKey<VendorItem> COMMON_BOOK = registerKey("common_book");
     public static final ResourceKey<VendorItem> COMMON_LEATHER = registerKey("common_leather");
-    public static final ResourceKey<VendorItem> COMMON_SMALL_BATTERY = registerKey("common_small_battery");
     public static final ResourceKey<VendorItem> COMMON_CLAY = registerKey("common_clay");
     public static final ResourceKey<VendorItem> COMMON_REDSTONE_DUST = registerKey("common_redstone_dust");
+    public static final ResourceKey<VendorItem> COMMON_RETROSTEEL_ORE = registerKey("common_retrosteel_ore");
+    public static final ResourceKey<VendorItem> COMMON_STASIS_STICK = registerKey("common_stasis_stick");
 
-    public static final ResourceKey<VendorItem> UNCOMMON_STASIS_STICK = registerKey("uncommon_stasis_stick");
     public static final ResourceKey<VendorItem> UNCOMMON_IRON_INGOT = registerKey("uncommon_iron_ingot");
     public static final ResourceKey<VendorItem> UNCOMMON_GOLD_INGOT = registerKey("uncommon_gold_ingot");
     public static final ResourceKey<VendorItem> UNCOMMON_DIAMOND = registerKey("uncommon_diamond");
@@ -52,7 +53,6 @@ public class VendorItems {
     public static final ResourceKey<VendorItem> UNCOMMON_GHAST_TEAR = registerKey("uncommon_ghast_tear");
     public static final ResourceKey<VendorItem> UNCOMMON_HONEYCOMB = registerKey("uncommon_honeycomb");
     public static final ResourceKey<VendorItem> UNCOMMON_LASER_CUTTER = registerKey("uncommon_laser_cutter");
-
 
     public static final ResourceKey<VendorItem> RARE_PHASE_LINK = registerKey("rare_phase_link");
     public static final ResourceKey<VendorItem> RARE_STASIS_STICK = registerKey("rare_stasis_stick");
@@ -67,6 +67,7 @@ public class VendorItems {
 
     public static void bootstrap(BootstrapContext<VendorItem> context){
         register(context, COMMON_APPLE, new ItemStack(Items.APPLE, 1), 3, 0);
+        register(context, COMMON_RATION, new ItemStack(ItemRegistry.RATION, 5), 3, 0);
         register(context, COMMON_GRASS_BLOCK, new ItemStack(Items.GRASS_BLOCK, 1), 1, 0);
         register(context, COMMON_COBBLESTONE, new ItemStack(Items.COBBLESTONE, 16), 2, 0);
         register(context, COMMON_OAK_LOG, new ItemStack(Items.OAK_LOG, 12), 2, 0);
@@ -89,11 +90,11 @@ public class VendorItems {
         register(context, COMMON_SHIELD, new ItemStack(Items.SHIELD, 1), 8, 0);
         register(context, COMMON_BOOK, new ItemStack(Items.BOOK, 1), 2, 0);
         register(context, COMMON_LEATHER, new ItemStack(Items.LEATHER, 1), 2, 0);
-        register(context, COMMON_SMALL_BATTERY, new ItemStack(ItemRegistry.SMALL_BATTERY, 1), 1, 0);
         register(context, COMMON_CLAY, new ItemStack(Items.CLAY, 8), 2, 0);
         register(context, COMMON_REDSTONE_DUST, new ItemStack(Items.REDSTONE, 16), 5, 0);
+        register(context, COMMON_RETROSTEEL_ORE, new ItemStack(ItemRegistry.RETROSTEEL_ORE, 1), 5, 0);
+        register(context, COMMON_STASIS_STICK, new ItemStack(ItemRegistry.STASIS_STICK, 1), 70, 0);
 
-        register(context, UNCOMMON_STASIS_STICK, new ItemStack(ItemRegistry.STASIS_STICK, 1), 70, 400);
         register(context, UNCOMMON_IRON_INGOT, new ItemStack(Items.IRON_INGOT, 4), 6, 400);
         register(context, UNCOMMON_GOLD_INGOT, new ItemStack(Items.GOLD_INGOT, 2), 10, 400);
         register(context, UNCOMMON_DIAMOND, new ItemStack(Items.DIAMOND, 1), 20, 400);
@@ -105,7 +106,7 @@ public class VendorItems {
         register(context, UNCOMMON_QUARTZ, new ItemStack(Items.QUARTZ, 4), 2, 400);
         register(context, UNCOMMON_GHAST_TEAR, new ItemStack(Items.GHAST_TEAR, 1), 10, 400);
         register(context, UNCOMMON_HONEYCOMB, new ItemStack(Items.HONEYCOMB, 3), 18, 400);
-        register(context, UNCOMMON_LASER_CUTTER, new ItemStack(ItemRegistry.LASER_CUTTER, 1), 70, 400);
+        register(context, UNCOMMON_LASER_CUTTER, new ItemStack(ItemRegistry.LASER_CUTTER, 1), 90, 400);
 
         register(context, RARE_PHASE_LINK, new ItemStack(ItemRegistry.PHASE_LINK, 1), 150, 1000);
         register(context, RARE_STASIS_STICK, new ItemStack(ItemRegistry.STASIS_STICK, 1), 60, 1000);
@@ -117,7 +118,6 @@ public class VendorItems {
         register(context, RARE_TRIDENT, new ItemStack(Items.TRIDENT, 1), 80, 1000);
         register(context, RARE_MACE, new ItemStack(Items.MACE, 1), 160, 1000);
         register(context, RARE_SHOCK_ORB_LAUNCHER, new ItemStack(ItemRegistry.SHOCK_ORB_LAUNCHER, 1), 160, 1000);
-
     }
 
     public static ResourceKey<VendorItem> registerKey(String name){

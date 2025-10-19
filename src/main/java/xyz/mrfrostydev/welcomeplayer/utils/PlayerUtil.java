@@ -10,14 +10,6 @@ import net.minecraft.world.entity.player.Player;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 
 public class PlayerUtil {
-    public static final AttributeModifierPair GLOOMY_FOG_DAMAGE_MODIFIER = createAttributeModifier(Attributes.ATTACK_DAMAGE,
-            "gloomy_fog_damage_modifier", -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-    public static final AttributeModifierPair GLOOMY_FOG_BREAKSPD_MODIFIER = createAttributeModifier(Attributes.BLOCK_BREAK_SPEED,
-            "gloomy_fog_breakspd_modifier", -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-
-    public static final AttributeModifierPair DEATHLY_AIR_HEALTH_MODIFIER = createAttributeModifier(Attributes.MAX_HEALTH,
-            "deathly_air_health_modifier", -0.5, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
-
     /**
      * Method to add an attribute modifier to a player. This uses an {@link AttributeModifierPair}.
      */
@@ -45,5 +37,4 @@ public class PlayerUtil {
     }
 
     public record AttributeModifierPair(Holder<Attribute> attribute, AttributeModifier modifier){};
-
 }
