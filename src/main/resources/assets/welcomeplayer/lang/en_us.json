@@ -22,6 +22,10 @@
   "item.welcomeplayer.handibot_spawn_egg": "Handibot Spawn egg",
   "item.welcomeplayer.service_bot_spawn_egg": "Service Bot Spawn egg",
 
+  "entity.welcomeplayer.service_bot": "Service Bot",
+  "entity.welcomeplayer.handibot": "Handibot",
+  "entity.welcomeplayer.eradicator": "Eradicator",
+
   "block.welcomeplayer.host_screen": "Hot Screen",
   "block.welcomeplayer.show_activator": "Show Activator",
   "block.welcomeplayer.vendor": "Vendor",

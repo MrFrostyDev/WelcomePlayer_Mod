@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class AudienceData extends SavedData {
-    private static final int DEFAULT_CHANGE_COOLDOWN = (24000 / 2) * WorldTickEvents.MOOD_CHANGE_COOLDOWN;
+    private static final int DEFAULT_CHANGE_COOLDOWN = WorldTickEvents.MOOD_CHANGE_COOLDOWN;
     public static final Codec<AudienceData> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
                     Codec.BOOL.fieldOf("active").forGetter(AudienceData::isActive),

@@ -105,14 +105,14 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.the_shepherd.4"
     ));
 
-    public static final ResourceKey<PlayerObjective> PEST_CONTROL = registerEntry("neutral_pest_control", 12, true, createDialog(
+    public static final ResourceKey<PlayerObjective> PEST_CONTROL = registerEntry("neutral_pest_control", 10, true, createDialog(
             "dialog.welcomeplayer.objective.pest_control.0",
             "dialog.welcomeplayer.objective.pest_control.1",
             "dialog.welcomeplayer.objective.pest_control.2",
             "dialog.welcomeplayer.objective.pest_control.3"
     ));
 
-    public static final ResourceKey<PlayerObjective> THE_BUTCHER = registerEntry("neutral_the_butcher", 20, true, createDialog(
+    public static final ResourceKey<PlayerObjective> THE_BUTCHER = registerEntry("neutral_the_butcher", 18, true, createDialog(
             "dialog.welcomeplayer.objective.the_butcher.0",
             "dialog.welcomeplayer.objective.the_butcher.1",
             "dialog.welcomeplayer.objective.the_butcher.2"
@@ -125,7 +125,7 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.explorer.3"
     ));
 
-    public static final ResourceKey<PlayerObjective> DEMOLITION = registerEntry("neutral_demolition", 15, true, createDialog(
+    public static final ResourceKey<PlayerObjective> DEMOLITION = registerEntry("neutral_demolition", 12, true, createDialog(
             "dialog.welcomeplayer.objective.demolition.0",
             "dialog.welcomeplayer.objective.demolition.1",
             "dialog.welcomeplayer.objective.demolition.2",
@@ -138,7 +138,7 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.zombie_killer.2"
     ));
 
-    public static final ResourceKey<PlayerObjective> COAL_MINER = registerEntry("neutral_coal_miner", 30, true, createDialog(
+    public static final ResourceKey<PlayerObjective> COAL_MINER = registerEntry("neutral_coal_miner", 24, true, createDialog(
             "dialog.welcomeplayer.objective.coal_miner.0",
             "dialog.welcomeplayer.objective.coal_miner.1",
             "dialog.welcomeplayer.objective.coal_miner.2",

@@ -21,6 +21,7 @@ public class BlockTagsProvider extends net.neoforged.neoforge.common.data.BlockT
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(
                         BlockRegistry.RETROSTEEL_BLEND_BLOCK.get(),
+                        BlockRegistry.RETROSTEEL_WHITE_SMOOTH.get(),
                         BlockRegistry.RETROSTEEL_WHITE_WALL.get(),
                         BlockRegistry.RETROSTEEL_WHITE_PLATE.get(),
                         BlockRegistry.RETROSTEEL_WHITE_LIGHT.get(),
@@ -31,8 +32,11 @@ public class BlockTagsProvider extends net.neoforged.neoforge.common.data.BlockT
                         BlockRegistry.RETROSTEEL_BROWN_STAIRS.get(),
                         BlockRegistry.RETROSTEEL_BROWN_SLAB.get(),
                         BlockRegistry.RETROSTEEL_WHITE_TILES.get(),
+                        BlockRegistry.RETROSTEEL_ORANGE_SMOOTH.get(),
                         BlockRegistry.RETROSTEEL_ORANGE_TILES.get(),
                         BlockRegistry.RETROSTEEL_ORANGE_PLATE.get(),
+                        BlockRegistry.RETROSTEEL_ORANGE_STAIRS.get(),
+                        BlockRegistry.RETROSTEEL_ORANGE_SLAB.get(),
                         BlockRegistry.RETROSTEEL_METAL_BLOCK.get(),
                         BlockRegistry.RETROSTEEL_BEAMS.get(),
                         BlockRegistry.RETROSTEEL_GRATE.get(),
@@ -44,7 +48,6 @@ public class BlockTagsProvider extends net.neoforged.neoforge.common.data.BlockT
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(
-                        BlockRegistry.RETROSTEEL_BEAMS.get(),
                         BlockRegistry.RETRO_TESLA_COIL.get(),
 
                         BlockRegistry.RETROSTEEL_ORE.get()

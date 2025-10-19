@@ -38,7 +38,7 @@ public class WorldTickEvents {
 
         if(levelTickCount % TICK_COOLDOWN == 0){
             AudienceData data = AudienceUtil.getAudienceData(svlevel);
-            AudienceUtil.addInterestRaw(svlevel, -1 + increaseByPlayer);
+            AudienceUtil.addInterestRaw(svlevel, -1 - increaseByPlayer);
 
             PacketDistributor.sendToAllPlayers(SyncAudienceDataSmallPacket.create(data));
 
