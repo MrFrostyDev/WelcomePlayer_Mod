@@ -52,6 +52,8 @@ public class ObjectiveUtil {
 
     public static void pickObjective(ServerLevel svlevel){
         AudiencePhase phase = AudienceUtil.getPhase(svlevel);
+        PlayerObjective previousObj = ObjectiveUtil.getGoingObjective(svlevel);
+
         List<PlayerObjective> objList = svlevel
                 .registryAccess()
                 .registryOrThrow(DatapackRegistry.PLAYER_OBJECTIVES)
@@ -63,6 +65,9 @@ public class ObjectiveUtil {
         }
         int rand = RANDOM.nextInt(objList.size());
         PlayerObjective obj = objList.get(rand);
+        while(obj.is(previousObj) && objList.size() > 1){
+            obj = objList.get(RANDOM.nextInt(objList.size()));
+        }
         setGoingObjective(svlevel, obj);
     }
 
@@ -193,6 +198,7 @@ public class ObjectiveUtil {
         if(curObj.is(level, PlayerObjectives.FORCED_RESUPPLY) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
         if(curObj.is(level, PlayerObjectives.DAY_LABOUR) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
         if(curObj.is(level, PlayerObjectives.COAL_MINER) && (stack.is(Items.COAL) || stack.is(Items.CHARCOAL))) return true;
+        if(curObj.is(level, PlayerObjectives.FARMER) && (stack.is(Items.WHEAT))) return true;
         if(curObj.is(level, PlayerObjectives.SHORT_FUSE) && stack.is(ItemRegistry.BATTERY)) return true;
         if(curObj.is(level, PlayerObjectives.HUMAN_CHARGER) && stack.is(ItemRegistry.BATTERY)) return true;
         if(curObj.is(level, PlayerObjectives.WONDER_EGGS) && stack.is(Items.GOLDEN_APPLE)) return true;

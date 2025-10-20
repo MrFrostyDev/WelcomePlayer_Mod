@@ -8,6 +8,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
+import xyz.mrfrostydev.welcomeplayer.blocks.ButtonPanelBlock;
 import xyz.mrfrostydev.welcomeplayer.items.GeoBlockItem;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.items.PotatoBombItem;
@@ -69,6 +70,8 @@ public class ItemRegistry {
     public static final DeferredHolder<Item, Item> RETROSTEEL_METAL_TILES = ITEMS.register("retrosteel_metal_tiles", () -> new BlockItem(BlockRegistry.RETROSTEEL_METAL_TILES.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_BEAMS = ITEMS.register("retrosteel_beams", () -> new BlockItem(BlockRegistry.RETROSTEEL_BEAMS.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_GRATE = ITEMS.register("retrosteel_grate", () -> new BlockItem(BlockRegistry.RETROSTEEL_GRATE.get(), new Item.Properties()));
+
+    public static final DeferredHolder<Item, Item> RETRO_KEYPAD = ITEMS.register("retro_keypad", () -> new BlockItem(BlockRegistry.RETRO_KEYPAD.get(), new Item.Properties()));
 
     public static final DeferredHolder<Item, Item> RETRO_PATTERN_WOOL = ITEMS.register("retro_pattern_wool", () -> new BlockItem(BlockRegistry.RETRO_PATTERN_WOOL.get(), new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETRO_PATTERN_CARPET = ITEMS.register("retro_pattern_carpet", () -> new BlockItem(BlockRegistry.RETRO_PATTERN_CARPET.get(), new Item.Properties()));

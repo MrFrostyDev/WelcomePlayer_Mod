@@ -6,6 +6,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -307,6 +308,16 @@ public class BlockRegistry {
                     .strength(0.8F)
                     .sound(SoundType.WOOL)
                     .ignitedByLava()
+            )
+    );
+
+    public static final DeferredHolder<Block, Block> RETRO_KEYPAD = BLOCKS.register(
+            "retro_keypad",
+            () -> new ButtonPanelBlock(BlockSetType.STONE, 10,
+                    BlockBehaviour.Properties.of()
+                            .noCollission()
+                            .strength(1.0F)
+                            .pushReaction(PushReaction.DESTROY)
             )
     );
 

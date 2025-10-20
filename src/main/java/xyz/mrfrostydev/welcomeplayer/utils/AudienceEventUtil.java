@@ -25,8 +25,9 @@ public class AudienceEventUtil {
         AudienceEventManager manager = data.getEventManager();
         AudienceMood mood = data.getMood();
         AudiencePhase phase = data.getPhase();
+        AudienceEvent previousEvent = manager.getGoingEvent();
 
-        NeoForge.EVENT_BUS.post(new AudienceEventEndEvent(svlevel, data, manager.getGoingEvent()));
+        NeoForge.EVENT_BUS.post(new AudienceEventEndEvent(svlevel, data, previousEvent));
 
         // Since the phase is the key and all events of that phase are stored in it,
         // we do not need to check if the event is the right phase.
@@ -42,7 +43,7 @@ public class AudienceEventUtil {
         if(!events.isEmpty()){
             int rnd = RANDOM.nextInt(events.size());
             event = events.get(rnd);
-            while(event.is(manager.getGoingEvent()) && events.size() > 1){
+            while(event.is(previousEvent) && events.size() > 1){
                 rnd = RANDOM.nextInt(events.size());
                 event = events.get(rnd);
             }

@@ -61,11 +61,38 @@ public class EntityTypeTagsProvider extends net.minecraft.data.tags.EntityTypeTa
                         EntityType.DROWNED
                 );
 
-        this.tag(TagRegistry.ARACHNID)
+        this.tag(TagRegistry.BUG)
                 .add(
                         EntityType.SPIDER,
                         EntityType.CAVE_SPIDER,
-                        EntityType.SILVERFISH
+                        EntityType.SILVERFISH,
+                        EntityType.BEE
+                );
+
+        this.tag(TagRegistry.SCARY)
+                .add(
+                        EntityType.SPIDER,
+                        EntityType.CAVE_SPIDER,
+                        EntityType.PILLAGER,
+                        EntityType.VINDICATOR,
+                        EntityType.EVOKER,
+                        EntityType.RAVAGER,
+                        EntityType.ILLUSIONER,
+                        EntityType.ZOMBIE,
+                        EntityType.SKELETON,
+                        EntityType.ZOMBIE_HORSE,
+                        EntityType.SKELETON_HORSE,
+                        EntityType.WITHER_SKELETON,
+                        EntityType.CREEPER,
+                        EntityType.DROWNED,
+                        EntityType.STRAY,
+                        EntityType.HUSK,
+                        EntityType.WARDEN,
+                        EntityType.BOGGED,
+                        EntityType.SILVERFISH,
+                        EntityType.ENDERMAN,
+                        EntityType.PHANTOM,
+                        EntityType.BLAZE
                 );
     }
 }

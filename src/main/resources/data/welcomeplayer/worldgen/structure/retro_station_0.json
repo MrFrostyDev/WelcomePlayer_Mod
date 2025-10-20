@@ -48,19 +48,7 @@
 
   // What mobs can spawn over time in the structure.
   // Make sure you add the mob to the right category (monster, creature, etc)
-  "spawn_overrides": {
-    "creature": {
-      "bounding_box": "piece",
-      "spawns": [
-        {
-          "type": "welcomeplayer:service_bot",
-          "weight": 1,
-          "minCount": 1,
-          "maxCount": 2
-        }
-      ]
-    }
-  },
+  "spawn_overrides": {},
 
   // Optional thing that allows swapping a template pool with another per structure json instance. More of an expert niche thing.
   "pool_aliases": []

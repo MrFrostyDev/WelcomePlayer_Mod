@@ -62,6 +62,8 @@
   "block.welcomeplayer.retro_pattern_wool": "Retro Pattern Wool",
   "block.welcomeplayer.retro_pattern_carpet": "Retro Pattern Carpet",
 
+  "block.welcomeplayer.retro_keypad": "Retro Keypad",
+
   "block.welcomeplayer.retrosteel_ore": "Retrosteel Ore",
 
   "message.welcomeplayer.beacon.need_battery": "A battery is required to activate.",
@@ -93,6 +95,8 @@
   "item.welcomeplayer.surveillance.mood.angry": "Their mood is angry.",
   "item.welcomeplayer.surveillance.mood.cruel": "Their mood is cruel.",
   "item.welcomeplayer.surveillance.event": "Event: ",
+
+  "effect.welcomeplayer.stasis": "Stasis",
 
   "dialog.welcomeplayer.intro.0": "Wel- Wel- Welcome Players!",
   "dialog.welcomeplayer.intro.1": "We expected you to show up! Look at you all!",
@@ -157,6 +161,12 @@
   "dialog.welcomeplayer.objective.cat_person.1": "In honesty... I've never seen one before!",
   "dialog.welcomeplayer.objective.cat_person.2": "Why don't you demonstrate to m... US what they are like!",
   "dialog.welcomeplayer.objective.cat_person.3": "Go out there and tame us a cat!",
+
+  "objective.welcomeplayer.farmer": "Deposit %1$s wheat in any Material Transit.",
+  "dialog.welcomeplayer.objective.farmer.0": "Food supplies are dwindling and we need some more grain.",
+  "dialog.welcomeplayer.objective.farmer.1": "Luckily our contestants live in an agrarian planet!",
+  "dialog.welcomeplayer.objective.farmer.2": "Although we have plenty of others, why not see how you sow your seeds!",
+  "dialog.welcomeplayer.objective.farmer.3": "Come cultivate us some wheat!",
 
   "objective.welcomeplayer.coal_miner": "Deposit %1$s coal in any Material Transit.",
   "dialog.welcomeplayer.objective.coal_miner.0": "I've gotten a message from the ministry of energy.",
@@ -307,6 +317,13 @@
   "dialog.welcomeplayer.objective.cruel_suffering.3": "We can do something to sedate their bloodthirst!",
 
   "event.welcomeplayer.nothing": "No Event",
+
+  "event.welcomeplayer.hot_potato": "Hot Potato",
+  "dialog.welcomeplayer.event.hot_potato.interested.0": "I dropped something special in your pockets!",
+  "dialog.welcomeplayer.event.hot_potato.interested.1": "You should look at it, its rather explosive!",
+  "dialog.welcomeplayer.event.hot_potato.interested.2": "Better be quick too! Its ticking faster!",
+  "dialog.welcomeplayer.event.hot_potato.thrilled.0": "Hey I dropped a little something in your pockets!",
+  "dialog.welcomeplayer.event.hot_potato.thrilled.1": "Better hurry, I think its ticking louder!",
 
   "event.welcomeplayer.contraband": "Contraband",
   "dialog.welcomeplayer.event.contraband.bored.0": "Crackdown time boys!",

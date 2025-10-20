@@ -46,6 +46,8 @@ public class CreativeTabRegistry {
                 output.accept(ItemRegistry.RETRO_PATTERN_WOOL.get());
                 output.accept(ItemRegistry.RETRO_PATTERN_CARPET.get());
 
+                output.accept(ItemRegistry.RETRO_KEYPAD.get());
+
                 output.accept(ItemRegistry.BOUNCE_PAD.get());
                 output.accept(ItemRegistry.PHASE_LINK.get());
                 output.accept(ItemRegistry.STASIS_STICK.get());

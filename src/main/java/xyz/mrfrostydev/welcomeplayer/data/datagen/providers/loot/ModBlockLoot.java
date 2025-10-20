@@ -38,6 +38,8 @@ public class ModBlockLoot extends BlockLootSubProvider {
         dropSelf(BlockRegistry.RETROSTEEL_BEAMS.get());
         dropSelf(BlockRegistry.RETROSTEEL_GRATE.get());
 
+        dropSelf(BlockRegistry.RETRO_KEYPAD.get());
+
         dropSelf(BlockRegistry.RETRO_PATTERN_WOOL.get());
         dropSelf(BlockRegistry.RETRO_PATTERN_CARPET.get());
 

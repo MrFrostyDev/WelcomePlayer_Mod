@@ -25,13 +25,13 @@ public class MoodEvents {
         if(!target.getType().equals(EntityType.PLAYER)) return;
 
         if(mood.equals(AudienceMood.SAD)){
-            AudienceUtil.addInterestRaw(svlevel, 10);
-        }
-        else if(mood.equals(AudienceMood.ANGRY)){
             AudienceUtil.addInterestRaw(svlevel, 5);
         }
+        else if(mood.equals(AudienceMood.ANGRY)){
+            AudienceUtil.addInterestRaw(svlevel, 2);
+        }
         else if(mood.equals(AudienceMood.CRUEL)){
-            AudienceUtil.addInterestRaw(svlevel, 10);
+            AudienceUtil.addInterestRaw(svlevel, 5);
         }
     }
 
@@ -45,10 +45,27 @@ public class MoodEvents {
         if(!target.getType().is(TagRegistry.ANIMAL)) return;
 
         else if(mood.equals(AudienceMood.SAD)){
-            AudienceUtil.addInterestRaw(svlevel, -5);
+            AudienceUtil.addInterestRaw(svlevel, -2);
         }
         else if(mood.equals(AudienceMood.CRUEL)){
-            AudienceUtil.addInterestRaw(svlevel, 5);
+            AudienceUtil.addInterestRaw(svlevel, 2);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onScaryKill(LivingDeathEvent event){
+        if(!(event.getEntity().level() instanceof ServerLevel svlevel)) return;
+
+        LivingEntity target = event.getEntity();
+        AudienceMood mood = AudienceUtil.getMood(svlevel);
+
+        if(!target.getType().is(TagRegistry.SCARY)) return;
+
+        else if(mood.equals(AudienceMood.SAD)){
+            AudienceUtil.addInterestRaw(svlevel, 2);
+        }
+        else if(mood.equals(AudienceMood.CRUEL)){
+            AudienceUtil.addInterestRaw(svlevel, -2);
         }
     }
 }

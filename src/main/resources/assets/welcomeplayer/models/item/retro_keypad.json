@@ -1,0 +1,40 @@
+{
+	"parent": "welcomeplayer:block/retro_keypad",
+	"gui_light": "front",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [30, 0, 0],
+			"translation": [0, 4.5, 0.75],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [30, 0, 0],
+			"translation": [0, 4.5, 0.75],
+			"scale": [0.7, 0.7, 0.7]
+		},
+		"firstperson_righthand": {
+			"rotation": [10, 0, 0],
+			"translation": [0, 5, 1],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_lefthand": {
+			"rotation": [10, 0, 0],
+			"translation": [0, 5, 1],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"ground": {
+			"rotation": [90, 0, 0],
+			"translation": [0, -3, 8]
+		},
+		"gui": {
+			"rotation": [35, 45, 0],
+			"translation": [0, 3, 0],
+			"scale": [0.9, 0.9, 0.9]
+		},
+		"fixed": {
+			"rotation": [-90, 0, 0],
+			"translation": [0, 0, -9],
+			"scale": [1.3, 1.3, 1.3]
+		}
+	}
+}

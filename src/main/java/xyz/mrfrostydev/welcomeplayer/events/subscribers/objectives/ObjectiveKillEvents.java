@@ -34,7 +34,7 @@ public class ObjectiveKillEvents {
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.DUCK_HUNT, EntityType.CHICKEN)) return;
 
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.THE_SHEPHERD, e -> e.getType().equals(EntityType.SHEEP) || e.getType().equals(EntityType.GOAT))) return;
-        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.PEST_CONTROL, TagRegistry.ARACHNID)) return;
+        if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.PEST_CONTROL, TagRegistry.BUG)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.ZOMBIE_KILLER, EntityType.ZOMBIE)) return;
         if(compareEntityWithObjective(svlevel, entity, PlayerObjectives.THE_BUTCHER, TagRegistry.ANIMAL)) return;
 

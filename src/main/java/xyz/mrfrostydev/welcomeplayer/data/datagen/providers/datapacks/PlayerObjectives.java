@@ -145,6 +145,13 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.coal_miner.3"
     ));
 
+    public static final ResourceKey<PlayerObjective> FARMER = registerEntry("neutral_farmer", 30, true, createDialog(
+            "dialog.welcomeplayer.objective.farmer.0",
+            "dialog.welcomeplayer.objective.farmer.1",
+            "dialog.welcomeplayer.objective.farmer.2",
+            "dialog.welcomeplayer.objective.farmer.3"
+    ));
+
     public static final ResourceKey<PlayerObjective> RATIONING = registerEntry("neutral_rationing", 50, true, createDialog(
             "dialog.welcomeplayer.objective.rationing.0",
             "dialog.welcomeplayer.objective.rationing.1",
@@ -164,7 +171,7 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.monster_hunter.3"
     ));
 
-    public static final ResourceKey<PlayerObjective> SET_BATTLE = registerEntry("interested_set_battle", 5, true, createDialog(
+    public static final ResourceKey<PlayerObjective> SET_BATTLE = registerEntry("interested_set_battle", 6, true, createDialog(
             "dialog.welcomeplayer.objective.set_battle.0",
             "dialog.welcomeplayer.objective.set_battle.1",
             "dialog.welcomeplayer.objective.set_battle.2",
