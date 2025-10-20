@@ -114,4 +114,25 @@ public class SoundEventRegistry {
                     "laser_cutter_swing"
             ))
     );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> SEISMIC_SLAM = SOUND_EVENTS.register(
+            "seismic_slam",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "seismic_slam"
+            ))
+    );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> SEISMIC_CHARGE = SOUND_EVENTS.register(
+            "seismic_charge",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "seismic_charge"
+            ))
+    );
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> SEISMIC_CHARGE_HOLD = SOUND_EVENTS.register(
+            "seismic_charge_hold",
+            () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID,
+                    "seismic_charge_hold"
+            ))
+    );
 }

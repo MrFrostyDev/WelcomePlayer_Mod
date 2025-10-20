@@ -22,5 +22,6 @@ public class ParticleRegisterEvents {
         event.registerSpriteSet(ParticleRegistry.SHOCK_CHARGE.get(), ShockChargeParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.ORB_TRAIL.get(), OrbTrailParticle.Provider::new);
         event.registerSpriteSet(ParticleRegistry.SHIELD_HIT.get(), ShieldHitParticle.Provider::new);
+        event.registerSpriteSet(ParticleRegistry.SEISMIC_BLAST.get(), SeismicBlastParticle.Provider::new);
     }
 }

@@ -12,6 +12,7 @@ import xyz.mrfrostydev.welcomeplayer.entities.mobs.service_bot.ServiceBotEntity;
 import xyz.mrfrostydev.welcomeplayer.entities.projectiles.LaserBlastProjectile;
 import xyz.mrfrostydev.welcomeplayer.entities.mobs.eradicator.EradicatorEntity;
 import xyz.mrfrostydev.welcomeplayer.entities.mobs.handibot.HandibotEntity;
+import xyz.mrfrostydev.welcomeplayer.entities.projectiles.SeismicBlastProjectile;
 import xyz.mrfrostydev.welcomeplayer.entities.projectiles.ShockBoltProjectile;
 import xyz.mrfrostydev.welcomeplayer.entities.projectiles.ShockChargeProjectile;
 
@@ -97,5 +98,15 @@ public class EntityRegistry {
                     .clientTrackingRange(4)
                     .updateInterval(20)
                     .build("shock_bolt_projectile")
+    );
+
+    public static final DeferredHolder<EntityType<?>, EntityType<SeismicBlastProjectile>> SEISMIC_BLAST_PROJECTILE = ENTITIES.register(
+            "seismic_blast_projectile",
+            () -> EntityType.Builder.<SeismicBlastProjectile>of(SeismicBlastProjectile::new, MobCategory.MISC)
+                    .sized(0.5F, 0.5F)
+                    .eyeHeight(0.1F)
+                    .clientTrackingRange(4)
+                    .updateInterval(20)
+                    .build("seismic_blast_projectile")
     );
 }

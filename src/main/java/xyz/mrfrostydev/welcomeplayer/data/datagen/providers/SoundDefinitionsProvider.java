@@ -229,5 +229,50 @@ public class SoundDefinitionsProvider extends net.neoforged.neoforge.common.data
                 .subtitle("sound.welcomeplayer.laser_cutter_swing")
                 .replace(false)
         );
+
+        add(SoundEventRegistry.SEISMIC_SLAM, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "seismic_slam"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(10)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:seismic_slam")
+                )
+                .subtitle("sound.welcomeplayer.seismic_slam")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.SEISMIC_CHARGE, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "seismic_charge"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(6)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:seismic_charge")
+                )
+                .subtitle("sound.welcomeplayer.seismic_charge")
+                .replace(false)
+        );
+
+        add(SoundEventRegistry.SEISMIC_CHARGE_HOLD, SoundDefinition.definition()
+                .with(
+                        sound(ResourceLocation.fromNamespaceAndPath(WelcomeplayerMain.MOD_ID, "seismic_charge_hold"))
+                                .volume(1.0F)
+                                .pitch(1.0F)
+                                .weight(2)
+                                .attenuationDistance(6)
+                                .stream(false)
+                                .preload(false),
+                        sound("welcomeplayer:seismic_charge_hold")
+                )
+                .subtitle("sound.welcomeplayer.seismic_charge_hold")
+                .replace(false)
+        );
     }
 }

@@ -64,6 +64,8 @@ public class VendorItems {
     public static final ResourceKey<VendorItem> RARE_TRIDENT = registerKey("rare_trident");
     public static final ResourceKey<VendorItem> RARE_MACE = registerKey("rare_mace");
     public static final ResourceKey<VendorItem> RARE_SHOCK_ORB_LAUNCHER = registerKey("rare_shock_orb_launcher");
+    public static final ResourceKey<VendorItem> RARE_SEISMIC_LAUNCHER = registerKey("rare_seismic_launcher");
+
 
     public static void bootstrap(BootstrapContext<VendorItem> context){
         register(context, COMMON_APPLE, new ItemStack(Items.APPLE, 1), 3, 0);
@@ -108,16 +110,17 @@ public class VendorItems {
         register(context, UNCOMMON_HONEYCOMB, new ItemStack(Items.HONEYCOMB, 3), 18, 400);
         register(context, UNCOMMON_LASER_CUTTER, new ItemStack(ItemRegistry.LASER_CUTTER, 1), 90, 400);
 
-        register(context, RARE_PHASE_LINK, new ItemStack(ItemRegistry.PHASE_LINK, 1), 150, 1000);
+        register(context, RARE_PHASE_LINK, new ItemStack(ItemRegistry.PHASE_LINK, 1), 120, 1000);
         register(context, RARE_STASIS_STICK, new ItemStack(ItemRegistry.STASIS_STICK, 1), 60, 1000);
         register(context, RARE_DIAMOND, new ItemStack(Items.GHAST_TEAR, 3), 50, 1000);
-        register(context, RARE_ANCIENT_DEBRIS, new ItemStack(Items.ANCIENT_DEBRIS, 1), 60, 1000);
+        register(context, RARE_ANCIENT_DEBRIS, new ItemStack(Items.ANCIENT_DEBRIS, 1), 70, 1000);
         register(context, RARE_CRYING_OBSIDIAN, new ItemStack(Items.CRYING_OBSIDIAN, 1), 25, 1000);
         register(context, RARE_ENCHATING_TABLE, new ItemStack(Items.ENCHANTING_TABLE, 1), 40, 1000);
         register(context, RARE_HEART_OF_THE_SEA, new ItemStack(Items.HEART_OF_THE_SEA, 1), 60, 1000);
-        register(context, RARE_TRIDENT, new ItemStack(Items.TRIDENT, 1), 80, 1000);
-        register(context, RARE_MACE, new ItemStack(Items.MACE, 1), 160, 1000);
-        register(context, RARE_SHOCK_ORB_LAUNCHER, new ItemStack(ItemRegistry.SHOCK_ORB_LAUNCHER, 1), 160, 1000);
+        register(context, RARE_TRIDENT, new ItemStack(Items.TRIDENT, 1), 90, 1000);
+        register(context, RARE_MACE, new ItemStack(Items.MACE, 1), 180, 1000);
+        register(context, RARE_SHOCK_ORB_LAUNCHER, new ItemStack(ItemRegistry.SHOCK_ORB_LAUNCHER, 1), 200, 1000);
+        register(context, RARE_SEISMIC_LAUNCHER, new ItemStack(ItemRegistry.SEISMIC_LAUNCHER, 1), 200, 1000);
     }
 
     public static ResourceKey<VendorItem> registerKey(String name){

@@ -79,6 +79,7 @@ public class AudienceRewards {
     public static final ResourceKey<AudienceReward> PHASE_LINK_THRILLED = registerKey("phase_link_thrilled");
     public static final ResourceKey<AudienceReward> LASER_CUTTER_THRILLED = registerKey("laser_cutter_thrilled");
     public static final ResourceKey<AudienceReward> SHOCK_ORB_LAUNCHER_THRILLED = registerKey("shock_orb_launcher_thrilled");
+    public static final ResourceKey<AudienceReward> SEISMIC_LAUNCHER_THRILLED = registerKey("seismic_launcher_thrilled");
 
 
     public static void bootstrap(BootstrapContext<AudienceReward> context){
@@ -163,6 +164,7 @@ public class AudienceRewards {
         register(context, LASER_CUTTER_THRILLED, new ItemStack(ItemRegistry.LASER_CUTTER, 1), AudiencePhase.THRILLED);
         register(context, PHASE_LINK_THRILLED, new ItemStack(ItemRegistry.PHASE_LINK, 1), AudiencePhase.THRILLED);
         register(context, SHOCK_ORB_LAUNCHER_THRILLED, new ItemStack(ItemRegistry.SHOCK_ORB_LAUNCHER, 1), AudiencePhase.THRILLED);
+        register(context, SEISMIC_LAUNCHER_THRILLED, new ItemStack(ItemRegistry.SEISMIC_LAUNCHER, 1), AudiencePhase.THRILLED);
     }
 
     public static ResourceKey<AudienceReward> registerKey(String name){

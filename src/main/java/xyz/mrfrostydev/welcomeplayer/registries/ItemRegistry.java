@@ -4,11 +4,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import xyz.mrfrostydev.welcomeplayer.blocks.ButtonPanelBlock;
 import xyz.mrfrostydev.welcomeplayer.items.GeoBlockItem;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
 import xyz.mrfrostydev.welcomeplayer.items.PotatoBombItem;
@@ -26,11 +26,12 @@ public class ItemRegistry {
     // |-------------------------------------Gadgets---------------------------------------|
     // |-----------------------------------------------------------------------------------|
     public static final DeferredHolder<Item, Item> BOUNCE_PAD = ITEMS.register("bounce_pad", () -> new BouncePadItem(new Item.Properties().stacksTo(8)));
-    public static final DeferredHolder<Item, Item> PHASE_LINK = ITEMS.register("phase_link", () -> new PhaseLinkItem(new Item.Properties().stacksTo(1), 5));
-    public static final DeferredHolder<Item, Item> STASIS_STICK = ITEMS.register("stasis_stick", () -> new StasisStickItem(new Item.Properties().attributes(StasisStickItem.createAttributes(5.0F, -3.1F)).stacksTo(1)));
-    public static final DeferredHolder<Item, Item> LASER_CUTTER = ITEMS.register("laser_cutter", () -> new LaserCutterItem(new Item.Properties().durability(20).attributes(LaserCutterItem.createAttributes(9.0F, -2.4F)).stacksTo(1)));
+    public static final DeferredHolder<Item, Item> PHASE_LINK = ITEMS.register("phase_link", () -> new PhaseLinkItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1), 5));
+    public static final DeferredHolder<Item, Item> STASIS_STICK = ITEMS.register("stasis_stick", () -> new StasisStickItem(new Item.Properties().rarity(Rarity.RARE).attributes(StasisStickItem.createAttributes(5.0F, -3.1F)).stacksTo(1)));
+    public static final DeferredHolder<Item, Item> LASER_CUTTER = ITEMS.register("laser_cutter", () -> new LaserCutterItem(new Item.Properties().durability(20).rarity(Rarity.RARE).attributes(LaserCutterItem.createAttributes(9.0F, -2.4F)).stacksTo(1)));
     public static final DeferredHolder<Item, Item> SURVEILLANCE_PAD = ITEMS.register("surveillance_pad", () -> new SurveillancePadItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredHolder<Item, Item> SHOCK_ORB_LAUNCHER = ITEMS.register("shock_orb_launcher", () -> new ShockOrbLauncherItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredHolder<Item, Item> SHOCK_ORB_LAUNCHER = ITEMS.register("shock_orb_launcher", () -> new ShockOrbLauncherItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+    public static final DeferredHolder<Item, Item> SEISMIC_LAUNCHER = ITEMS.register("seismic_launcher", () -> new SeismicLauncherItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
     // |-----------------------------------------------------------------------------------|
     // |------------------------------------Block Items------------------------------------|
@@ -90,7 +91,6 @@ public class ItemRegistry {
     public static final DeferredHolder<Item, Item> RETROSTEEL_INGOT = ITEMS.register("retrosteel_ingot", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item, Item> RAW_RETROSTEEL = ITEMS.register("raw_retrosteel", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item, Item> RETROSTEEL_ORE = ITEMS.register("retrosteel_ore", () -> new BlockItem(BlockRegistry.RETROSTEEL_ORE.get() ,new Item.Properties()));
-
 
     public static final DeferredHolder<Item, Item> SMALL_BATTERY = ITEMS.register("small_battery", () -> new Item(new Item.Properties()));
     public static final DeferredHolder<Item, Item> BATTERY = ITEMS.register("battery", () -> new Item(new Item.Properties().stacksTo(16)));

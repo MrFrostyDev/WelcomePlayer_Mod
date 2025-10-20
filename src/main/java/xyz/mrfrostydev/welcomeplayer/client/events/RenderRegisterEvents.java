@@ -7,6 +7,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import xyz.mrfrostydev.welcomeplayer.WelcomeplayerMain;
+import xyz.mrfrostydev.welcomeplayer.client.renderers.SeismicBlastProjectileRenderer;
 import xyz.mrfrostydev.welcomeplayer.client.renderers.block.BeaconBlockEntityRenderer;
 import xyz.mrfrostydev.welcomeplayer.client.renderers.block.HostScreenBlockEntityRenderer;
 import xyz.mrfrostydev.welcomeplayer.client.renderers.block.MaterialTransitBlockEntityRenderer;
@@ -38,6 +39,7 @@ public class RenderRegisterEvents {
         EntityRenderers.register(EntityRegistry.LASER_BLAST_PROJECTILE.get(), LaserBlastEntityRenderer::new);
         EntityRenderers.register(EntityRegistry.SHOCK_BOLT_PROJECTILE.get(), ShockBoltEntityRenderer::new);
         EntityRenderers.register(EntityRegistry.SHOCK_CHARGE_PROJECTILE.get(), ShockChargeEntityRenderer::new);
+        EntityRenderers.register(EntityRegistry.SEISMIC_BLAST_PROJECTILE.get(), SeismicBlastProjectileRenderer::new);
 
     }
 }

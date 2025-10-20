@@ -55,4 +55,9 @@ public class ParticleRegistry {
             "shield_hit",
             () -> new SimpleParticleType(false)
     );
+
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> SEISMIC_BLAST = PARTICLE_TYPES.register(
+            "seismic_blast",
+            () -> new SimpleParticleType(false)
+    );
 }

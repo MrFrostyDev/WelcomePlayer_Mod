@@ -29,6 +29,16 @@ public class ClientExtensionsRegisterEvent {
                 return ModArmPoses.ONE_HAND_PISTOL_ENUM_PROXY.getValue();
             }
         }, ItemRegistry.SHOCK_ORB_LAUNCHER.get());
+
+        // |-------------------------------------------------------------------------------|
+        // |-------------------------------Seismic Launcher--------------------------------|
+        // |-------------------------------------------------------------------------------|
+        event.registerItem(new IClientItemExtensions(){
+            @Override
+            public HumanoidModel.@Nullable ArmPose getArmPose(LivingEntity entityLiving, InteractionHand hand, ItemStack itemStack) {
+                return HumanoidModel.ArmPose.CROSSBOW_HOLD;
+            }
+        }, ItemRegistry.SEISMIC_LAUNCHER.get());
     }
 }
 
