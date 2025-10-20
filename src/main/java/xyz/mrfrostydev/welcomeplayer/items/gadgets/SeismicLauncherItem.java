@@ -91,17 +91,6 @@ public class SeismicLauncherItem extends Item implements GeoItem {
                     livingEntity.getSoundSource(),
                     0.8F, 1.0F);
         }
-        if(remainingUseDuration % 10 == 0){
-            Vec3 vec3 = livingEntity.getUpVector(1.0F);
-            float angle = livingEntity.getXRot();
-            Vec3 vec31 = livingEntity.getViewVector(1.0F);
-            Quaternionf quaternionfoffset = new Quaternionf().setAngleAxis(((angle - 11.0F) * (float) (Math.PI / 180.0)), vec3.x, vec3.y, vec3.z);
-            Vector3f vector3foffset = vec31.toVector3f().rotate(quaternionfoffset);
-
-            level.addParticle(ParticleRegistry.SHOCK_CHARGE.get(),
-                    livingEntity.getX() + vector3foffset.x, livingEntity.getEyeY() - 0.3F + vector3foffset.y, livingEntity.getZ() + vector3foffset.z,
-                    1, 0, 0);
-        }
     }
 
     @SubscribeEvent

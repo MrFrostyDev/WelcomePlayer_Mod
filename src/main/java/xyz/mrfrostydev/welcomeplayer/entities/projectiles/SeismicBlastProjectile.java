@@ -59,40 +59,47 @@ public class SeismicBlastProjectile extends Projectile {
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
         if (!this.level().isClientSide) {
-            this.explode(this.position());
+            this.explode();
         }
     }
 
-    protected void explode(Vec3 pos) {
-        BlockState dirt = Blocks.DIRT.defaultBlockState();
+    protected void explode() {
+        BlockState block = Blocks.COARSE_DIRT.defaultBlockState();
         this.level().explode(
                 this.getOwner(),
                 null,
                 new SeismicExplosionDamagerCalculator(false, true, Optional.of(3.0F), Optional.empty()),
-                pos.x(), pos.y(), pos.z(),
+                this.getX(), this.getY(), this.getZ(),
                 3.5F,
                 false,
                 Level.ExplosionInteraction.TRIGGER,
-                new BlockParticleOption(ParticleTypes.FALLING_DUST, dirt),
-                new BlockParticleOption(ParticleTypes.FALLING_DUST, dirt),
+                new BlockParticleOption(ParticleTypes.BLOCK, block),
+                new BlockParticleOption(ParticleTypes.BLOCK, block),
                 SoundEvents.WIND_CHARGE_BURST
         );
+        for(int i=0; i<40; i++){
+            this.level().addParticle(new BlockParticleOption(ParticleTypes.BLOCK, block),
+                    this.getRandomX(3.0),
+                    this.getRandomY() - 0.7,
+                    this.getRandomZ(3.0),
+                    0, 0, 0);
+        }
         this.level().addParticle(ParticleRegistry.SEISMIC_BLAST.get(),
-                pos.x, pos.y + 0.4, pos.z,
+                this.getX(), this.getY() + 0.4, this.getZ(),
                 0, 0, 0);
     }
 
     @Override
     public void tick() {
         if (!this.level().isClientSide && this.getBlockY() > this.level().getMaxBuildHeight() + 30) {
-            this.explode(this.position());
+            this.explode();
             this.discard();
             return;
         }
 
         lifetime--;
         if (lifetime <= 0) {
-            this.explode(this.position());
+            this.explode();
             this.discard();
             return;
         }
@@ -121,7 +128,7 @@ public class SeismicBlastProjectile extends Projectile {
             this.setPos(d0, d1, d2);
 
             if(lifetime % BLAST_COOLDOWN == 0){
-                this.explode(this.position());
+                this.explode();
             }
         }
         else{
@@ -133,10 +140,7 @@ public class SeismicBlastProjectile extends Projectile {
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
         if (!this.level().isClientSide) {
-            Vec3i vec3i = result.getDirection().getNormal();
-            Vec3 vec3 = Vec3.atLowerCornerOf(vec3i).multiply(0.25, 0.25, 0.25);
-            Vec3 vec31 = result.getLocation().add(vec3);
-            this.explode(vec31);
+            this.explode();
             this.discard();
         }
     }

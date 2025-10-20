@@ -36,12 +36,7 @@ public class SeismicBlastParticle extends TextureSheetParticle {
 
     @Override
     public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_LIT;
-    }
-
-    @Override
-    public int getLightColor(float partialTick) {
-        return 15728880;
+        return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 
     @OnlyIn(Dist.CLIENT)
