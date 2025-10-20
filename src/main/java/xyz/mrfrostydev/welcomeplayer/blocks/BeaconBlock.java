@@ -73,7 +73,9 @@ public class BeaconBlock extends HorizontalDirectionalBlock implements EntityBlo
         }
 
         PlayerObjective objective = ObjectiveUtil.getGoingObjective(level);
-        if(objective.is(level, PlayerObjectives.EXPLORER) || objective.is(level, PlayerObjectives.SURVEYOR)){
+        if(objective.is(level, PlayerObjectives.EXPLORER)
+                || objective.is(level, PlayerObjectives.SURVEYOR)
+                || objective.is(level, PlayerObjectives.EXPEDITION)){
             if(stack.is(ItemRegistry.BATTERY)){
                 if(level instanceof ServerLevel svlevel){
                     ObjectiveUtil.addProgress(svlevel, 1);

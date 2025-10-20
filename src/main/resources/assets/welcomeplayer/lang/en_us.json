@@ -175,11 +175,21 @@
   "dialog.welcomeplayer.objective.coal_miner.2": "I think our contestants are quite experienced in coal mining wouldn't you say?",
   "dialog.welcomeplayer.objective.coal_miner.3": "Get us some coal. We need it more than you do.",
 
+  "objective.welcomeplayer.copper_age": "Deposit %1$s copper ingots in any Material Transit.",
+  "dialog.welcomeplayer.objective.copper_age.0": "Our analyst have determined copper to be a unique yet primitive material used for your electronics.",
+  "dialog.welcomeplayer.objective.copper_age.1": "Researchers around the world want to know its value.",
+  "dialog.welcomeplayer.objective.copper_age.2": "Mine some and send its processed form. You have peaked our interest!",
+
   "objective.welcomeplayer.rich_display": "Deposit %1$s diamonds in any Material Transit.",
   "dialog.welcomeplayer.objective.rich_display.0": "Luxury may not be attainable by the large audience.",
   "dialog.welcomeplayer.objective.rich_display.1": "But for our contenders, they can give us a look into new luxuries!",
   "dialog.welcomeplayer.objective.rich_display.2": "Show us what precious gems you have, and give us a sample!",
   "dialog.welcomeplayer.objective.rich_display.3": "The audience wants to know (and will pay us handsomely)!",
+
+  "objective.welcomeplayer.gold_rush": "Deposit %1$s gold ingots in any Material Transit.",
+  "dialog.welcomeplayer.objective.gold_rush.0": "It may have its uses but I think gold would be a splendid luxury for our audience.",
+  "dialog.welcomeplayer.objective.gold_rush.1": "Collect it for us! And as a reward for our viewers, we will give away 8 bars to any person watching now!",
+  "dialog.welcomeplayer.objective.gold_rush.2": "So pay attention! Because you may be chosen for this special giveaway!",
 
   "objective.welcomeplayer.explorer": "Activate a beacon.",
   "dialog.welcomeplayer.objective.explorer.0": "The audience is quite unfamiliar with these new lands.",
@@ -188,11 +198,17 @@
   "dialog.welcomeplayer.objective.explorer.3": "I hope they remember to bring a battery! They'll need them!",
 
   "objective.welcomeplayer.surveyor": "Activate %1$s beacons.",
-  "dialog.welcomeplayer.objective.surveyor.0": "Let's learn some geography shall we kids?.",
+  "dialog.welcomeplayer.objective.surveyor.0": "Let's learn some geography shall we kids?",
   "dialog.welcomeplayer.objective.surveyor.1": "Parents... time to get your child's attention.",
   "dialog.welcomeplayer.objective.surveyor.2": "We are gonna learn more about this mysterious world our contestants live in!",
   "dialog.welcomeplayer.objective.surveyor.3": "Contestants! We will need more activated beacons for the lovely children.",
   "dialog.welcomeplayer.objective.surveyor.4": "Do your job and activate them for us!",
+
+  "objective.welcomeplayer.expedition": "Activate %1$s beacons.",
+  "dialog.welcomeplayer.objective.expedition.0": "We shall go where no person has gone before!",
+  "dialog.welcomeplayer.objective.expedition.1": "We will explore the surface of this alien world!",
+  "dialog.welcomeplayer.objective.expedition.2": "We shall teach it our ways and discover new frontiers!",
+  "dialog.welcomeplayer.objective.expedition.3": "Contestants! Light the beacons! Show us the way!",
 
   "objective.welcomeplayer.zombie_killer": "Kill %1$s zombies.",
   "dialog.welcomeplayer.objective.zombie_killer.0": "Their world has such flattering monsters. Especially those zombies.",

@@ -198,11 +198,13 @@ public class ObjectiveUtil {
         if(curObj.is(level, PlayerObjectives.FORCED_RESUPPLY) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
         if(curObj.is(level, PlayerObjectives.DAY_LABOUR) && stack.is(ItemRegistry.RAW_RETROSTEEL)) return true;
         if(curObj.is(level, PlayerObjectives.COAL_MINER) && (stack.is(Items.COAL) || stack.is(Items.CHARCOAL))) return true;
+        if(curObj.is(level, PlayerObjectives.COPPER_AGE) && stack.is(Items.COPPER_INGOT)) return true;
         if(curObj.is(level, PlayerObjectives.FARMER) && (stack.is(Items.WHEAT))) return true;
         if(curObj.is(level, PlayerObjectives.SHORT_FUSE) && stack.is(ItemRegistry.BATTERY)) return true;
         if(curObj.is(level, PlayerObjectives.HUMAN_CHARGER) && stack.is(ItemRegistry.BATTERY)) return true;
         if(curObj.is(level, PlayerObjectives.WONDER_EGGS) && stack.is(Items.GOLDEN_APPLE)) return true;
         if(curObj.is(level, PlayerObjectives.RICH_DISPLAY) && stack.is(Items.DIAMOND)) return true;
+        if(curObj.is(level, PlayerObjectives.GOLD_RUSH) && stack.is(Items.GOLD_INGOT)) return true;
         if(curObj.is(level, PlayerObjectives.RATIONING) && stack.getComponents().has(DataComponents.FOOD)) return true;
         if(curObj.is(level, PlayerObjectives.CARNIFEROUS_CROWD) && stack.getComponents().has(DataComponents.FOOD)) return true;
         return false;

@@ -73,10 +73,15 @@ public class EventSummonEvents {
         for(ServerPlayer player : players){
             int offset = 0;
             for(int i=0; i<amount; i++){
-                BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), offset, 20);
+                BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), offset, 30);
                 if(pos == null) pos = player.getOnPos();
-                entityType.spawn(svlevel, pos, MobSpawnType.PATROL);
-                offset++;
+
+                Entity entity = entityType.create(svlevel);
+                if(entity != null){
+                    entity.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+                    svlevel.addFreshEntity(entity);
+                    offset++;
+                }
             }
         }
     }
@@ -86,11 +91,16 @@ public class EventSummonEvents {
         for(ServerPlayer player : players){
             int offset = 0;
             for(int i=0; i<amount; i++){
-                BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), offset, 20);
+                BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), offset, 30);
                 if(pos == null) pos = player.getOnPos();
-                Entity entity = entityType.spawn(svlevel, pos, MobSpawnType.PATROL);
-                modification.accept(entity);
-                offset++;
+
+                Entity entity = entityType.create(svlevel);
+                if(entity != null){
+                    modification.accept(entity);
+                    entity.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+                    svlevel.addFreshEntity(entity);
+                    offset++;
+                }
             }
         }
     }
@@ -100,9 +110,14 @@ public class EventSummonEvents {
         Collections.shuffle(players);
         ServerPlayer player = players.getFirst();
         for(int i=0; i<amount; i++){
-            BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), 0, 20);
+            BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), 0, 30);
             if(pos == null) pos = player.getOnPos();
-            entityType.spawn(svlevel, pos, MobSpawnType.PATROL);
+
+            Entity entity = entityType.create(svlevel);
+            if(entity != null){
+                entity.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+                svlevel.addFreshEntity(entity);
+            }
         }
     }
 

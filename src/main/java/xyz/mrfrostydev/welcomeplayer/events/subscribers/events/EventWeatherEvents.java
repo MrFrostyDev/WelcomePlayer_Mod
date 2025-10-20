@@ -42,8 +42,8 @@ public class EventWeatherEvents {
         if(!event.getEntity().isInWaterOrRain())return;
 
         AudienceEvent goingEvent = AudienceEventUtil.getGoingEvent(svlevel);
-        if(goingEvent.is(AudienceEvents.TOXIC_RAIN)){
-            target.addEffect(new MobEffectInstance(MobEffects.POISON, 40, 0, false , false,true));
+        if(goingEvent.is(AudienceEvents.TOXIC_RAIN) && !target.hasEffect(MobEffects.POISON)){
+            target.addEffect(new MobEffectInstance(MobEffects.POISON, 80, 0, false , false,true));
         }
         else if(goingEvent.is(AudienceEvents.SAD_RAIN)){
             target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 40, 0, false , false,true));

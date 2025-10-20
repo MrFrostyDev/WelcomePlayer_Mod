@@ -35,7 +35,7 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.cruel_suffering.3"
     ));
 
-    public static final ResourceKey<PlayerObjective> ENDLESS_VIOLENCE = registerEntry("furious_endless_violence", 80, true, createDialog(
+    public static final ResourceKey<PlayerObjective> ENDLESS_VIOLENCE = registerEntry("furious_endless_violence", 70, true, createDialog(
             "dialog.welcomeplayer.objective.endless_violence.0",
             "dialog.welcomeplayer.objective.endless_violence.1",
             "dialog.welcomeplayer.objective.endless_violence.2"
@@ -145,6 +145,12 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.coal_miner.3"
     ));
 
+    public static final ResourceKey<PlayerObjective> COPPER_AGE = registerEntry("neutral_copper_age", 20, true, createDialog(
+            "dialog.welcomeplayer.objective.copper_age.0",
+            "dialog.welcomeplayer.objective.copper_age.1",
+            "dialog.welcomeplayer.objective.copper_age.2"
+    ));
+
     public static final ResourceKey<PlayerObjective> FARMER = registerEntry("neutral_farmer", 30, true, createDialog(
             "dialog.welcomeplayer.objective.farmer.0",
             "dialog.welcomeplayer.objective.farmer.1",
@@ -158,7 +164,6 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.rationing.2",
             "dialog.welcomeplayer.objective.rationing.3"
     ));
-
 
     // |------------------------------------------------------------|
     // |-------------------------Interested-------------------------|
@@ -187,7 +192,7 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.surveyor.4"
     ));
 
-    public static final ResourceKey<PlayerObjective> PURE_VIOLENCE = registerEntry("interested_pure_violence", 50, true, createDialog(
+    public static final ResourceKey<PlayerObjective> PURE_VIOLENCE = registerEntry("interested_pure_violence", 40, true, createDialog(
             "dialog.welcomeplayer.objective.pure_violence.0",
             "dialog.welcomeplayer.objective.pure_violence.1",
             "dialog.welcomeplayer.objective.pure_violence.2"
@@ -197,8 +202,13 @@ public class PlayerObjectives {
             "dialog.welcomeplayer.objective.rich_display.0",
             "dialog.welcomeplayer.objective.rich_display.1",
             "dialog.welcomeplayer.objective.rich_display.2",
-            "dialog.welcomeplayer.objective.rich_display.3",
-            "dialog.welcomeplayer.objective.rich_display.4"
+            "dialog.welcomeplayer.objective.rich_display.3"
+    ));
+
+    public static final ResourceKey<PlayerObjective> GOLD_RUSH = registerEntry("interested_gold_rush", 20, true, createDialog(
+            "dialog.welcomeplayer.objective.gold_rush.0",
+            "dialog.welcomeplayer.objective.gold_rush.1",
+            "dialog.welcomeplayer.objective.gold_rush.2"
     ));
 
     public static final ResourceKey<PlayerObjective> HUMAN_CHARGER = registerEntry("interested_human_charger", 16, true, createDialog(
@@ -230,6 +240,13 @@ public class PlayerObjectives {
     // |------------------------------------------------------------|
     // |-------------------------Thrilled---------------------------|
     // |------------------------------------------------------------|
+
+    public static final ResourceKey<PlayerObjective> EXPEDITION = registerEntry("thrilled_expedition", 5, true, createDialog(
+            "dialog.welcomeplayer.objective.expedition.0",
+            "dialog.welcomeplayer.objective.expedition.1",
+            "dialog.welcomeplayer.objective.expedition.2",
+            "dialog.welcomeplayer.objective.expedition.3"
+    ));
 
     public static final ResourceKey<PlayerObjective> SUFFERING = registerEntry("thrilled_suffering", 200, true, createDialog(
             "dialog.welcomeplayer.objective.suffering.0",

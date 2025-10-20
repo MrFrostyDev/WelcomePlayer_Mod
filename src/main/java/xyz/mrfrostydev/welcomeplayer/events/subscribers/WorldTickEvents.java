@@ -26,7 +26,6 @@ public class WorldTickEvents {
     public static void onWorldTickPost(LevelTickEvent.Post event){
         if(!(event.getLevel() instanceof ServerLevel svlevel))return;
         List<? extends Player> playerList = event.getLevel().players().stream().toList();
-        int increaseByPlayer = Math.floorDiv(playerList.size(), 2);
         int levelTickCount = event.getLevel().getServer().getTickCount();
 
         VendorUtil.doTick(svlevel);
@@ -38,7 +37,7 @@ public class WorldTickEvents {
 
         if(levelTickCount % TICK_COOLDOWN == 0){
             AudienceData data = AudienceUtil.getAudienceData(svlevel);
-            AudienceUtil.addInterestRaw(svlevel, -1 - increaseByPlayer);
+            AudienceUtil.addInterestRaw(svlevel, -1);
 
             PacketDistributor.sendToAllPlayers(SyncAudienceDataSmallPacket.create(data));
 

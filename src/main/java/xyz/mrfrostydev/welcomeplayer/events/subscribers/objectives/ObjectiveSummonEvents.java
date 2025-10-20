@@ -5,10 +5,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.SpawnPlacementType;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -56,10 +53,14 @@ public class ObjectiveSummonEvents {
         for(ServerPlayer player : players){
             int offset = 0;
             for(int i=0; i<amount; i++){
-                BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), offset, 20);
+                BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), offset, 30);
                 if(pos == null) pos = player.getOnPos();
-                entityType.spawn(svlevel, pos, MobSpawnType.EVENT);
-                offset++;
+
+                Entity entity = entityType.create(svlevel);
+                if(entity != null){
+                    entity.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+                    svlevel.addFreshEntity(entity);
+                }
             }
         }
     }
@@ -69,9 +70,14 @@ public class ObjectiveSummonEvents {
         Collections.shuffle(players);
         ServerPlayer player = players.getFirst();
         for(int i=0; i<amount; i++){
-            BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), 0, 20);
+            BlockPos pos = findRandomSpawnPos(svlevel, player.getOnPos(), 0, 30);
             if(pos == null) pos = player.getOnPos();
-            entityType.spawn(svlevel, pos, MobSpawnType.EVENT);
+
+            Entity entity = entityType.create(svlevel);
+            if(entity != null){
+                entity.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+                svlevel.addFreshEntity(entity);
+            }
         }
     }
 

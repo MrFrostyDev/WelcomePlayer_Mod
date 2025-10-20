@@ -263,5 +263,6 @@ public class EradicatorEntity extends Monster implements GeoEntity {
         return true;
     }
 
-
+    @Override
+    public void checkDespawn() {}
 }
