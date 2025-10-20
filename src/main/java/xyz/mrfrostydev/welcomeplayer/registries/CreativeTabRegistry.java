@@ -54,6 +54,7 @@ public class CreativeTabRegistry {
                 output.accept(ItemRegistry.LASER_CUTTER.get());
                 output.accept(ItemRegistry.SURVEILLANCE_PAD.get());
                 output.accept(ItemRegistry.SHOCK_ORB_LAUNCHER.get());
+                output.accept(ItemRegistry.SEISMIC_LAUNCHER.get());
 
                 output.accept(ItemRegistry.RATION.get());
                 output.accept(ItemRegistry.POTATO_BOMB.get());
