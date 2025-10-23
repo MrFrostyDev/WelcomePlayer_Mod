@@ -302,10 +302,10 @@ public class AudienceEvents {
             "dialog.welcomeplayer.event.destruct_protocol.furious.2"
     ));
     public static final ResourceKey<AudienceEvent> THRILLED_CRUEL_DESTRUCT_PROTOCOL = registerEntry("thrilled_cruel_destruct_protocol", createDialog(
-            "dialog.welcomeplayer.event.destruct_protocol.thrilled_.0",
-            "dialog.welcomeplayer.event.destruct_protocol.thrilled_.1",
-            "dialog.welcomeplayer.event.destruct_protocol.thrilled_.2",
-            "dialog.welcomeplayer.event.destruct_protocol.thrilled_.3"
+            "dialog.welcomeplayer.event.destruct_protocol.thrilled.0",
+            "dialog.welcomeplayer.event.destruct_protocol.thrilled.1",
+            "dialog.welcomeplayer.event.destruct_protocol.thrilled.2",
+            "dialog.welcomeplayer.event.destruct_protocol.thrilled.3"
     ));
 
     // |------------------------------------------------------------------------|

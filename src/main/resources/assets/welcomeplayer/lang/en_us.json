@@ -23,9 +23,14 @@
   "item.welcomeplayer.handibot_spawn_egg": "Handibot Spawn egg",
   "item.welcomeplayer.service_bot_spawn_egg": "Service Bot Spawn egg",
 
+  "entity.welcomeplayer.bounce_pad": "Bounce Pad",
   "entity.welcomeplayer.service_bot": "Service Bot",
   "entity.welcomeplayer.handibot": "Handibot",
   "entity.welcomeplayer.eradicator": "Eradicator",
+  "entity.welcomeplayer.laser_blast_projectile": "Laser Blast Projectile",
+  "entity.welcomeplayer.shock_charge_projectile": "Shock Charge Projectile",
+  "entity.welcomeplayer.shock_bolt_projectile": "Shock Bolt Projectile",
+  "entity.welcomeplayer.seismic_blast_projectile": "Seismic Blast Projectile",
 
   "block.welcomeplayer.host_screen": "Hot Screen",
   "block.welcomeplayer.show_activator": "Show Activator",

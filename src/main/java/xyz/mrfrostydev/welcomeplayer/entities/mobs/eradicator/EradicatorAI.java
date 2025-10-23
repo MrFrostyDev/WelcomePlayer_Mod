@@ -10,6 +10,7 @@ import net.minecraft.world.entity.ai.memory.MemoryStatus;
 import net.minecraft.world.entity.ai.sensing.Sensor;
 import net.minecraft.world.entity.ai.sensing.SensorType;
 import net.minecraft.world.entity.schedule.Activity;
+import xyz.mrfrostydev.welcomeplayer.entities.ai.ChangeTargetIfCloser;
 import xyz.mrfrostydev.welcomeplayer.registries.MemoryModuleRegistry;
 import xyz.mrfrostydev.welcomeplayer.registries.SensorRegistry;
 
@@ -74,12 +75,14 @@ public class EradicatorAI {
                 Activity.FIGHT,
                 ImmutableList.of(
                         Pair.of(0, StopAttackingIfTargetInvalid.create((e, target) -> {})),
-                        Pair.of(1, new EradicatorMeleeAttack(EradicatorEntity.SAW_ATTACK_COOLDOWN, entity.getHitboxSets().getFirst())),
-                        Pair.of(2, new EradicatorShoot()),
-                        Pair.of(3, SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.0F))
+                        Pair.of(1, ChangeTargetIfCloser.create(0.7F, 20)),
+                        Pair.of(2, new EradicatorMeleeAttack(EradicatorEntity.SAW_ATTACK_COOLDOWN, entity.getHitboxSets().getFirst())),
+                        Pair.of(3, new EradicatorShoot()),
+                        Pair.of(4, SetWalkTargetFromAttackTargetIfTargetOutOfReach.create(1.0F))
                 ),
                 Set.of(
                         Pair.of(MemoryModuleType.ATTACK_TARGET, MemoryStatus.VALUE_PRESENT),
+                        Pair.of(MemoryModuleType.NEAREST_ATTACKABLE, MemoryStatus.VALUE_PRESENT),
                         Pair.of(MemoryModuleType.WALK_TARGET, MemoryStatus.VALUE_ABSENT)
                 )
         );
